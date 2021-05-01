@@ -1,0 +1,6 @@
+[book]
+authors = ["Bennet Blischke", "Leonard Techel"]
+language = "en"
+multilingual = false
+src = "docs"
+title = "ABC Diversity Puzzle Trails App Documentation"
