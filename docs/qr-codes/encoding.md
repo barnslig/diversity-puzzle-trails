@@ -12,6 +12,7 @@ Each code can contain multiple actions. See [QR Code Actions](./actions.md) for 
 
 ```json
 {
+  "type": "code",
   "uid": "pJ6sLbnIDDlthmj8OWu8j",
   "oneShot": false,
   "actions": [
@@ -39,6 +40,9 @@ type GameCodeAction =
   | GameCodeActionPoll;
 
 interface GameCode {
+  /** QR code type, should be "code" */
+  type: string;
+
   /** Unique ID of the code */
   uid: string;
 
