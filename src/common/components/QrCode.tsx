@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core";
+import { CircularProgress, makeStyles } from "@material-ui/core";
 import { BrowserQRCodeSvgWriter } from "@zxing/browser";
 import * as React from "react";
 
@@ -9,6 +9,11 @@ const useStyle = makeStyles((theme) => ({
   code: {
     fontSize: 0,
     background: "#fff",
+  },
+  loading: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
 }));
 
@@ -36,21 +41,38 @@ const QrCode = ({ contents, width = 300, height = 300 }: QrCodeProps) => {
   const classes = useStyle();
 
   const codeRef = React.useRef<HTMLDivElement>(null!);
-  const writer = React.useRef(new BrowserQRCodeSvgWriter());
+  const writer = React.useRef<BrowserQRCodeSvgWriter>(null!);
+
+  const [isReady, setIsReady] = React.useState(false);
 
   React.useEffect(() => {
-    // Clear the div
-    while (codeRef.current.firstChild) {
-      codeRef.current.removeChild(codeRef.current.firstChild);
-    }
+    (async () => {
+      if (!writer.current) {
+        const { BrowserQRCodeSvgWriter } = await import("@zxing/browser");
+        writer.current = new BrowserQRCodeSvgWriter();
+      }
 
-    // Render the QR code
-    writer.current.writeToDom(codeRef.current, contents, width, height);
+      // Clear the div
+      while (codeRef.current.firstChild) {
+        codeRef.current.removeChild(codeRef.current.firstChild);
+      }
+
+      // Render the QR code
+      writer.current.writeToDom(codeRef.current, contents, width, height);
+
+      setIsReady(true);
+    })();
   }, [contents, width, height]);
 
   return (
     <div className={classes.wrapper}>
       <div ref={codeRef} className={classes.code} />
+
+      {!isReady && (
+        <div className={classes.loading} style={{ width, height }}>
+          <CircularProgress />
+        </div>
+      )}
     </div>
   );
 };

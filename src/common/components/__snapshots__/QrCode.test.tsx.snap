@@ -6,6 +6,40 @@ exports[`renders correctly 1`] = `
 >
   <div
     class="makeStyles-code-2"
+  />
+  <div
+    class="makeStyles-loading-3"
+    style="width: 300px; height: 300px;"
+  >
+    <div
+      class="MuiCircularProgress-root MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
+      role="progressbar"
+      style="width: 40px; height: 40px;"
+    >
+      <svg
+        class="MuiCircularProgress-svg"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+          cx="44"
+          cy="44"
+          fill="none"
+          r="20.2"
+          stroke-width="3.6"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders correctly 2`] = `
+<div
+  class="makeStyles-wrapper-1"
+>
+  <div
+    class="makeStyles-code-2"
   >
     <svg
       height="300"

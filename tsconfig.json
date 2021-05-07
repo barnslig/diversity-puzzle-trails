@@ -6,6 +6,7 @@
     "jsx": "react",
     "sourceMap": true,
 
+    "module": "es2020",
     "moduleResolution": "node",
     "resolveJsonModule": true,
 

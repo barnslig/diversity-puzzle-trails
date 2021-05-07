@@ -1,5 +1,5 @@
-import { makeStyles } from "@material-ui/core";
-import { BrowserQRCodeReader, IScannerControls } from "@zxing/browser";
+import { Backdrop, CircularProgress, makeStyles } from "@material-ui/core";
+import { IScannerControls } from "@zxing/browser";
 import { Result } from "@zxing/library";
 import * as React from "react";
 import Webcam from "react-webcam";
@@ -14,6 +14,9 @@ const useStyle = makeStyles((theme) => ({
     height: "100%",
     display: "block",
     objectFit: "cover",
+  },
+  backdrop: {
+    zIndex: 0,
   },
 }));
 
@@ -39,6 +42,8 @@ const QRCodeReader = ({ torch, onResult }: QRCodeReaderProps) => {
 
   const controls = React.useRef<IScannerControls>(null!);
 
+  const [isReady, setIsReady] = React.useState(false);
+
   React.useEffect(() => {
     (async () => {
       const videoEl = webcamRef.current.video;
@@ -46,11 +51,16 @@ const QRCodeReader = ({ torch, onResult }: QRCodeReaderProps) => {
         return;
       }
 
+      // The zxing library is HUGE, thus we load it asynchronously
+      const { BrowserQRCodeReader } = await import("@zxing/browser");
+
       const codeReader = new BrowserQRCodeReader();
       controls.current = await codeReader.decodeFromVideoElement(
         videoEl,
         (result) => result && onResult(result)
       );
+
+      setIsReady(true);
     })();
 
     return () => {
@@ -72,6 +82,9 @@ const QRCodeReader = ({ torch, onResult }: QRCodeReaderProps) => {
           torch,
         }}
       />
+      <Backdrop className={classes.backdrop} open={!isReady}>
+        <CircularProgress color="inherit" />
+      </Backdrop>
     </div>
   );
 };
