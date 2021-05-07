@@ -24,7 +24,7 @@ type QRCodeReaderProps = {
   /**
    * Whether the device's torch is enabled. Only works on Android
    */
-  torch: boolean;
+  torch?: boolean;
 
   /**
    * Event handler for when a QR code is successfully read
@@ -35,7 +35,7 @@ type QRCodeReaderProps = {
 /**
  * A fullscreen QR code reader using the user's webcam
  */
-const QRCodeReader = ({ torch, onResult }: QRCodeReaderProps) => {
+const QRCodeReader = ({ torch = false, onResult }: QRCodeReaderProps) => {
   const classes = useStyle();
 
   const webcamRef = React.useRef<Webcam>(null!);
