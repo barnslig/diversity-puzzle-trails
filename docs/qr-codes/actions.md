@@ -21,8 +21,7 @@ This action sets in which game the app participates.
 
 ```typescript
 interface GameCodeActionParticipate {
-  /** QR code action type, should be "participate" */
-  type: string;
+  type: "participate";
 
   /** ID of the game to participate in */
   gameId: string;
@@ -38,8 +37,8 @@ This action updates a game state parameter.
 ```json
 {
   "type": "changeParameter",
-  "parameterType": "foodSupply",
-  "parameterAdd": 7
+  "parameter": "foodSupply",
+  "add": 7
 }
 ```
 
@@ -47,14 +46,13 @@ This action updates a game state parameter.
 
 ```typescript
 interface GameCodeActionChangeParameter {
-  /** QR code action type, should be "participate" */
-  type: string;
+  type: "changeParameter";
 
   /** Parameter to change */
-  parameterType: string;
+  parameter: string;
 
   /** Value which should be added/subtracted from the parameter, e.g. -2, 0 or 1 */
-  parameterAdd: number;
+  add: number;
 }
 ```
 
@@ -76,8 +74,7 @@ TODO: What kind of information and how is it served?
 
 ```typescript
 interface GameCodeActionInformation {
-  /** QR code action type, should be "information" */
-  type: string;
+  type: "information";
 }
 ```
 
@@ -99,7 +96,6 @@ TODO: How do polls work?
 
 ```typescript
 interface GameCodeActionPoll {
-  /** QR code action type, should be "poll" */
-  type: string;
+  type: "poll";
 }
 ```
