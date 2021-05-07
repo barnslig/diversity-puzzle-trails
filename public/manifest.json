@@ -1,0 +1,8 @@
+{
+  "name": "Diversity Puzzle Trails",
+  "short_name": "DPT",
+  "theme_color": "#FD6B3A",
+  "background_color": "#353432",
+  "display": "standalone",
+  "start_url": "/"
+}

@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<article
+  class="MuiPaper-root MuiCard-root makeStyles-card-1 MuiPaper-elevation1 MuiPaper-rounded"
+>
+  <div
+    class="MuiCardContent-root"
+  >
+    <header
+      class="makeStyles-cardHeader-2"
+    >
+      <h2
+        class="MuiTypography-root makeStyles-cardHeaderHl-3 MuiTypography-h5"
+      >
+        Spielstand
+      </h2>
+      <p
+        class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
+      >
+        Der Status eurer gemeinsamen Mission. Achtet darauf, dass kein Wert 0 erreicht!
+      </p>
+    </header>
+    <ul
+      class="MuiList-root"
+    >
+      <div>
+        hypothetical GameParameter
+      </div>
+      <div>
+        hypothetical GameParameter
+      </div>
+    </ul>
+  </div>
+</article>
+`;

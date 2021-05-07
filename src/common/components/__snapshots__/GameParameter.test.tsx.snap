@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<li
+  class="MuiListItem-root MuiListItem-gutters"
+>
+  <div
+    class="MuiListItemIcon-root"
+  />
+  <div
+    class="MuiListItemText-root MuiListItemText-multiline"
+  >
+    <span
+      class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+    >
+      37
+    </span>
+    <p
+      class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+    >
+      Bewegungspunkte
+    </p>
+  </div>
+</li>
+`;
