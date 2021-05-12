@@ -24,8 +24,8 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   main: {
-    paddingTop: theme.spacing(2),
-    paddingBottom: theme.spacing(8), // add enough bottom space to see content behind the floating action button
+    paddingTop: theme.spacing(10),
+    paddingBottom: theme.spacing(7),
   },
 }));
 
@@ -36,7 +36,7 @@ const IndexPage = (props: IndexPageProps) => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="sticky" color="inherit">
+      <AppBar position="fixed" color="inherit">
         <Toolbar>
           <Typography
             className={classes.appBarTitle}

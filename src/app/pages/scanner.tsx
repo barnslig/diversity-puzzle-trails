@@ -32,7 +32,7 @@ const ScannerPage = (props: ScannerPageProps) => {
 
   return (
     <>
-      <AppBar position="sticky" color="inherit">
+      <AppBar position="fixed" color="inherit">
         <Toolbar>
           <Typography
             className={classes.appBarTitle}

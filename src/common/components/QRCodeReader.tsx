@@ -6,8 +6,11 @@ import Webcam from "react-webcam";
 
 const useStyle = makeStyles((theme) => ({
   container: {
-    height: `calc(100vh - ${theme.spacing(7)}px)`,
-    position: "relative",
+    height: "100%",
+    left: 0,
+    position: "fixed",
+    top: 0,
+    width: "100%",
   },
   webcam: {
     width: "100%",
