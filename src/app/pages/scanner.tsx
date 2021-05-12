@@ -6,18 +6,14 @@ import {
   Toolbar,
   Typography,
 } from "@material-ui/core";
-import { ArrowBack, Highlight } from "@material-ui/icons";
+import { Highlight } from "@material-ui/icons";
 import { FormattedMessage } from "react-intl";
-import { Link } from "wouter";
 import { Result } from "@zxing/library";
 import * as React from "react";
 
 import QRCodeReader from "../../common/components/QRCodeReader";
 
 const useStyles = makeStyles((theme) => ({
-  appBarBack: {
-    marginRight: theme.spacing(2),
-  },
   appBarTitle: {
     flexGrow: 1,
   },
@@ -38,15 +34,6 @@ const ScannerPage = (props: ScannerPageProps) => {
     <>
       <AppBar position="sticky" color="inherit">
         <Toolbar>
-          <Link href="/">
-            <IconButton
-              className={classes.appBarBack}
-              edge="start"
-              color="inherit"
-            >
-              <ArrowBack />
-            </IconButton>
-          </Link>
           <Typography
             className={classes.appBarTitle}
             component="h1"
