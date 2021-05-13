@@ -7,9 +7,9 @@ import {
   Typography,
 } from "@material-ui/core";
 import { Highlight } from "@material-ui/icons";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { Result } from "@zxing/library";
-import { useSnackbar, OptionsObject } from "notistack";
+import { useSnackbar } from "notistack";
 import * as React from "react";
 
 import QRCodeReader from "../../common/components/QRCodeReader";
@@ -32,22 +32,19 @@ const ScannerPage = (props: ScannerPageProps) => {
   const [torch, setTorch] = React.useState<boolean>(false);
 
   const { enqueueSnackbar } = useSnackbar();
+  const { formatMessage } = useIntl();
 
   const onResult = (result: Result) => {
     const resUrl = new URL(result.getText());
 
-    const snackOptions: OptionsObject = {
-      preventDuplicate: true,
-      variant: "error",
-    };
-
-    if (resUrl.origin !== window.location.origin) {
-      enqueueSnackbar("Invalid QR: Wrong origin", snackOptions);
-      return;
-    }
-
-    if (resUrl.pathname !== "/code") {
-      enqueueSnackbar("Invalid QR: Wrong pathname", snackOptions);
+    if (
+      resUrl.origin !== window.location.origin ||
+      resUrl.pathname !== "/code"
+    ) {
+      enqueueSnackbar(formatMessage({ id: "errors.invalidQr" }), {
+        preventDuplicate: true,
+        variant: "error",
+      });
       return;
     }
 

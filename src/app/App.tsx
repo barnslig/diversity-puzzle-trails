@@ -29,8 +29,8 @@ const useStyles = makeStyles((theme) => ({
     position: "fixed",
     width: "100%",
   },
-  snackbarRoot: {
-    marginBottom: theme.spacing(7),
+  snackbarContainerRoot: {
+    bottom: theme.spacing(9),
   },
 }));
 
@@ -42,7 +42,11 @@ const App = () => {
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <IntlProvider messages={messages} locale="de" defaultLocale="de">
-          <SnackbarProvider classes={{ root: classes.snackbarRoot }}>
+          <SnackbarProvider
+            classes={{ containerRoot: classes.snackbarContainerRoot }}
+            hideIconVariant
+            maxSnack={1}
+          >
             <CssBaseline />
 
             <Switch>

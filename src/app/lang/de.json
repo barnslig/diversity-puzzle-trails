@@ -14,6 +14,8 @@
 
   "pages.scanner.title": "QR-Code scannen",
 
+  "errors.invalidQr": "Ungültiger QR-Code!",
+
   "navigation.index.label": "Status",
   "navigation.scanner.label": "Scanner"
 }
