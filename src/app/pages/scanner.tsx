@@ -9,6 +9,7 @@ import {
 import { Highlight } from "@material-ui/icons";
 import { FormattedMessage } from "react-intl";
 import { Result } from "@zxing/library";
+import { useSnackbar, OptionsObject } from "notistack";
 import * as React from "react";
 
 import QRCodeReader from "../../common/components/QRCodeReader";
@@ -29,6 +30,29 @@ const ScannerPage = (props: ScannerPageProps) => {
   // @ts-ignore
   const torchAvailable = navigator.mediaDevices.getSupportedConstraints().torch;
   const [torch, setTorch] = React.useState<boolean>(false);
+
+  const { enqueueSnackbar } = useSnackbar();
+
+  const onResult = (result: Result) => {
+    const resUrl = new URL(result.getText());
+
+    const snackOptions: OptionsObject = {
+      preventDuplicate: true,
+      variant: "error",
+    };
+
+    if (resUrl.origin !== window.location.origin) {
+      enqueueSnackbar("Invalid QR: Wrong origin", snackOptions);
+      return;
+    }
+
+    if (resUrl.pathname !== "/code") {
+      enqueueSnackbar("Invalid QR: Wrong pathname", snackOptions);
+      return;
+    }
+
+    setResult(result);
+  };
 
   return (
     <>
@@ -61,7 +85,7 @@ const ScannerPage = (props: ScannerPageProps) => {
             </Button>
           </>
         ) : (
-          <QRCodeReader torch={torch} onResult={setResult} />
+          <QRCodeReader torch={torch} onResult={onResult} />
         )}
       </main>
     </>

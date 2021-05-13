@@ -8,6 +8,7 @@ import { Home } from "@material-ui/icons";
 import { FormattedMessage, IntlProvider } from "react-intl";
 import { Provider } from "react-redux";
 import { Route, Switch, useLocation } from "wouter";
+import { SnackbarProvider } from "notistack";
 import { ThemeProvider } from "@material-ui/styles";
 import * as React from "react";
 
@@ -28,6 +29,9 @@ const useStyles = makeStyles((theme) => ({
     position: "fixed",
     width: "100%",
   },
+  snackbarRoot: {
+    marginBottom: theme.spacing(7),
+  },
 }));
 
 const App = () => {
@@ -38,34 +42,36 @@ const App = () => {
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <IntlProvider messages={messages} locale="de" defaultLocale="de">
-          <CssBaseline />
+          <SnackbarProvider classes={{ root: classes.snackbarRoot }}>
+            <CssBaseline />
 
-          <Switch>
-            <Route path="/">
-              <IndexPage />
-            </Route>
-            <Route path="/scan">
-              <ScannerPage />
-            </Route>
-          </Switch>
+            <Switch>
+              <Route path="/">
+                <IndexPage />
+              </Route>
+              <Route path="/scan">
+                <ScannerPage />
+              </Route>
+            </Switch>
 
-          <BottomNavigation
-            className={classes.bottomNavigation}
-            value={location}
-            onChange={(ev, value) => value !== location && setLocation(value)}
-            showLabels
-          >
-            <BottomNavigationAction
-              value="/"
-              label={<FormattedMessage id="navigation.index.label" />}
-              icon={<Home />}
-            />
-            <BottomNavigationAction
-              value="/scan"
-              label={<FormattedMessage id="navigation.scanner.label" />}
-              icon={<QrCodeScanner />}
-            />
-          </BottomNavigation>
+            <BottomNavigation
+              className={classes.bottomNavigation}
+              value={location}
+              onChange={(ev, value) => value !== location && setLocation(value)}
+              showLabels
+            >
+              <BottomNavigationAction
+                value="/"
+                label={<FormattedMessage id="navigation.index.label" />}
+                icon={<Home />}
+              />
+              <BottomNavigationAction
+                value="/scan"
+                label={<FormattedMessage id="navigation.scanner.label" />}
+                icon={<QrCodeScanner />}
+              />
+            </BottomNavigation>
+          </SnackbarProvider>
         </IntlProvider>
       </ThemeProvider>
     </Provider>
