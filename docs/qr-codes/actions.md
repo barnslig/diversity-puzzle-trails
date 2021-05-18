@@ -1,32 +1,21 @@
 # Available QR Code Actions
 
-This document specifies which types of QR code actions are available.
+This document specifies which QR code actions are available.
 
-QR code actions remain universal across games and thus contain no game id, except for the participate code.
+QR code actions remain universal across games and thus contain no game id.
 
-## Participate in a game
+## Types of QR code actions
 
-This action sets in which game the app participates.
+There are four types of actions:
 
-### Example
+- Change Parameter
+- Get Character
+- Get Information
+- Send Message
 
-```json
-{
-  "type": "participate",
-  "gameId": "cultures-interactive-summer-school-2021"
-}
-```
+To be considered in the future:
 
-### Type definition
-
-```typescript
-interface GameCodeActionParticipate {
-  type: "participate";
-
-  /** ID of the game to participate in */
-  gameId: string;
-}
-```
+- Polls
 
 ## Change Parameter
 
@@ -42,60 +31,42 @@ This action updates a game state parameter.
 }
 ```
 
-### Type definition
+## Get Character
 
-```typescript
-interface GameCodeActionChangeParameter {
-  type: "changeParameter";
+This action gets the bonus/malus for a character.
 
-  /** Parameter to change */
-  parameter: string;
+### Example
 
-  /** Value which should be added/subtracted from the parameter, e.g. -2, 0 or 1 */
-  add: number;
+```json
+{
+  "type": "getCharacter",
+  "character": "engineer"
+  // TODO define bonus/malus
 }
 ```
 
-## Information
+## Get Information
 
 This action shows an information to the user.
 
-TODO: What kind of information and how is it served?
+### Example
+
+```json
+{
+  "type": "getInformation"
+  // TODO what kind of information and how is it served?
+}
+```
+
+## Send Message
+
+This action sends a message to all users.
 
 ### Example
 
 ```json
 {
-  "type": "information"
-}
-```
-
-### Type definition
-
-```typescript
-interface GameCodeActionInformation {
-  type: "information";
-}
-```
-
-## Poll
-
-This code lets the user take part in a poll.
-
-TODO: How do polls work?
-
-### Example
-
-```json
-{
-  "type": "poll"
-}
-```
-
-### Type definition
-
-```typescript
-interface GameCodeActionPoll {
-  type: "poll";
+  "type": "sendMessage",
+  "message": "Hallo Welt!"
 }
 ```
