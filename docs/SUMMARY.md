@@ -2,6 +2,7 @@
 
 - [Getting Started](./README.md)
   - [Definitions](./definitions.md)
+- [API](./API.md)
 - [QR Codes](./qr-codes/README.md)
   - [Available Actions](./qr-codes/actions.md)
   - [Encoding](./qr-codes/encoding.md)

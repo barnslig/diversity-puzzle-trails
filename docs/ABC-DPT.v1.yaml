@@ -1,0 +1,551 @@
+openapi: 3.0.0
+info:
+  title: ABC Diversity Puzzle Trails API
+  version: '1.0'
+  license:
+    name: UNLICENSED
+  description: 'Based on the [JSON:API](https://jsonapi.org/) spec.'
+servers:
+  - description: SwaggerHub API Auto Mocking
+    url: 'https://virtserver.swaggerhub.com/barnslig/abc-dpt/1.0'
+paths:
+  '/games/{gameId}/codes':
+    post:
+      summary: Execute QR Code
+      tags:
+        - App
+      responses:
+        '200':
+          description: OK
+          content:
+            application/vnd.api+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    required:
+                      - type
+                      - id
+                      - attributes
+                    properties:
+                      type:
+                        type: string
+                        enum:
+                          - code
+                        default: code
+                      id:
+                        type: string
+                      attributes:
+                        type: object
+                        required:
+                          - oneShot
+                          - actions
+                        properties:
+                          oneShot:
+                            type: boolean
+                          actions:
+                            type: array
+                            items:
+                              anyOf:
+                                - $ref: '#/components/schemas/CodeActionChangeParameter'
+                                - $ref: '#/components/schemas/CodeActionGetCharacter'
+                                - $ref: '#/components/schemas/CodeActionGetInformation'
+                                - $ref: '#/components/schemas/CodeActionSendMessage'
+                required:
+                  - data
+              examples:
+                example:
+                  value:
+                    data:
+                      type: code
+                      id: ccHi9dHxbp7vt0mg4btHL
+                      attributes:
+                        oneShot: true
+                        actions:
+                          - type: changeParameter
+                            parameter: food
+                            add: 2
+                          - type: changeParameter
+                            parameter: movements
+                            add: -3
+                          - type: sendMessage
+                            message: 'Wir haben den Tresor geknackt!'
+        '404':
+          description: Not Found
+          content:
+            application/vnd.api+json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Error'
+              examples:
+                not-found:
+                  value:
+                    errors:
+                      - id: not-found
+                        status: 404
+                        title: Unknown QR code ID
+                already-used:
+                  value:
+                    errors:
+                      - id: already-used
+                        status: 404
+                        title: This QR code is already used
+      operationId: post-code
+      requestBody:
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  required:
+                    - type
+                    - id
+                  properties:
+                    type:
+                      type: string
+                      enum:
+                        - code
+                    id:
+                      type: string
+              required:
+                - data
+            examples:
+              example:
+                value:
+                  data:
+                    type: code
+                    id: ccHi9dHxbp7vt0mg4btHL
+        description: ''
+      description: Get the actions represented by a QR code id and execute them on the server. The client should apply them as well.
+    parameters:
+      - schema:
+          type: string
+        name: gameId
+        in: path
+        required: true
+  '/games/{gameId}/parameters':
+    get:
+      summary: Get game parameters
+      tags:
+        - App
+      responses:
+        '200':
+          description: OK
+          content:
+            application/vnd.api+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Parameter'
+                required:
+                  - data
+              examples:
+                example:
+                  value:
+                    data:
+                      - type: parameter
+                        id: energy
+                        attributes:
+                          value: 82
+                          rate: -0.0001
+                          min: 0
+                          max: 99999
+                      - type: parameter
+                        id: food
+                        attributes:
+                          value: 27
+                          rate: -0.0001
+                          min: 0
+                          max: 99999
+                      - type: parameter
+                        id: hygiene
+                        attributes:
+                          value: 7
+                          rate: 0
+                          min: 0
+                          max: 99999
+                      - type: parameter
+                        id: moral
+                        attributes:
+                          value: 7
+                          rate: 0
+                          min: 0
+                          max: 99999
+      operationId: get-parameters
+      description: Get the global game parameters with their current time-dependent values.
+    parameters:
+      - schema:
+          type: string
+        name: gameId
+        in: path
+        required: true
+  '/games/{gameId}/messages':
+    get:
+      summary: Get messages
+      tags:
+        - App
+      responses:
+        '200':
+          description: OK
+          content:
+            application/vnd.api+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Message'
+                required:
+                  - data
+              examples:
+                example:
+                  value:
+                    data:
+                      - type: message
+                        id: 4PyhXohHPCneobX62WsTr
+                        attributes:
+                          createdAt: '2021-05-05T12:43:19.728Z'
+                          message: 'Irgendeine Nachricht :)'
+                      - type: message
+                        id: sStIdEE8qNoPyTlB7yn84
+                        attributes:
+                          createdAt: '2021-05-14T12:58:59.063Z'
+                          message: Test 123
+      operationId: get-messages
+      description: Get messages submitted via QR code actions or the Spielleitung.
+    parameters:
+      - schema:
+          type: string
+        name: gameId
+        in: path
+        required: true
+  '/games/{gameId}/clock':
+    get:
+      summary: Get game clock state
+      tags:
+        - App
+      responses:
+        '200':
+          description: OK
+          content:
+            application/vnd.api+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Clock'
+              examples:
+                example:
+                  value:
+                    data:
+                      type: clock
+                      id: clock
+                      attributes:
+                        state: running
+                        speed: 1
+      operationId: get-clock
+      description: Get the current server game clock state.
+    patch:
+      summary: Update game clock state
+      operationId: patch-clock
+      responses:
+        '200':
+          description: OK
+          content:
+            application/vnd.api+json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Clock'
+              examples:
+                example:
+                  value:
+                    data:
+                      type: clock
+                      id: clock
+                      attributes:
+                        state: paused
+      description: Update the current server game clock state.
+      requestBody:
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              properties:
+                data:
+                  $ref: '#/components/schemas/Clock'
+            examples:
+              pause:
+                value:
+                  data:
+                    type: clock
+                    id: clock
+                    attributes:
+                      state: paused
+              change speed:
+                value:
+                  data:
+                    type: clock
+                    id: clock
+                    attributes:
+                      speed: '0.75'
+      tags:
+        - App
+    parameters:
+      - schema:
+          type: string
+        name: gameId
+        in: path
+        required: true
+components:
+  schemas:
+    CodeActionGetCharacter:
+      title: CodeActionGetCharacter
+      type: object
+      x-examples:
+        example:
+          type: getCharacter
+          character: engineer
+      properties:
+        type:
+          type: string
+          default: getCharacter
+          enum:
+            - getCharacter
+        character:
+          type: string
+      required:
+        - type
+        - character
+    CodeActionChangeParameter:
+      title: CodeActionChangeParameter
+      type: object
+      x-examples:
+        food:
+          type: changeParameter
+          parameter: food
+          add: 2
+        movements:
+          type: changeParameter
+          parameter: movements
+          add: -1
+      properties:
+        type:
+          type: string
+          enum:
+            - changeParameter
+          default: changeParameter
+        parameter:
+          type: string
+        add:
+          type: number
+      required:
+        - type
+        - parameter
+        - add
+    Parameter:
+      title: Parameter
+      type: object
+      x-examples:
+        energy:
+          type: parameter
+          id: energy
+          attributes:
+            value: 82
+            rate: -0.0001
+            min: 0
+            max: 99999
+        food:
+          type: parameter
+          id: food
+          attributes:
+            value: 27
+            rate: -0.0001
+            min: 0
+            max: 99999
+        hygiene:
+          type: parameter
+          id: hygiene
+          attributes:
+            value: 7
+            rate: 0
+            min: 0
+            max: 99999
+        moral:
+          type: parameter
+          id: moral
+          attributes:
+            value: 7
+            rate: 0
+            min: 0
+            max: 99999
+      description: A game parameter
+      properties:
+        type:
+          type: string
+          default: message
+          enum:
+            - message
+        id:
+          type: string
+          enum:
+            - energy
+            - food
+            - hygiene
+            - moral
+        attributes:
+          type: object
+          required:
+            - value
+            - rate
+            - min
+            - max
+          properties:
+            value:
+              type: number
+            rate:
+              type: number
+            min:
+              type: number
+            max:
+              type: number
+      required:
+        - type
+        - id
+        - attributes
+    Message:
+      title: Message
+      type: object
+      x-examples:
+        example:
+          type: message
+          id: 4PyhXohHPCneobX62WsTr
+          attributes:
+            createdAt: '2021-05-05T12:43:19.728Z'
+            message: 'Irgendeine Nachricht :)'
+      properties:
+        type:
+          type: string
+          enum:
+            - message
+          default: message
+        id:
+          type: string
+        attributes:
+          type: object
+          required:
+            - createdAt
+            - message
+          properties:
+            createdAt:
+              type: string
+              format: date-time
+              description: An ISO-8601 time descriptor of when the message was created.
+            message:
+              type: string
+      required:
+        - type
+        - id
+        - attributes
+    Clock:
+      title: Clock
+      type: object
+      x-examples:
+        paused:
+          type: clock
+          id: clock
+          attributes:
+            state: paused
+            speed: 1
+        running:
+          type: clock
+          id: clock
+          attributes:
+            state: running
+            speed: 1
+      properties:
+        type:
+          type: string
+          default: clock
+          enum:
+            - clock
+        id:
+          type: string
+          default: clock
+          enum:
+            - clock
+        attributes:
+          type: object
+          required:
+            - state
+            - speed
+          properties:
+            state:
+              type: string
+              enum:
+                - running
+                - paused
+              default: paused
+            speed:
+              type: number
+              minimum: 0
+              default: 1
+      required:
+        - type
+        - id
+        - attributes
+    CodeActionSendMessage:
+      title: CodeActionSendMessage
+      type: object
+      x-examples:
+        example:
+          type: sendMessage
+          message: Hallo Welt
+      properties:
+        type:
+          type: string
+          default: sendMessage
+          enum:
+            - sendMessage
+        message:
+          type: string
+      required:
+        - type
+        - message
+    CodeActionGetInformation:
+      title: CodeActionGetInformation
+      type: object
+      properties:
+        type:
+          type: string
+          default: getInformation
+          enum:
+            - getInformation
+      required:
+        - type
+    Error:
+      title: Error
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+        title:
+          type: string
+      description: ''
+tags:
+  - name: App
+    description: API endpoints used by the client app
