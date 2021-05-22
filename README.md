@@ -4,8 +4,6 @@ This is the monorepo for the ABC Diversity Puzzle Trails Companion App.
 
 Issue overview: [Project Board](https://github.com/barnslig/diversity-puzzle-trails/projects/1)
 
-[[_TOC_]]
-
 ## Technical Documentation
 
 The technical documentation is targeted at a technical audience and represents the most recent state of the technical architecture.
