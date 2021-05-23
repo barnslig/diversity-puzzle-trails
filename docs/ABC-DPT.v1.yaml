@@ -643,7 +643,7 @@ components:
         - id
         - attributes
   securitySchemes:
-    App Instance ID:
+    AppInstanceID:
       type: http
       scheme: bearer
       description: Each app instance creates a unique ID during onboarding which is sent along every API request to track individual game parameters.
@@ -651,4 +651,4 @@ tags:
   - name: App
     description: API endpoints used by the client app
 security:
-  - App Instance ID: []
+  - AppInstanceID: []
