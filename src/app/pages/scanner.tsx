@@ -13,6 +13,7 @@ import { useSnackbar } from "notistack";
 import * as React from "react";
 
 import QRCodeReader from "../../common/components/QRCodeReader";
+import MainNav from "../MainNav";
 
 const useStyles = makeStyles((theme) => ({
   appBarTitle: {
@@ -82,6 +83,7 @@ const ScannerPage = (props: ScannerPageProps) => {
           )}
         </Toolbar>
       </AppBar>
+      <MainNav />
       <main>
         {result ? (
           <>

@@ -10,6 +10,7 @@ import { FormattedMessage } from "react-intl";
 import { Refresh } from "@material-ui/icons";
 import * as React from "react";
 
+import MainNav from "../MainNav";
 import Parameters from "../../features/parameters/Parameters";
 
 const bg = require("./bg.svg");
@@ -53,6 +54,7 @@ const IndexPage = (props: IndexPageProps) => {
           </IconButton>
         </Toolbar>
       </AppBar>
+      <MainNav />
       <main className={classes.main}>
         <Container maxWidth="sm">
           <Parameters />
