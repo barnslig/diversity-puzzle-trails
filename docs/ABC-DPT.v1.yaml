@@ -307,8 +307,17 @@ paths:
                   value:
                     data:
                       - type: parameter
+                        id: movements
+                        attributes:
+                          scope: user
+                          value: 7
+                          rate: 0.1
+                          min: 0
+                          max: 99999
+                      - type: parameter
                         id: energy
                         attributes:
+                          scope: global
                           value: 82
                           rate: -0.0001
                           min: 0
@@ -316,6 +325,7 @@ paths:
                       - type: parameter
                         id: food
                         attributes:
+                          scope: global
                           value: 27
                           rate: -0.0001
                           min: 0
@@ -323,6 +333,7 @@ paths:
                       - type: parameter
                         id: hygiene
                         attributes:
+                          scope: global
                           value: 7
                           rate: 0
                           min: 0
@@ -330,6 +341,7 @@ paths:
                       - type: parameter
                         id: moral
                         attributes:
+                          scope: global
                           value: 7
                           rate: 0
                           min: 0
@@ -544,10 +556,20 @@ components:
       title: Parameter
       type: object
       x-examples:
+        movements:
+          type: parameter
+          id: movements
+          attributes:
+            scope: user
+            value: 7
+            rate: 0.1
+            min: 0
+            max: 99999
         energy:
           type: parameter
           id: energy
           attributes:
+            scope: global
             value: 82
             rate: -0.0001
             min: 0
@@ -556,6 +578,7 @@ components:
           type: parameter
           id: food
           attributes:
+            scope: global
             value: 27
             rate: -0.0001
             min: 0
@@ -564,6 +587,7 @@ components:
           type: parameter
           id: hygiene
           attributes:
+            scope: global
             value: 7
             rate: 0
             min: 0
@@ -572,6 +596,7 @@ components:
           type: parameter
           id: moral
           attributes:
+            scope: global
             value: 7
             rate: 0
             min: 0
@@ -586,6 +611,7 @@ components:
         id:
           type: string
           enum:
+            - movements
             - energy
             - food
             - hygiene
@@ -593,11 +619,17 @@ components:
         attributes:
           type: object
           required:
+            - scope
             - value
             - rate
             - min
             - max
           properties:
+            scope:
+              type: string
+              enum:
+                - global
+                - user
             value:
               type: number
             rate:
@@ -610,6 +642,13 @@ components:
         - type
         - id
         - attributes
+  securitySchemes:
+    App Instance ID:
+      type: http
+      scheme: bearer
+      description: Each app instance creates a unique ID during onboarding which is sent along every API request to track individual game parameters.
 tags:
   - name: App
     description: API endpoints used by the client app
+security:
+  - App Instance ID: []
