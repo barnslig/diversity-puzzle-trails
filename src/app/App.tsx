@@ -15,7 +15,7 @@ import * as React from "react";
 import store from "./store";
 import theme from "./theme";
 
-import * as messages from "./lang/de.json";
+import * as messages from "../../lang/de.json";
 
 import IndexPage from "./pages";
 import ScannerPage from "./pages/scanner";
@@ -41,6 +41,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
+        {/* @ts-expect-error */}
         <IntlProvider messages={messages} locale="de" defaultLocale="de">
           <SnackbarProvider
             classes={{ containerRoot: classes.snackbarContainerRoot }}
@@ -66,12 +67,22 @@ const App = () => {
             >
               <BottomNavigationAction
                 value="/"
-                label={<FormattedMessage id="navigation.index.label" />}
+                label={
+                  <FormattedMessage
+                    defaultMessage="Status"
+                    description="main nav main page item label"
+                  />
+                }
                 icon={<Home />}
               />
               <BottomNavigationAction
                 value="/scan"
-                label={<FormattedMessage id="navigation.scanner.label" />}
+                label={
+                  <FormattedMessage
+                    defaultMessage="Scanner"
+                    description="main nav scanner page item label"
+                  />
+                }
                 icon={<QrCodeScanner />}
               />
             </BottomNavigation>

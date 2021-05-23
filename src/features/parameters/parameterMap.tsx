@@ -23,27 +23,52 @@ type ParameterMap = {
 const parameterMap: ParameterMap = {
   movements: {
     icon: <DirectionsRun />,
-    label: <FormattedMessage id="parameters.movements.title" />,
+    label: (
+      <FormattedMessage
+        defaultMessage="Bewegungspunkte"
+        description="parameter label"
+      />
+    ),
     format: (val) => Math.ceil(val),
   },
   energy: {
     icon: <FitnessCenter />,
-    label: <FormattedMessage id="parameters.energy.title" />,
+    label: (
+      <FormattedMessage
+        defaultMessage="Verbleibende Energie"
+        description="parameter label"
+      />
+    ),
     format: (val) => Math.ceil(val),
   },
   food: {
     icon: <Fastfood />,
-    label: <FormattedMessage id="parameters.food.title" />,
+    label: (
+      <FormattedMessage
+        defaultMessage="Lebensmittelvorrat"
+        description="parameter label"
+      />
+    ),
     format: (val) => Math.ceil(val),
   },
   hygiene: {
     icon: <Soap />,
-    label: <FormattedMessage id="parameters.hygiene.title" />,
+    label: (
+      <FormattedMessage
+        defaultMessage="Hygiene"
+        description="parameter label"
+      />
+    ),
     format: (val) => Math.ceil(val),
   },
   moral: {
     icon: <Group />,
-    label: <FormattedMessage id="parameters.moral.title" />,
+    label: (
+      <FormattedMessage
+        defaultMessage="Crew-Moral"
+        description="parameter label"
+      />
+    ),
     format: (val) => Math.ceil(val),
   },
 };

@@ -94,4 +94,22 @@ yarn test
 
 ### Internationalization
 
-TODO This section should cover the process of internationalization message declaration/extraction/translation
+For Internationalization, [formatjs / react-intl](https://formatjs.io/) is used. The workflow is as follows:
+
+#### 1. Message Declaration
+
+Declare messages _only_ using default message and description!
+
+See [react-intl API Reference](https://formatjs.io/docs/react-intl) for a full documentation.
+
+#### 2. Message Extraction
+
+Run `yarn extract`. The file at `lang/de.json` is updated. On import, it is automatically precompiled using Webpack.
+
+#### 3. Message Translation
+
+Translate the messages inside `lang/de.json`. The messages are formatted using the ICU Message syntax.
+
+See [Format.JS Message Syntax](https://formatjs.io/docs/core-concepts/icu-syntax) for a quick overview of what you can do.
+
+See [ICU Formatting Messages Documentation](https://unicode-org.github.io/icu/userguide/format_parse/messages/) for a full reference.

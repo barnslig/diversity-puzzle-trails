@@ -12,13 +12,33 @@ const Parameters = () => {
   return (
     <>
       <ParameterCard
-        title={<FormattedMessage id="parameterCard.user.title" />}
-        description={<FormattedMessage id="parameterCard.user.description" />}
+        title={
+          <FormattedMessage
+            defaultMessage="Persönliches"
+            description="personal parameter card title"
+          />
+        }
+        description={
+          <FormattedMessage
+            defaultMessage="Diese Parameter betreffen nur dich selber. Tausche sie gegen Aktionskarten ein!"
+            description="personal parameter card description"
+          />
+        }
         params={userParams}
       />
       <ParameterCard
-        title={<FormattedMessage id="parameterCard.global.title" />}
-        description={<FormattedMessage id="parameterCard.global.description" />}
+        title={
+          <FormattedMessage
+            defaultMessage="Spielstand"
+            description="global parameter card title"
+          />
+        }
+        description={
+          <FormattedMessage
+            defaultMessage="Der Status eurer gemeinsamen Mission. Achtet darauf, dass kein Wert 0 erreicht!"
+            description="global parameter card description"
+          />
+        }
         params={globalParams}
       />
     </>

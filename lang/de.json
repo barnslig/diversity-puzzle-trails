@@ -1,0 +1,78 @@
+{
+  "0GSRiN": {
+    "defaultMessage": "Persönliches",
+    "description": "personal parameter card title"
+  },
+  "CC9Sv5": {
+    "defaultMessage": "Hygiene",
+    "description": "parameter label"
+  },
+  "EQjFQR": {
+    "defaultMessage": "Aktionen",
+    "description": "title of the card to confirm a qr-code"
+  },
+  "K7B9pw": {
+    "defaultMessage": "Ausführen",
+    "description": "confirm qr code button"
+  },
+  "OgWAX/": {
+    "defaultMessage": "QR-Code Aktionen",
+    "description": "title of the confirm qr code actions page"
+  },
+  "P5jGEu": {
+    "defaultMessage": "Lebensmittelvorrat",
+    "description": "parameter label"
+  },
+  "R6ODBn": {
+    "defaultMessage": "QR-Code scannen",
+    "description": "scanner page title"
+  },
+  "UPFCjL": {
+    "defaultMessage": "Crew-Moral",
+    "description": "parameter label"
+  },
+  "Yu/ZRl": {
+    "defaultMessage": "Status",
+    "description": "main nav main page item label"
+  },
+  "eEE+z4": {
+    "defaultMessage": "Diversity Puzzle Trails",
+    "description": "main page title"
+  },
+  "gtLVaw": {
+    "defaultMessage": "Bewegungspunkte",
+    "description": "parameter label"
+  },
+  "hSCLKb": {
+    "defaultMessage": "Diese Parameter betreffen nur dich selber. Tausche sie gegen Aktionskarten ein!",
+    "description": "personal parameter card description"
+  },
+  "ixevT9": {
+    "defaultMessage": "Abbrechen",
+    "description": "reject qr code button"
+  },
+  "lTt2EZ": {
+    "defaultMessage": "Verbleibende Energie",
+    "description": "parameter label"
+  },
+  "qPHCvM": {
+    "defaultMessage": "Spielstand",
+    "description": "global parameter card title"
+  },
+  "t7WlPX": {
+    "defaultMessage": "Der Status eurer gemeinsamen Mission. Achtet darauf, dass kein Wert 0 erreicht!",
+    "description": "global parameter card description"
+  },
+  "uwGpv0": {
+    "defaultMessage": "Scanner",
+    "description": "main nav scanner page item label"
+  },
+  "ycjSMD": {
+    "defaultMessage": "Ungültiger QR-Code!",
+    "description": "error on invalid qr code"
+  },
+  "zzK8T2": {
+    "defaultMessage": "Dieser QR-Code führt folgende Aktionen aus:",
+    "description": "body of the card to confirm a qr-code"
+  }
+}

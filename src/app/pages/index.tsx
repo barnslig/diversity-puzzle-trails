@@ -43,7 +43,10 @@ const IndexPage = (props: IndexPageProps) => {
             component="h1"
             variant="h6"
           >
-            <FormattedMessage id="pages.index.title" />
+            <FormattedMessage
+              defaultMessage="Diversity Puzzle Trails"
+              description="main page title"
+            />
           </Typography>
           <IconButton edge="end" color="inherit">
             <Refresh />

@@ -41,10 +41,16 @@ const ScannerPage = (props: ScannerPageProps) => {
       resUrl.origin !== window.location.origin ||
       resUrl.pathname !== "/code"
     ) {
-      enqueueSnackbar(formatMessage({ id: "errors.invalidQr" }), {
-        preventDuplicate: true,
-        variant: "error",
-      });
+      enqueueSnackbar(
+        formatMessage({
+          defaultMessage: "Ungültiger QR-Code!",
+          description: "error on invalid qr code",
+        }),
+        {
+          preventDuplicate: true,
+          variant: "error",
+        }
+      );
       return;
     }
 
@@ -60,7 +66,10 @@ const ScannerPage = (props: ScannerPageProps) => {
             component="h1"
             variant="h6"
           >
-            <FormattedMessage id="pages.scanner.title" />
+            <FormattedMessage
+              defaultMessage="QR-Code scannen"
+              description="scanner page title"
+            />
           </Typography>
           {torchAvailable && (
             <IconButton
