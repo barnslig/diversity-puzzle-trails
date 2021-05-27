@@ -15,13 +15,6 @@ import IndexPage from "./pages";
 import ScannerPage from "./pages/scanner";
 
 const useStyles = makeStyles((theme) => ({
-  bottomNavigation: {
-    bottom: 0,
-    boxShadow: theme.shadows[8],
-    left: 0,
-    position: "fixed",
-    width: "100%",
-  },
   snackbarContainerRoot: {
     bottom: theme.spacing(9),
   },
