@@ -3,6 +3,10 @@
     "defaultMessage": "Persönliches",
     "description": "personal parameter card title"
   },
+  "1H9EKZ": {
+    "defaultMessage": "Am Spiel teilnehmen",
+    "description": "start code page submit button"
+  },
   "CC9Sv5": {
     "defaultMessage": "Hygiene",
     "description": "parameter label"
@@ -39,6 +43,10 @@
     "defaultMessage": "Diversity Puzzle Trails",
     "description": "main page title"
   },
+  "f0maUH": {
+    "defaultMessage": "Um an einem Spiel teilzunehmen ist ein Spiel-Code erforderlich. Bitte tippe diesen hier ein:",
+    "description": "start code page description"
+  },
   "gtLVaw": {
     "defaultMessage": "Bewegungspunkte",
     "description": "parameter label"
@@ -55,9 +63,17 @@
     "defaultMessage": "Verbleibende Energie",
     "description": "parameter label"
   },
+  "n3K0U0": {
+    "defaultMessage": "An einem Spiel teilnehmen",
+    "description": "start code page title"
+  },
   "qPHCvM": {
     "defaultMessage": "Spielstand",
     "description": "global parameter card title"
+  },
+  "qWhYfB": {
+    "defaultMessage": "Du bist jetzt Teil vom Spiel!",
+    "description": "success snackbar on join game"
   },
   "t7WlPX": {
     "defaultMessage": "Der Status eurer gemeinsamen Mission. Achtet darauf, dass kein Wert 0 erreicht!",
@@ -66,6 +82,10 @@
   "uwGpv0": {
     "defaultMessage": "Scanner",
     "description": "main nav scanner page item label"
+  },
+  "xlGZnG": {
+    "defaultMessage": "Spiel-Code",
+    "description": "start code page game id input label"
   },
   "ycjSMD": {
     "defaultMessage": "Ungültiger QR-Code!",
