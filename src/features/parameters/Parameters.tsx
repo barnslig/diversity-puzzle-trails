@@ -1,13 +1,15 @@
 import { FormattedMessage } from "react-intl";
 import * as React from "react";
 
-import { useAppSelector } from "../../app/hooks";
-
 import ParameterCard from "./ParameterCard";
+import {
+  useGlobalParameters,
+  useUserParameters,
+} from "../../common/hooks/api/useParameters";
 
 const Parameters = () => {
-  const userParams = useAppSelector((state) => state.parameters.user);
-  const globalParams = useAppSelector((state) => state.parameters.global);
+  const userParams = useUserParameters();
+  const globalParams = useGlobalParameters();
 
   return (
     <>
@@ -25,6 +27,7 @@ const Parameters = () => {
           />
         }
         params={userParams}
+        numSkeletonParams={1}
       />
       <ParameterCard
         title={
@@ -40,6 +43,7 @@ const Parameters = () => {
           />
         }
         params={globalParams}
+        numSkeletonParams={4}
       />
     </>
   );

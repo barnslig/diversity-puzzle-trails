@@ -9,6 +9,11 @@ export type ParameterType =
   | "moral";
 
 /**
+ * All available game parameter scopes
+ */
+export type ParameterScope = "global" | "user";
+
+/**
  * A single game parameter, e.g. remaining food
  */
 export interface Parameter {
@@ -20,25 +25,32 @@ export interface Parameter {
   /**
    * Type of the game parameter
    */
-  parameter: ParameterType;
+  id: ParameterType;
 
-  /**
-   * Current integer parameter value, e.g. 7
-   */
-  value: number;
+  attributes: {
+    /**
+     * Whether the game parameter is globally valid or only for the current user
+     */
+    scope: ParameterScope;
 
-  /**
-   * Change per second, e.g. -0.001, 0 or 0.1
-   */
-  rate: number;
+    /**
+     * Current integer parameter value, e.g. 7
+     */
+    value: number;
 
-  /**
-   * Minimum value, e.g. 0 or -999999
-   */
-  min: number;
+    /**
+     * Change per second, e.g. -0.001, 0 or 0.1
+     */
+    rate: number;
 
-  /**
-   * Maximum value. e.g. 100 or 999999
-   */
-  max: number;
+    /**
+     * Minimum value, e.g. 0 or -999999
+     */
+    min: number;
+
+    /**
+     * Maximum value. e.g. 100 or 999999
+     */
+    max: number;
+  };
 }
