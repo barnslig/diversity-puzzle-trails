@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   output: {
     clean: true,
+    publicPath: "/",
   },
   module: {
     rules: [

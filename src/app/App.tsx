@@ -1,7 +1,7 @@
 import { CssBaseline, makeStyles } from "@material-ui/core";
 import { IntlProvider } from "react-intl";
 import { Provider } from "react-redux";
-import { Route, Switch, useLocation } from "wouter";
+import { Redirect, Route, Switch } from "wouter";
 import { SnackbarProvider } from "notistack";
 import { ThemeProvider } from "@material-ui/styles";
 import * as React from "react";
@@ -11,8 +11,11 @@ import theme from "./theme";
 
 import * as messages from "../../lang/de.json";
 
+import useGameId from "../common/hooks/useGameId";
+
 import IndexPage from "./pages";
 import ScannerPage from "./pages/scanner";
+import StartPage from "./pages/StartPage";
 
 const useStyles = makeStyles((theme) => ({
   snackbarContainerRoot: {
@@ -22,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
 const App = () => {
   const classes = useStyles();
+  const [gameId] = useGameId();
 
   return (
     <Provider store={store}>
@@ -37,10 +41,13 @@ const App = () => {
 
             <Switch>
               <Route path="/">
-                <IndexPage />
+                {gameId ? <IndexPage /> : <Redirect to="/start" />}
               </Route>
               <Route path="/scan">
-                <ScannerPage />
+                {gameId ? <ScannerPage /> : <Redirect to="/start" />}
+              </Route>
+              <Route path="/start/:gameId?">
+                {({ gameId }) => <StartPage gameId={gameId} />}
               </Route>
             </Switch>
           </SnackbarProvider>
