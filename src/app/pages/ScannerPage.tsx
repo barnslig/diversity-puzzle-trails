@@ -15,6 +15,7 @@ import * as React from "react";
 
 import MainNav from "../MainNav";
 import QRCodeReader from "../../common/components/QRCodeReader";
+import { useLocation } from "wouter";
 
 const useStyles = makeStyles((theme) => ({
   appBarTitle: {
@@ -33,6 +34,7 @@ const ScannerPage = (props: ScannerPageProps) => {
   const torchAvailable = navigator.mediaDevices.getSupportedConstraints().torch;
   const [torch, setTorch] = React.useState<boolean>(false);
 
+  const [, setLocation] = useLocation();
   const { enqueueSnackbar } = useSnackbar();
   const intl = useIntl();
 
@@ -41,7 +43,7 @@ const ScannerPage = (props: ScannerPageProps) => {
 
     if (
       resUrl.origin !== window.location.origin ||
-      resUrl.pathname !== "/code"
+      !/^\/code\/\w+$/.test(resUrl.pathname)
     ) {
       enqueueSnackbar(
         intl.formatMessage({
@@ -56,7 +58,7 @@ const ScannerPage = (props: ScannerPageProps) => {
       return;
     }
 
-    setResult(result);
+    setLocation(resUrl.pathname);
   };
 
   return (

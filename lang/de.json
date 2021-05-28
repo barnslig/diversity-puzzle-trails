@@ -7,13 +7,17 @@
     "defaultMessage": "Am Spiel teilnehmen",
     "description": "start code page submit button"
   },
+  "3XBbzE": {
+    "defaultMessage": "Sende Nachricht",
+    "description": "qr code action label"
+  },
   "CC9Sv5": {
     "defaultMessage": "Hygiene",
     "description": "parameter label"
   },
-  "EQjFQR": {
-    "defaultMessage": "Aktionen",
-    "description": "title of the card to confirm a qr-code"
+  "HeZ2A+": {
+    "defaultMessage": "QR-Code erfolgreich ausgeführt!",
+    "description": "success snack on exec qr code"
   },
   "K7B9pw": {
     "defaultMessage": "Ausführen",
@@ -27,6 +31,10 @@
     "defaultMessage": "Lebensmittelvorrat",
     "description": "parameter label"
   },
+  "Pvf05a": {
+    "defaultMessage": "QR-Code nicht ausführen",
+    "description": "app bar close button of the confirm qr code action page"
+  },
   "R6ODBn": {
     "defaultMessage": "QR-Code scannen",
     "description": "scanner page title"
@@ -34,6 +42,10 @@
   "UPFCjL": {
     "defaultMessage": "Crew-Moral",
     "description": "parameter label"
+  },
+  "WHOfrR": {
+    "defaultMessage": "Setze Charakter",
+    "description": "qr code action label"
   },
   "Yu/ZRl": {
     "defaultMessage": "Status",
@@ -54,10 +66,6 @@
   "hSCLKb": {
     "defaultMessage": "Diese Parameter betreffen nur dich selber. Tausche sie gegen Aktionskarten ein!",
     "description": "personal parameter card description"
-  },
-  "ixevT9": {
-    "defaultMessage": "Abbrechen",
-    "description": "reject qr code button"
   },
   "lTt2EZ": {
     "defaultMessage": "Verbleibende Energie",

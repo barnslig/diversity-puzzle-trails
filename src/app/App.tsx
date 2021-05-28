@@ -11,6 +11,7 @@ import * as messages from "../../lang/de.json";
 
 import useGameId from "../common/hooks/useGameId";
 
+import CodePage from "./pages/CodePage";
 import IndexPage from "./pages/IndexPage";
 import ScannerPage from "./pages/ScannerPage";
 import StartPage from "./pages/StartPage";
@@ -42,6 +43,13 @@ const App = () => {
             </Route>
             <Route path="/scan">
               {gameId ? <ScannerPage /> : <Redirect to="/start" />}
+            </Route>
+            <Route path="/code/:codeId">
+              {gameId ? (
+                ({ codeId }) => <CodePage codeId={codeId} />
+              ) : (
+                <Redirect to="/start" />
+              )}
             </Route>
             <Route path="/start/:gameId?">
               {({ gameId }) => <StartPage gameId={gameId} />}
