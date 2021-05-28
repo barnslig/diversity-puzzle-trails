@@ -33,7 +33,7 @@ const ScannerPage = (props: ScannerPageProps) => {
   const [torch, setTorch] = React.useState<boolean>(false);
 
   const { enqueueSnackbar } = useSnackbar();
-  const { formatMessage } = useIntl();
+  const intl = useIntl();
 
   const onResult = (result: Result) => {
     const resUrl = new URL(result.getText());
@@ -43,7 +43,7 @@ const ScannerPage = (props: ScannerPageProps) => {
       resUrl.pathname !== "/code"
     ) {
       enqueueSnackbar(
-        formatMessage({
+        intl.formatMessage({
           defaultMessage: "Ungültiger QR-Code!",
           description: "error on invalid qr code",
         }),
