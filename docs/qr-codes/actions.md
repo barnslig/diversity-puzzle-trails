@@ -9,9 +9,9 @@ QR code actions remain universal across games and thus contain no game id.
 There are four types of actions:
 
 - Change Parameter
-- Get Character
 - Get Information
 - Send Message
+- Set Character
 
 To be considered in the future:
 
@@ -28,20 +28,6 @@ This action updates a game state parameter.
   "type": "changeParameter",
   "parameter": "foodSupply",
   "add": 7
-}
-```
-
-## Get Character
-
-This action gets the bonus/malus for a character.
-
-### Example
-
-```json
-{
-  "type": "getCharacter",
-  "character": "engineer"
-  // TODO define bonus/malus
 }
 ```
 
@@ -68,5 +54,19 @@ This action sends a message to all users.
 {
   "type": "sendMessage",
   "message": "Hallo Welt!"
+}
+```
+
+## Set Character
+
+This action sets the bonus/malus for a player based on a character.
+
+### Example
+
+```json
+{
+  "type": "setCharacter",
+  "character": "engineer"
+  // TODO define bonus/malus
 }
 ```
