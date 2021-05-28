@@ -7,7 +7,8 @@
 export const pathJoin = (...segments: string[]) =>
   segments
     .map((segment) => segment.replace(/^\/+/, "").replace(/\/+$/, ""))
-    .join("/");
+    .join("/")
+    .replace(/\/+/, "/");
 
 /**
  * A SWR fetcher that adds an Authorization header to the request
