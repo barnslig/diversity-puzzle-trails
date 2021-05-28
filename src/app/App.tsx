@@ -11,8 +11,8 @@ import * as messages from "../../lang/de.json";
 
 import useGameId from "../common/hooks/useGameId";
 
-import IndexPage from "./pages";
-import ScannerPage from "./pages/scanner";
+import IndexPage from "./pages/IndexPage";
+import ScannerPage from "./pages/ScannerPage";
 import StartPage from "./pages/StartPage";
 
 const useStyles = makeStyles((theme) => ({

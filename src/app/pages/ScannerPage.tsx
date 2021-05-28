@@ -1,19 +1,20 @@
 import {
   AppBar,
+  Box,
   Button,
   IconButton,
   makeStyles,
   Toolbar,
   Typography,
 } from "@material-ui/core";
-import { Highlight } from "@material-ui/icons";
 import { FormattedMessage, useIntl } from "react-intl";
+import { Highlight } from "@material-ui/icons";
 import { Result } from "@zxing/library";
 import { useSnackbar } from "notistack";
 import * as React from "react";
 
-import QRCodeReader from "../../common/components/QRCodeReader";
 import MainNav from "../MainNav";
+import QRCodeReader from "../../common/components/QRCodeReader";
 
 const useStyles = makeStyles((theme) => ({
   appBarTitle: {
@@ -59,7 +60,7 @@ const ScannerPage = (props: ScannerPageProps) => {
   };
 
   return (
-    <>
+    <div>
       <AppBar position="fixed" color="inherit">
         <Toolbar>
           <Typography
@@ -84,7 +85,7 @@ const ScannerPage = (props: ScannerPageProps) => {
         </Toolbar>
       </AppBar>
       <MainNav />
-      <main>
+      <Box component="main">
         {result ? (
           <>
             {JSON.stringify(result.getText())}
@@ -95,8 +96,8 @@ const ScannerPage = (props: ScannerPageProps) => {
         ) : (
           <QRCodeReader torch={torch} onResult={onResult} />
         )}
-      </main>
-    </>
+      </Box>
+    </div>
   );
 };
 

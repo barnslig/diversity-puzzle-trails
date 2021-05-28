@@ -1,5 +1,6 @@
 import {
   AppBar,
+  Box,
   Container,
   IconButton,
   makeStyles,
@@ -23,10 +24,6 @@ const useStyles = makeStyles((theme) => ({
   },
   appBarTitle: {
     flexGrow: 1,
-  },
-  main: {
-    paddingTop: theme.spacing(10),
-    paddingBottom: theme.spacing(7),
   },
 }));
 
@@ -55,11 +52,11 @@ const IndexPage = (props: IndexPageProps) => {
         </Toolbar>
       </AppBar>
       <MainNav />
-      <main className={classes.main}>
+      <Box component="main" paddingTop={10} paddingBottom={7}>
         <Container maxWidth="sm">
           <Parameters />
         </Container>
-      </main>
+      </Box>
     </div>
   );
 };

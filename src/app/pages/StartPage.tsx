@@ -8,9 +8,9 @@ import {
   Toolbar,
   Typography,
 } from "@material-ui/core";
+import { FormattedMessage, useIntl } from "react-intl";
 import { useFormik } from "formik";
 import * as React from "react";
-import { FormattedMessage, useIntl } from "react-intl";
 
 import useJoinGame from "../../common/hooks/useJoinGame";
 
@@ -66,7 +66,7 @@ const StartPage = ({ gameId }: StartPageProps) => {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Box component="main" marginTop={10}>
+      <Box component="main" paddingTop={10}>
         <Container maxWidth="sm">
           <form onSubmit={formik.handleSubmit}>
             <Box marginBottom={2}>
