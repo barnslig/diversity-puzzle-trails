@@ -2,13 +2,11 @@ import {
   AppBar,
   Box,
   Container,
-  IconButton,
   makeStyles,
   Toolbar,
   Typography,
 } from "@material-ui/core";
 import { FormattedMessage } from "react-intl";
-import { Refresh } from "@material-ui/icons";
 import * as React from "react";
 
 import MainNav from "../MainNav";
@@ -46,9 +44,6 @@ const IndexPage = (props: IndexPageProps) => {
               description="main page title"
             />
           </Typography>
-          <IconButton edge="end" color="inherit">
-            <Refresh />
-          </IconButton>
         </Toolbar>
       </AppBar>
       <MainNav />
