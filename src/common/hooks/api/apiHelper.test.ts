@@ -4,6 +4,7 @@ it("joins a path", () => {
   expect(pathJoin("foo", "bar", "baz")).toBe("foo/bar/baz");
   expect(pathJoin("/foo//", "/bar/", "baz/")).toBe("foo/bar/baz");
   expect(pathJoin("////foo//", "/bar/", "/baz")).toBe("foo/bar/baz");
+  expect(pathJoin("foo///bar", "baz/")).toBe("foo/bar/baz");
 });
 
 it("adds the Authorization header to the request", () => {
