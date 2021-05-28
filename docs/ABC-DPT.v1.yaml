@@ -113,6 +113,8 @@ paths:
                       attributes:
                         oneShot: true
                         actions:
+                          - type: setCharacter
+                            character: engineer
                           - type: changeParameter
                             parameter: food
                             add: 2
@@ -185,6 +187,8 @@ paths:
                       attributes:
                         oneShot: true
                         actions:
+                          - type: setCharacter
+                            character: engineer
                           - type: changeParameter
                             parameter: food
                             add: 2
@@ -427,7 +431,7 @@ components:
               items:
                 anyOf:
                   - $ref: "#/components/schemas/CodeActionChangeParameter"
-                  - $ref: "#/components/schemas/CodeActionGetCharacter"
+                  - $ref: "#/components/schemas/CodeActionSetCharacter"
                   - $ref: "#/components/schemas/CodeActionGetInformation"
                   - $ref: "#/components/schemas/CodeActionSendMessage"
       required:
@@ -460,19 +464,19 @@ components:
         - type
         - parameter
         - add
-    CodeActionGetCharacter:
-      title: CodeActionGetCharacter
+    CodeActionSetCharacter:
+      title: CodeActionSetCharacter
       type: object
       x-examples:
         example:
-          type: getCharacter
+          type: setCharacter
           character: engineer
       properties:
         type:
           type: string
-          default: getCharacter
+          default: setCharacter
           enum:
-            - getCharacter
+            - setCharacter
         character:
           type: string
       required:
