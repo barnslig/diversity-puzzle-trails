@@ -12,14 +12,15 @@ import {
 import { Close } from "@material-ui/icons";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Link, useLocation } from "wouter";
+import { useSnackbar } from "notistack";
 import * as React from "react";
 
-import Code from "../../features/code/Code";
-import useCode from "../../common/hooks/api/useCode";
-import useApiUrl from "../../common/hooks/api/useApiUrl";
 import { pathJoin } from "../../common/hooks/api/apiHelper";
+import Code from "../../features/code/Code";
+import StickyActionButtons from "../../common/components/StickyActionButtons";
+import useApiUrl from "../../common/hooks/api/useApiUrl";
+import useCode from "../../common/hooks/api/useCode";
 import useInstanceId from "../../common/hooks/useInstanceId";
-import { useSnackbar } from "notistack";
 
 const useStyles = makeStyles((theme) => ({
   appBarTitle: {
@@ -104,7 +105,7 @@ const CodePage = ({ codeId }: CodePageProps) => {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Box component="main" paddingTop={10} paddingBottom={7}>
+      <Box component="main" paddingTop={10}>
         <Container maxWidth="sm">
           <Typography gutterBottom variant="body1">
             <FormattedMessage
@@ -113,18 +114,16 @@ const CodePage = ({ codeId }: CodePageProps) => {
             />
           </Typography>
 
-          <Box marginBottom={3}>
-            <Code code={code} />
-          </Box>
+          <Code code={code} />
 
-          {code && (
+          <StickyActionButtons>
             <Button
               color="primary"
               fullWidth
               size="large"
               type="submit"
               variant="contained"
-              disabled={isLoading}
+              disabled={!code || isLoading}
               onClick={onSubmit}
             >
               <FormattedMessage
@@ -138,7 +137,7 @@ const CodePage = ({ codeId }: CodePageProps) => {
                 />
               )}
             </Button>
-          )}
+          </StickyActionButtons>
         </Container>
       </Box>
     </div>

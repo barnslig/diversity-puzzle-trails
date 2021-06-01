@@ -55,109 +55,121 @@ exports[`renders correctly 1`] = `
       >
         Dieser QR-Code führt folgende Aktionen aus:
       </p>
+      <ul
+        class="MuiList-root MuiList-padding"
+      >
+        <li
+          class="MuiListItem-root MuiListItem-gutters"
+        >
+          <div
+            class="MuiListItemIcon-root"
+          >
+            <span
+              class="MuiSkeleton-root MuiSkeleton-circle MuiSkeleton-pulse"
+              style="width: 24px; height: 24px;"
+            />
+          </div>
+          <div
+            class="MuiListItemText-root MuiListItemText-multiline"
+          >
+            <span
+              class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+            >
+              <span
+                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse"
+                style="width: 24px; height: 24px;"
+              />
+            </span>
+            <p
+              class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+            >
+              <span
+                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse"
+                style="width: 140px; height: 20px;"
+              />
+            </p>
+          </div>
+        </li>
+        <li
+          class="MuiListItem-root MuiListItem-gutters"
+        >
+          <div
+            class="MuiListItemIcon-root"
+          >
+            <span
+              class="MuiSkeleton-root MuiSkeleton-circle MuiSkeleton-pulse"
+              style="width: 24px; height: 24px;"
+            />
+          </div>
+          <div
+            class="MuiListItemText-root MuiListItemText-multiline"
+          >
+            <span
+              class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+            >
+              <span
+                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse"
+                style="width: 24px; height: 24px;"
+              />
+            </span>
+            <p
+              class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+            >
+              <span
+                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse"
+                style="width: 140px; height: 20px;"
+              />
+            </p>
+          </div>
+        </li>
+        <li
+          class="MuiListItem-root MuiListItem-gutters"
+        >
+          <div
+            class="MuiListItemIcon-root"
+          >
+            <span
+              class="MuiSkeleton-root MuiSkeleton-circle MuiSkeleton-pulse"
+              style="width: 24px; height: 24px;"
+            />
+          </div>
+          <div
+            class="MuiListItemText-root MuiListItemText-multiline"
+          >
+            <span
+              class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+            >
+              <span
+                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse"
+                style="width: 24px; height: 24px;"
+              />
+            </span>
+            <p
+              class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+            >
+              <span
+                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse"
+                style="width: 140px; height: 20px;"
+              />
+            </p>
+          </div>
+        </li>
+      </ul>
       <div
         class="MuiBox-root MuiBox-root-5"
       >
-        <ul
-          class="MuiList-root MuiList-padding"
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge Mui-disabled MuiButton-fullWidth Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="submit"
         >
-          <li
-            class="MuiListItem-root MuiListItem-gutters"
+          <span
+            class="MuiButton-label"
           >
-            <div
-              class="MuiListItemIcon-root"
-            >
-              <span
-                class="MuiSkeleton-root MuiSkeleton-circle MuiSkeleton-pulse"
-                style="width: 24px; height: 24px;"
-              />
-            </div>
-            <div
-              class="MuiListItemText-root MuiListItemText-multiline"
-            >
-              <span
-                class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
-              >
-                <span
-                  class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse"
-                  style="width: 24px; height: 24px;"
-                />
-              </span>
-              <p
-                class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
-              >
-                <span
-                  class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse"
-                  style="width: 140px; height: 20px;"
-                />
-              </p>
-            </div>
-          </li>
-          <li
-            class="MuiListItem-root MuiListItem-gutters"
-          >
-            <div
-              class="MuiListItemIcon-root"
-            >
-              <span
-                class="MuiSkeleton-root MuiSkeleton-circle MuiSkeleton-pulse"
-                style="width: 24px; height: 24px;"
-              />
-            </div>
-            <div
-              class="MuiListItemText-root MuiListItemText-multiline"
-            >
-              <span
-                class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
-              >
-                <span
-                  class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse"
-                  style="width: 24px; height: 24px;"
-                />
-              </span>
-              <p
-                class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
-              >
-                <span
-                  class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse"
-                  style="width: 140px; height: 20px;"
-                />
-              </p>
-            </div>
-          </li>
-          <li
-            class="MuiListItem-root MuiListItem-gutters"
-          >
-            <div
-              class="MuiListItemIcon-root"
-            >
-              <span
-                class="MuiSkeleton-root MuiSkeleton-circle MuiSkeleton-pulse"
-                style="width: 24px; height: 24px;"
-              />
-            </div>
-            <div
-              class="MuiListItemText-root MuiListItemText-multiline"
-            >
-              <span
-                class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
-              >
-                <span
-                  class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse"
-                  style="width: 24px; height: 24px;"
-                />
-              </span>
-              <p
-                class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
-              >
-                <span
-                  class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse"
-                  style="width: 140px; height: 20px;"
-                />
-              </p>
-            </div>
-          </li>
-        </ul>
+            Ausführen
+          </span>
+        </button>
       </div>
     </div>
   </main>
