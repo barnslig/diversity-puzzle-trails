@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { pathJoin } from "./apiHelper";
+import pathJoin from "./helper/pathJoin";
 import useGameId from "../useGameId";
 
 import config from "../../../config";
@@ -19,7 +19,11 @@ const useApiUrl = (path: string) => {
   }
 
   return React.useMemo(
-    () => new URL(pathJoin(config.apiRoot, "games", gameId, path)).href,
+    () =>
+      new URL(
+        pathJoin(process.env.API_ROOT || "", "games", gameId, path),
+        window.location.origin
+      ).href,
     [gameId, path]
   );
 };
