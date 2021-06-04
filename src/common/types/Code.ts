@@ -39,7 +39,7 @@ export type CodeAction =
  */
 export interface Code {
   /** QR code type, should be "code" */
-  type: string;
+  type: "code";
 
   /** Unique ID of the code */
   id: string;

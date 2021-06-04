@@ -21,6 +21,8 @@ import StickyActionButtons from "../../common/components/StickyActionButtons";
 import useApiUrl from "../../common/hooks/api/useApiUrl";
 import useCode from "../../common/hooks/api/useCode";
 import useInstanceId from "../../common/hooks/useInstanceId";
+import ApiError from "../../common/hooks/api/helper/ApiError";
+import errorAwareFetcher from "../../common/hooks/api/helper/errorAwareFetcher";
 
 const useStyles = makeStyles((theme) => ({
   appBarTitle: {
@@ -51,6 +53,28 @@ const CodePage = ({ codeId }: CodePageProps) => {
 
   const code = data?.data;
 
+  const handleError = (error?: ApiError) => {
+    if (!error) {
+      return;
+    }
+
+    const title = error.info?.errors[0].title;
+
+    enqueueSnackbar(
+      title
+        ? title
+        : intl.formatMessage({
+            defaultMessage: "Ein Fehler ist aufgetreten!",
+            description: "unknown error snack",
+          }),
+      { variant: "error" }
+    );
+
+    setLocation("/");
+  };
+
+  React.useEffect(() => handleError(error), [error]);
+
   const onSubmit = async () => {
     if (!url) {
       return;
@@ -58,13 +82,18 @@ const CodePage = ({ codeId }: CodePageProps) => {
 
     setIsLoading(true);
 
-    // TODO error handling
-    await fetch(url, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${instanceId}`,
-      },
-    });
+    try {
+      await errorAwareFetcher(() =>
+        fetch(url, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${instanceId}`,
+          },
+        })
+      );
+    } catch (error) {
+      return handleError(error);
+    }
 
     enqueueSnackbar(
       intl.formatMessage({
