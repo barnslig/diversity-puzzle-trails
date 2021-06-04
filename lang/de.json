@@ -15,6 +15,10 @@
     "defaultMessage": "Hygiene",
     "description": "parameter label"
   },
+  "Ejhsxh": {
+    "defaultMessage": "Ein Fehler ist aufgetreten!",
+    "description": "unknown error snack"
+  },
   "HeZ2A+": {
     "defaultMessage": "QR-Code erfolgreich ausgeführt!",
     "description": "success snack on exec qr code"
