@@ -19,6 +19,7 @@ import StartPage from "./pages/StartPage";
 const useStyles = makeStyles((theme) => ({
   snackbarContainerRoot: {
     bottom: theme.spacing(9),
+    left: theme.spacing(2),
   },
 }));
 
