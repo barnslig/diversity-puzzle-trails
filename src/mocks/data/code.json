@@ -1,0 +1,29 @@
+{
+  "data": {
+    "type": "code",
+    "id": "ccHi9dHxbp7vt0mg4btHL",
+    "attributes": {
+      "oneShot": true,
+      "actions": [
+        {
+          "type": "setCharacter",
+          "character": "engineer"
+        },
+        {
+          "type": "changeParameter",
+          "parameter": "food",
+          "add": 2
+        },
+        {
+          "type": "changeParameter",
+          "parameter": "movements",
+          "add": -3
+        },
+        {
+          "type": "sendMessage",
+          "message": "Wir haben den Tresor geknackt!"
+        }
+      ]
+    }
+  }
+}

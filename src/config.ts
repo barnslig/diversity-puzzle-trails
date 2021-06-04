@@ -3,7 +3,7 @@ interface Config {
 }
 
 const config: Config = {
-  apiRoot: "https://virtserver.swaggerhub.com/barnslig/abc-dpt/1.0/",
+  apiRoot: process.env.API_ROOT || "/",
 };
 
 export default config;

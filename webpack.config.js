@@ -1,6 +1,7 @@
 const { transform } = require("@formatjs/ts-transformer");
 const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const Webpack = require("webpack");
 
 module.exports = {
   output: {
@@ -59,6 +60,17 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title: "Diversity Puzzle Trails",
+    }),
+    new Webpack.EnvironmentPlugin({
+      /**
+       * API root, e.g. https://example.com/api/
+       */
+      API_ROOT: "/",
+
+      /**
+       * Whether to use the mock service worker instead of the real API
+       */
+      API_USE_MOCK: true,
     }),
   ],
   devServer: {

@@ -1,0 +1,59 @@
+{
+  "data": [
+    {
+      "type": "parameter",
+      "id": "movements",
+      "attributes": {
+        "scope": "user",
+        "value": 7,
+        "rate": 0.1,
+        "min": 0,
+        "max": 99999
+      }
+    },
+    {
+      "type": "parameter",
+      "id": "energy",
+      "attributes": {
+        "scope": "global",
+        "value": 82,
+        "rate": -0.0001,
+        "min": 0,
+        "max": 99999
+      }
+    },
+    {
+      "type": "parameter",
+      "id": "food",
+      "attributes": {
+        "scope": "global",
+        "value": 27,
+        "rate": -0.0001,
+        "min": 0,
+        "max": 99999
+      }
+    },
+    {
+      "type": "parameter",
+      "id": "hygiene",
+      "attributes": {
+        "scope": "global",
+        "value": 7,
+        "rate": 0,
+        "min": 0,
+        "max": 99999
+      }
+    },
+    {
+      "type": "parameter",
+      "id": "moral",
+      "attributes": {
+        "scope": "global",
+        "value": 7,
+        "rate": 0,
+        "min": 0,
+        "max": 99999
+      }
+    }
+  ]
+}
