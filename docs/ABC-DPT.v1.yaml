@@ -139,7 +139,7 @@ paths:
                   value:
                     errors:
                       - id: already-used
-                        status: 404
+                        status: 403
                         title: This QR code is already used
         "404":
           description: Not Found
@@ -213,7 +213,7 @@ paths:
                   value:
                     errors:
                       - id: already-used
-                        status: 404
+                        status: 403
                         title: This QR code is already used
         "404":
           description: Not Found
