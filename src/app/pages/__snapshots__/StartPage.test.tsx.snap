@@ -9,21 +9,21 @@ exports[`renders correctly when no game id is supplied 1`] = `
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
       <h1
-        class="MuiTypography-root makeStyles-appBarTitle-3 MuiTypography-h6"
+        class="MuiTypography-root makeStyles-appBarTitle-1 MuiTypography-h6"
       >
         An einem Spiel teilnehmen
       </h1>
     </div>
   </header>
   <main
-    class="MuiBox-root MuiBox-root-4"
+    class="MuiBox-root MuiBox-root-2"
   >
     <div
       class="MuiContainer-root MuiContainer-maxWidthSm"
     >
       <form>
         <div
-          class="MuiBox-root MuiBox-root-5"
+          class="MuiBox-root MuiBox-root-3"
         >
           <p
             class="MuiTypography-root MuiTypography-body1"
@@ -32,7 +32,7 @@ exports[`renders correctly when no game id is supplied 1`] = `
           </p>
         </div>
         <div
-          class="MuiBox-root MuiBox-root-6"
+          class="MuiBox-root MuiBox-root-4"
         >
           <div
             class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
@@ -66,10 +66,10 @@ exports[`renders correctly when no game id is supplied 1`] = `
               />
               <fieldset
                 aria-hidden="true"
-                class="PrivateNotchedOutline-root-7 MuiOutlinedInput-notchedOutline"
+                class="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
               >
                 <legend
-                  class="PrivateNotchedOutline-legendLabelled-9"
+                  class="PrivateNotchedOutline-legendLabelled-7"
                 >
                   <span>
                     Spiel-Code
@@ -81,7 +81,7 @@ exports[`renders correctly when no game id is supplied 1`] = `
           </div>
         </div>
         <div
-          class="MuiBox-root MuiBox-root-11"
+          class="MuiBox-root MuiBox-root-9"
         >
           <button
             class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge MuiButton-fullWidth"

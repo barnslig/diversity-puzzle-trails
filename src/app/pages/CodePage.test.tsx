@@ -1,15 +1,11 @@
 import { SnackbarProvider } from "notistack";
 import * as React from "react";
 
-import renderWithIntl from "../../common/testing/renderWithIntl";
+import render from "../../common/testing/render";
 
 import CodePage from "./CodePage";
 
 it("renders correctly", () => {
-  const { container } = renderWithIntl(
-    <SnackbarProvider>
-      <CodePage codeId="foobar" />
-    </SnackbarProvider>
-  );
+  const { container } = render(<CodePage codeId="foobar" />);
   expect(container.firstChild).toMatchSnapshot();
 });
