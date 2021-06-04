@@ -1,9 +1,12 @@
 interface Config {
-  apiRoot: string;
+  /**
+   * Allowed URL origins for QR codes that are recognized by the scanner
+   */
+  allowedCodeOrigins: string[];
 }
 
 const config: Config = {
-  apiRoot: process.env.API_ROOT || "/",
+  allowedCodeOrigins: [window.location.origin],
 };
 
 export default config;

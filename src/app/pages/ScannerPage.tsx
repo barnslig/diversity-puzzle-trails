@@ -10,12 +10,14 @@ import {
 import { FormattedMessage, useIntl } from "react-intl";
 import { Highlight } from "@material-ui/icons";
 import { Result } from "@zxing/library";
+import { useLocation } from "wouter";
 import { useSnackbar } from "notistack";
 import * as React from "react";
 
 import MainNav from "../MainNav";
 import QRCodeReader from "../../common/components/QRCodeReader";
-import { useLocation } from "wouter";
+
+import config from "../../config";
 
 const useStyles = makeStyles((theme) => ({
   appBarTitle: {
@@ -42,7 +44,7 @@ const ScannerPage = (props: ScannerPageProps) => {
     const resUrl = new URL(result.getText());
 
     if (
-      resUrl.origin !== window.location.origin ||
+      !config.allowedCodeOrigins.includes(resUrl.origin) ||
       !/^\/code\/\w+$/.test(resUrl.pathname)
     ) {
       enqueueSnackbar(
@@ -51,14 +53,13 @@ const ScannerPage = (props: ScannerPageProps) => {
           description: "error on invalid qr code",
         }),
         {
-          preventDuplicate: true,
           variant: "error",
         }
       );
-      return;
+      setLocation("/");
+    } else {
+      setLocation(resUrl.pathname);
     }
-
-    setLocation(resUrl.pathname);
   };
 
   return (
