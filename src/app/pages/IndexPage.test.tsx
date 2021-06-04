@@ -1,10 +1,10 @@
 import * as React from "react";
 
-import renderWithIntl from "../../common/testing/renderWithIntl";
+import render from "../../common/testing/render";
 
 import IndexPage from "./IndexPage";
 
 it("renders correctly", () => {
-  const { container } = renderWithIntl(<IndexPage />);
+  const { container } = render(<IndexPage />);
   expect(container.firstChild).toMatchSnapshot();
 });
