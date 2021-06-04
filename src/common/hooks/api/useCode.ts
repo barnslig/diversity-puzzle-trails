@@ -1,7 +1,9 @@
 import useSWR from "swr";
 
-import { authenticatedFetcher, pathJoin } from "./apiHelper";
 import { Code } from "../../types/Code";
+import ApiError from "./helper/ApiError";
+import authenticatedFetcher from "./helper/authenticatedFetcher";
+import pathJoin from "./helper/pathJoin";
 import useApiUrl from "./useApiUrl";
 import useInstanceId from "../useInstanceId";
 
@@ -19,12 +21,10 @@ const useCode = (codeId: string) => {
   const url = useApiUrl(pathJoin("/codes", codeId));
   const instanceId = useInstanceId();
 
-  const { data } = useSWR<CodeApiResponse>(
+  return useSWR<CodeApiResponse, ApiError>(
     () => [url, instanceId],
     authenticatedFetcher
   );
-
-  return data?.data;
 };
 
 export default useCode;

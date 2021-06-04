@@ -1,8 +1,9 @@
 import * as React from "react";
 import useSWR from "swr";
 
-import { authenticatedFetcher } from "./apiHelper";
 import { Parameter, ParameterScope } from "../../types/Parameter";
+import ApiError from "./helper/ApiError";
+import authenticatedFetcher from "./helper/authenticatedFetcher";
 import useApiUrl from "./useApiUrl";
 import useInstanceId from "../useInstanceId";
 
@@ -20,7 +21,7 @@ export const useParameters = (scope: ParameterScope) => {
   const url = useApiUrl("/parameters");
   const instanceId = useInstanceId();
 
-  const { data } = useSWR<ParameterApiResponse>(
+  const { data } = useSWR<ParameterApiResponse, ApiError>(
     () => [url, instanceId],
     authenticatedFetcher,
     {

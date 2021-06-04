@@ -15,8 +15,8 @@ import { Link, useLocation } from "wouter";
 import { useSnackbar } from "notistack";
 import * as React from "react";
 
-import { pathJoin } from "../../common/hooks/api/apiHelper";
 import Code from "../../features/code/Code";
+import pathJoin from "../../common/hooks/api/helper/pathJoin";
 import StickyActionButtons from "../../common/components/StickyActionButtons";
 import useApiUrl from "../../common/hooks/api/useApiUrl";
 import useCode from "../../common/hooks/api/useCode";
@@ -44,10 +44,12 @@ const CodePage = ({ codeId }: CodePageProps) => {
   const [isLoading, setIsLoading] = React.useState(false);
   const { enqueueSnackbar } = useSnackbar();
   const classes = useStyles();
-  const code = useCode(codeId);
+  const { data, error } = useCode(codeId);
   const instanceId = useInstanceId();
   const intl = useIntl();
   const url = useApiUrl(pathJoin("/codes", codeId));
+
+  const code = data?.data;
 
   const onSubmit = async () => {
     if (!url) {
