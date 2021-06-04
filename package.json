@@ -24,6 +24,7 @@
     "html-webpack-plugin": "^5.3.1",
     "jest": "^26.6.3",
     "jq-cli-wrapper": "^1.6.1",
+    "msw": "^0.29.0",
     "shell-loader": "^1.2.1",
     "ts-jest": "^26.5.5",
     "ts-loader": "^9.0.2",
@@ -48,5 +49,8 @@
     "react-webcam": "^5.2.3",
     "swr": "^0.5.6",
     "wouter": "^2.7.4"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

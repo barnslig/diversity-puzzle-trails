@@ -1,0 +1,9 @@
+{
+  "errors": [
+    {
+      "id": "already-used",
+      "status": 403,
+      "title": "Der QR-Code wurde bereits verwendet!"
+    }
+  ]
+}

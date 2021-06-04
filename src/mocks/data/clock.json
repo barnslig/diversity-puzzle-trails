@@ -1,0 +1,10 @@
+{
+  "data": {
+    "type": "clock",
+    "id": "clock",
+    "attributes": {
+      "state": "running",
+      "speed": 1
+    }
+  }
+}

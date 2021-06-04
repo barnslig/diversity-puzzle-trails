@@ -1,0 +1,9 @@
+{
+  "errors": [
+    {
+      "id": "not-found",
+      "status": 404,
+      "title": "Unbekannter QR-Code."
+    }
+  ]
+}
