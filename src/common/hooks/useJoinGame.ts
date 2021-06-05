@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 import { useSnackbar } from "notistack";
 
 import useGameId from "../../common/hooks/useGameId";
+import useCharacter from "./useCharacter";
 
 /**
  * A React hook to join a game using a game ID
@@ -12,10 +13,12 @@ import useGameId from "../../common/hooks/useGameId";
 const useJoinGame = () => {
   const [, setGameId] = useGameId();
   const [, setLocation] = useLocation();
+  const [, , deleteCharacter] = useCharacter();
   const { enqueueSnackbar } = useSnackbar();
   const intl = useIntl();
 
   return (gameId: string) => {
+    deleteCharacter();
     setGameId(gameId);
     enqueueSnackbar(
       intl.formatMessage({
