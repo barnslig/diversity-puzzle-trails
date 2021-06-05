@@ -5,16 +5,15 @@ import { SnackbarProvider } from "notistack";
 import { ThemeProvider } from "@material-ui/styles";
 import * as React from "react";
 
-import theme from "./theme";
-
 import * as messages from "../../lang/de.json";
-
+import PageLoadingBar from "../common/components/PageLoadingBar";
+import theme from "./theme";
 import useGameId from "../common/hooks/useGameId";
 
-import CodePage from "./pages/CodePage";
-import IndexPage from "./pages/IndexPage";
-import ScannerPage from "./pages/ScannerPage";
-import StartPage from "./pages/StartPage";
+const CodePage = React.lazy(() => import("./pages/CodePage"));
+const IndexPage = React.lazy(() => import("./pages/IndexPage"));
+const ScannerPage = React.lazy(() => import("./pages/ScannerPage"));
+const StartPage = React.lazy(() => import("./pages/StartPage"));
 
 const useStyles = makeStyles((theme) => ({
   snackbarContainerRoot: {
@@ -38,24 +37,26 @@ const App = () => {
         >
           <CssBaseline />
 
-          <Switch>
-            <Route path="/">
-              {gameId ? <IndexPage /> : <Redirect to="/start" />}
-            </Route>
-            <Route path="/scan">
-              {gameId ? <ScannerPage /> : <Redirect to="/start" />}
-            </Route>
-            <Route path="/code/:codeId">
-              {gameId ? (
-                ({ codeId }) => <CodePage codeId={codeId} />
-              ) : (
-                <Redirect to="/start" />
-              )}
-            </Route>
-            <Route path="/start/:gameId?">
-              {({ gameId }) => <StartPage gameId={gameId} />}
-            </Route>
-          </Switch>
+          <React.Suspense fallback={<PageLoadingBar />}>
+            <Switch>
+              <Route path="/">
+                {gameId ? <IndexPage /> : <Redirect to="/start" />}
+              </Route>
+              <Route path="/scan">
+                {gameId ? <ScannerPage /> : <Redirect to="/start" />}
+              </Route>
+              <Route path="/code/:codeId">
+                {gameId ? (
+                  ({ codeId }) => <CodePage codeId={codeId} />
+                ) : (
+                  <Redirect to="/start" />
+                )}
+              </Route>
+              <Route path="/start/:gameId?">
+                {({ gameId }) => <StartPage gameId={gameId} />}
+              </Route>
+            </Switch>
+          </React.Suspense>
         </SnackbarProvider>
       </IntlProvider>
     </ThemeProvider>

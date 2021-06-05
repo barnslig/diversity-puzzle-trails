@@ -50,9 +50,21 @@ module.exports = {
   },
   resolve: {
     alias: {
-      "@zxing/library": "@zxing/library/esm/index.js",
+      "@formatjs/icu-messageformat-parser":
+        "@formatjs/icu-messageformat-parser/no-parser",
     },
     extensions: [".ts", ".tsx", ".js", ".jsx"],
+  },
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+      cacheGroups: {
+        react: {
+          test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+          name: "react",
+        },
+      },
+    },
   },
   plugins: [
     new CopyPlugin({
