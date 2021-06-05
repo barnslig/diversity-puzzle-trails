@@ -3,13 +3,14 @@ import * as React from "react";
 
 import ParameterCard from "./ParameterCard";
 import {
-  useGlobalParameters,
-  useUserParameters,
+  useParameters,
+  useScopedParameterResponse,
 } from "../../common/hooks/api/useParameters";
 
 const Parameters = () => {
-  const userParams = useUserParameters();
-  const globalParams = useGlobalParameters();
+  const { data } = useParameters();
+  const userParams = useScopedParameterResponse("user", data);
+  const globalParams = useScopedParameterResponse("global", data);
 
   return (
     <>
