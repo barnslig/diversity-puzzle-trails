@@ -19,6 +19,10 @@
     "defaultMessage": "Ein Fehler ist aufgetreten!",
     "description": "unknown error snack"
   },
+  "GGWPU2": {
+    "defaultMessage": "Scanne eine Charakterkarte um am Spiel teilzunehmen. Dein gewählter Charakter gibt dir bei jeder Aktion im Spiel einen Bonus!",
+    "description": "onboarding choose character paragraph"
+  },
   "HeZ2A+": {
     "defaultMessage": "QR-Code erfolgreich ausgeführt!",
     "description": "success snack on exec qr code"
@@ -50,6 +54,10 @@
   "WHOfrR": {
     "defaultMessage": "Setze Charakter",
     "description": "qr code action label"
+  },
+  "YD6gNg": {
+    "defaultMessage": "Charakter wählen",
+    "description": "onboarding choose character headline"
   },
   "Yu/ZRl": {
     "defaultMessage": "Status",
