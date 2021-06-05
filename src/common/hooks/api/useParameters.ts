@@ -4,6 +4,7 @@ import useSWR from "swr";
 import { Parameter, ParameterScope } from "../../types/Parameter";
 import ApiError from "./helper/ApiError";
 import authenticatedFetcher from "./helper/authenticatedFetcher";
+import config from "../../../config";
 import useApiUrl from "./useApiUrl";
 import useInstanceId from "../useInstanceId";
 
@@ -17,7 +18,7 @@ interface ParameterApiResponse {
  * @returns The parameters, filtered by the scope. May be null during initial load
  */
 export const useParameters = () => {
-  const url = useApiUrl("/parameters");
+  const url = useApiUrl((gameId) => config.apiEndpoints.parameters(gameId));
   const instanceId = useInstanceId();
 
   return useSWR<ParameterApiResponse, ApiError>(

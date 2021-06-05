@@ -63,9 +63,9 @@ module.exports = {
     }),
     new Webpack.EnvironmentPlugin({
       /**
-       * API root, e.g. https://example.com/api/
+       * API root without trailing slash, e.g. https://example.com/api
        */
-      API_ROOT: "/",
+      API_ROOT: "",
 
       /**
        * Whether to use the mock service worker instead of the real API

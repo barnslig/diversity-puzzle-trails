@@ -57,7 +57,7 @@ The API used by the app is documented in an OpenAPI spec at [docs/ABC-DPT.v1.yam
 By default, API requests are mocked using [MSW](https://mswjs.io/). The behavior of the API client can be controlled using environment variables:
 
 - `API_USE_MOCK`: Boolean whether API requests are mocked. Default: true
-- `API_ROOT`: String of the API root, e.g. `"https://example.com/api"`. Default: `"/"`
+- `API_ROOT`: String of the API root without trailing slash, e.g. `"https://example.com/api"`. Default: `""`
 
 API mocks are defined at `src/mocks/`.
 

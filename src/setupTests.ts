@@ -16,7 +16,7 @@ jest
 
 jest.spyOn(useInstanceId, "default").mockReturnValue("test-instance");
 
-process.env.API_ROOT = "/";
+process.env.API_ROOT = "http://localhost";
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());

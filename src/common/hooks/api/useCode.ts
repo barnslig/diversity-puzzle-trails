@@ -3,7 +3,7 @@ import useSWR from "swr";
 import { Code } from "../../types/Code";
 import ApiError from "./helper/ApiError";
 import authenticatedFetcher from "./helper/authenticatedFetcher";
-import pathJoin from "./helper/pathJoin";
+import config from "../../../config";
 import useApiUrl from "./useApiUrl";
 import useInstanceId from "../useInstanceId";
 
@@ -18,7 +18,7 @@ interface CodeApiResponse {
  * @returns The code. May be null during initial load
  */
 const useCode = (codeId: string) => {
-  const url = useApiUrl(pathJoin("/codes", codeId));
+  const url = useApiUrl((gameId) => config.apiEndpoints.code(codeId, gameId));
   const instanceId = useInstanceId();
 
   return useSWR<CodeApiResponse, ApiError>(

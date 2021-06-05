@@ -15,14 +15,14 @@ import { Link, useLocation } from "wouter";
 import { useSnackbar } from "notistack";
 import * as React from "react";
 
+import ApiError from "../../common/hooks/api/helper/ApiError";
 import Code from "../../features/code/Code";
-import pathJoin from "../../common/hooks/api/helper/pathJoin";
+import config from "../../config";
+import errorAwareFetcher from "../../common/hooks/api/helper/errorAwareFetcher";
 import StickyActionButtons from "../../common/components/StickyActionButtons";
 import useApiUrl from "../../common/hooks/api/useApiUrl";
 import useCode from "../../common/hooks/api/useCode";
 import useInstanceId from "../../common/hooks/useInstanceId";
-import ApiError from "../../common/hooks/api/helper/ApiError";
-import errorAwareFetcher from "../../common/hooks/api/helper/errorAwareFetcher";
 
 const useStyles = makeStyles((theme) => ({
   appBarTitle: {
@@ -49,7 +49,7 @@ const CodePage = ({ codeId }: CodePageProps) => {
   const { data, error } = useCode(codeId);
   const instanceId = useInstanceId();
   const intl = useIntl();
-  const url = useApiUrl(pathJoin("/codes", codeId));
+  const url = useApiUrl((gameId) => config.apiEndpoints.code(codeId, gameId));
 
   const code = data?.data;
 
