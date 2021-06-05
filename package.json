@@ -9,6 +9,7 @@
     "start": "webpack serve --mode development",
     "build": "webpack build --mode production",
     "test": "jest",
+    "analyze": "webpack -c webpack.bundleAnalyzer.js",
     "extract": "formatjs extract 'src/**/*.ts*' | jq -s '.[1] * .[0]' lang/de.json - > /tmp/lang.json && mv /tmp/lang.json lang/de.json"
   },
   "devDependencies": {
@@ -33,6 +34,7 @@
     "ts-loader": "^9.0.2",
     "typescript": "^4.2.4",
     "webpack": "^5.34.0",
+    "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.6.0",
     "webpack-dev-server": "^3.11.2"
   },
