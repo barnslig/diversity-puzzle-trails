@@ -9,8 +9,10 @@ import {
 import { FormattedMessage } from "react-intl";
 import * as React from "react";
 
+import ChooseCharacter from "../../common/components/ChooseCharacter";
 import MainNav from "../MainNav";
 import Parameters from "../../features/parameters/Parameters";
+import useCharacter from "../../common/hooks/useCharacter";
 
 const bg = require("./bg.svg");
 
@@ -29,6 +31,7 @@ type IndexPageProps = {};
 
 const IndexPage = (props: IndexPageProps) => {
   const classes = useStyles();
+  const [character] = useCharacter();
 
   return (
     <div className={classes.root}>
@@ -47,11 +50,15 @@ const IndexPage = (props: IndexPageProps) => {
         </Toolbar>
       </AppBar>
       <MainNav />
-      <Box component="main" paddingTop={10} paddingBottom={7}>
-        <Container maxWidth="sm">
-          <Parameters />
-        </Container>
-      </Box>
+      {!character ? (
+        <ChooseCharacter />
+      ) : (
+        <Box component="main" paddingTop={10} paddingBottom={7}>
+          <Container maxWidth="sm">
+            <Parameters />
+          </Container>
+        </Box>
+      )}
     </div>
   );
 };

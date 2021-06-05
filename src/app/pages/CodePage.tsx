@@ -15,12 +15,14 @@ import { Link, useLocation } from "wouter";
 import { useSnackbar } from "notistack";
 import * as React from "react";
 
+import { CodeAction, CodeActionSetCharacter } from "../../common/types/Code";
 import ApiError from "../../common/hooks/api/helper/ApiError";
 import Code from "../../features/code/Code";
 import config from "../../config";
 import errorAwareFetcher from "../../common/hooks/api/helper/errorAwareFetcher";
 import StickyActionButtons from "../../common/components/StickyActionButtons";
 import useApiUrl from "../../common/hooks/api/useApiUrl";
+import useCharacter from "../../common/hooks/useCharacter";
 import useCode from "../../common/hooks/api/useCode";
 import useInstanceId from "../../common/hooks/useInstanceId";
 
@@ -42,11 +44,12 @@ type CodePageProps = {
 };
 
 const CodePage = ({ codeId }: CodePageProps) => {
+  const [, setCharacter] = useCharacter();
   const [, setLocation] = useLocation();
   const [isLoading, setIsLoading] = React.useState(false);
+  const { data, error } = useCode(codeId);
   const { enqueueSnackbar } = useSnackbar();
   const classes = useStyles();
-  const { data, error } = useCode(codeId);
   const instanceId = useInstanceId();
   const intl = useIntl();
   const url = useApiUrl((gameId) => config.apiEndpoints.code(codeId, gameId));
@@ -76,7 +79,7 @@ const CodePage = ({ codeId }: CodePageProps) => {
   React.useEffect(() => handleError(error), [error]);
 
   const onSubmit = async () => {
-    if (!url) {
+    if (!url || !code) {
       return;
     }
 
@@ -93,6 +96,17 @@ const CodePage = ({ codeId }: CodePageProps) => {
       );
     } catch (error) {
       return handleError(error);
+    }
+
+    /* If the code includes a setCharacter action, set it as currently
+     * used character. This is used to control the onboarding screen
+     * within IndexPage.tsx
+     */
+    const setCharacterAction = code.attributes.actions.find(
+      ({ type }: CodeAction) => type === "setCharacter"
+    ) as CodeActionSetCharacter;
+    if (setCharacterAction) {
+      setCharacter(setCharacterAction.character);
     }
 
     enqueueSnackbar(
