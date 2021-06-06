@@ -5,13 +5,13 @@ import * as React from "react";
 
 const useStyle = makeStyles((theme) => ({
   root: {
-    alignItems: "flex-end",
-    background: theme.palette.background.default,
-    display: "flex",
-    height: "100vh",
+    bottom: 0,
+    left: 0,
     paddingBottom: theme.spacing(7),
     paddingTop: theme.spacing(10),
+    position: "absolute",
     textAlign: "center",
+    width: "100%",
   },
   arrow: {
     marginBottom: theme.spacing(3),
