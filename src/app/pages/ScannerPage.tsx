@@ -37,13 +37,17 @@ const ScannerPage = (props: ScannerPageProps) => {
   const [torch, setTorch] = React.useState<boolean>(false);
 
   const [, setLocation] = useLocation();
-  const { enqueueSnackbar } = useSnackbar();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const intl = useIntl();
 
   const onResult = (result: Result) => {
-    const resUrl = new URL(result.getText());
+    let resUrl;
+    try {
+      resUrl = new URL(result.getText());
+    } catch (error) {}
 
     if (
+      !resUrl ||
       !config.allowedCodeOrigins.includes(resUrl.origin) ||
       !/^\/code\/\w+$/.test(resUrl.pathname)
     ) {
@@ -53,11 +57,13 @@ const ScannerPage = (props: ScannerPageProps) => {
           description: "error on invalid qr code",
         }),
         {
+          key: "invalid-qr",
+          preventDuplicate: true,
           variant: "error",
         }
       );
-      setLocation("/");
     } else {
+      closeSnackbar("invalid-qr");
       setLocation(resUrl.pathname);
     }
   };

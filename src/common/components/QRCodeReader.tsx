@@ -73,6 +73,12 @@ const QRCodeReader = ({ torch = false, onResult }: QRCodeReaderProps) => {
     };
   }, [webcamRef]);
 
+  React.useEffect(() => {
+    if (controls.current?.switchTorch) {
+      controls.current.switchTorch(torch);
+    }
+  }, [torch]);
+
   return (
     <div className={classes.container}>
       <Webcam
@@ -81,8 +87,6 @@ const QRCodeReader = ({ torch = false, onResult }: QRCodeReaderProps) => {
         audio={false}
         videoConstraints={{
           facingMode: "environment",
-          // @ts-ignore
-          torch,
         }}
       />
       <Backdrop className={classes.backdrop} open={!isReady}>
