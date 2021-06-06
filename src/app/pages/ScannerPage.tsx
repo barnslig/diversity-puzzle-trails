@@ -1,7 +1,6 @@
 import {
   AppBar,
   Box,
-  Button,
   IconButton,
   makeStyles,
   Toolbar,
@@ -95,16 +94,7 @@ const ScannerPage = (props: ScannerPageProps) => {
       </AppBar>
       <MainNav />
       <Box component="main">
-        {result ? (
-          <>
-            {JSON.stringify(result.getText())}
-            <Button color="primary" onClick={() => setResult(null)}>
-              Nochmal scannen
-            </Button>
-          </>
-        ) : (
-          <QRCodeReader torch={torch} onResult={onResult} />
-        )}
+        <QRCodeReader torch={torch} onResult={onResult} />
       </Box>
     </div>
   );
