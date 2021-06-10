@@ -8,6 +8,7 @@ import StartPage from "./StartPage";
 
 const useJoinGame = jest.fn();
 jest.mock("../../common/hooks/useJoinGame", () => ({
+  __esModule: true,
   default: () => useJoinGame,
 }));
 
