@@ -20,7 +20,7 @@ const config: Config = {
     parameters: (gameId: string) =>
       `${process.env.API_ROOT}/games/${gameId}/parameters`,
   },
-  allowedCodeOrigins: [window.location.origin],
+  allowedCodeOrigins: [window.location.origin, "https://abc-dpt.netlify.app"],
 };
 
 export default config;
