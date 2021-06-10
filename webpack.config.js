@@ -72,6 +72,10 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title: "Diversity Puzzle Trails",
+      meta: {
+        "theme-color": "#424242",
+        robots: "noindex, nofollow",
+      },
     }),
     new Webpack.EnvironmentPlugin({
       /**
