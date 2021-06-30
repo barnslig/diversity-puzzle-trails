@@ -9,7 +9,6 @@ on:
       - next-major
       - beta
       - alpha
-      - feature/semantic-release
   pull_request:
     branches: [main]
 
@@ -31,4 +30,4 @@ jobs:
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: semantic-release --dry-run
+        run: semantic-release
