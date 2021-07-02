@@ -2,7 +2,6 @@ import {
   AppBar,
   Box,
   Button,
-  CircularProgress,
   Container,
   IconButton,
   makeStyles,
@@ -17,6 +16,7 @@ import * as React from "react";
 
 import { CodeAction, CodeActionSetCharacter } from "../../common/types/Code";
 import ApiError from "../../common/hooks/api/helper/ApiError";
+import ButtonProgressIndicator from "../../common/components/ButtonProgressIndicator";
 import Code from "../../features/code/Code";
 import config from "../../config";
 import errorAwareFetcher from "../../common/hooks/api/helper/errorAwareFetcher";
@@ -29,13 +29,6 @@ import useInstanceId from "../../common/hooks/useInstanceId";
 const useStyles = makeStyles((theme) => ({
   appBarTitle: {
     flexGrow: 1,
-  },
-  buttonProgress: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    marginTop: -12,
-    marginLeft: -12,
   },
 }));
 
@@ -175,12 +168,7 @@ const CodePage = ({ codeId }: CodePageProps) => {
                 defaultMessage="Ausführen"
                 description="confirm qr code button"
               />
-              {isLoading && (
-                <CircularProgress
-                  size={24}
-                  className={classes.buttonProgress}
-                />
-              )}
+              {isLoading && <ButtonProgressIndicator />}
             </Button>
           </StickyActionButtons>
         </Container>
