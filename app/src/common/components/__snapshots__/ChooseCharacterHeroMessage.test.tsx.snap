@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <main
-  class="MuiBox-root MuiBox-root-3 makeStyles-root-1"
+  class="MuiBox-root MuiBox-root-4 makeStyles-root-2 makeStyles-root-3"
 >
   <div
     class="MuiContainer-root MuiContainer-maxWidthSm"
@@ -19,7 +19,7 @@ exports[`renders correctly 1`] = `
     </p>
     <svg
       aria-hidden="true"
-      class="MuiSvgIcon-root makeStyles-arrow-2"
+      class="MuiSvgIcon-root makeStyles-arrow-1"
       focusable="false"
       viewBox="0 0 24 24"
     >

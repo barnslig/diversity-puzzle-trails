@@ -9,7 +9,7 @@ import {
 import { FormattedMessage } from "react-intl";
 import * as React from "react";
 
-import ChooseCharacter from "../../common/components/ChooseCharacter";
+import ChooseCharacterHeroMessage from "../../common/components/ChooseCharacterHeroMessage";
 import MainNav from "../MainNav";
 import Parameters from "../../features/parameters/Parameters";
 import useCharacter from "../../common/hooks/useCharacter";
@@ -51,7 +51,7 @@ const IndexPage = (props: IndexPageProps) => {
       </AppBar>
       <MainNav />
       {!character ? (
-        <ChooseCharacter />
+        <ChooseCharacterHeroMessage />
       ) : (
         <Box component="main" paddingTop={10} paddingBottom={7}>
           <Container maxWidth="sm">
