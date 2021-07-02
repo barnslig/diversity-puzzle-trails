@@ -10,21 +10,15 @@ import {
 } from "@material-ui/core";
 import { Close } from "@material-ui/icons";
 import { FormattedMessage, useIntl } from "react-intl";
-import { Link, useLocation } from "wouter";
-import { useSnackbar } from "notistack";
+import { Link } from "wouter";
 import * as React from "react";
 
-import { CodeAction, CodeActionSetCharacter } from "../../common/types/Code";
-import ApiError from "../../common/hooks/api/helper/ApiError";
 import ButtonProgressIndicator from "../../common/components/ButtonProgressIndicator";
 import Code from "../../features/code/Code";
-import config from "../../config";
-import errorAwareFetcher from "../../common/hooks/api/helper/errorAwareFetcher";
 import StickyActionButtons from "../../common/components/StickyActionButtons";
-import useApiUrl from "../../common/hooks/api/useApiUrl";
-import useCharacter from "../../common/hooks/useCharacter";
 import useCode from "../../common/hooks/api/useCode";
-import useInstanceId from "../../common/hooks/useInstanceId";
+import useHandleApiError from "../../common/hooks/api/useHandleApiError";
+import useSubmitCode from "../../common/hooks/api/useSubmitCode";
 
 const useStyles = makeStyles((theme) => ({
   appBarTitle: {
@@ -37,80 +31,21 @@ type CodePageProps = {
 };
 
 const CodePage = ({ codeId }: CodePageProps) => {
-  const [, setCharacter] = useCharacter();
-  const [, setLocation] = useLocation();
-  const [isLoading, setIsLoading] = React.useState(false);
   const { data, error } = useCode(codeId);
-  const { enqueueSnackbar } = useSnackbar();
   const classes = useStyles();
-  const instanceId = useInstanceId();
   const intl = useIntl();
-  const url = useApiUrl((gameId) => config.apiEndpoints.code(codeId, gameId));
+  const [isLoading, submitCode] = useSubmitCode(codeId);
 
   const code = data?.data;
 
-  const handleError = (error?: ApiError) => {
-    if (!error) {
-      return;
-    }
-
-    const title = error.info?.errors[0].title;
-
-    enqueueSnackbar(
-      title
-        ? title
-        : intl.formatMessage({
-            defaultMessage: "Ein Fehler ist aufgetreten!",
-            description: "unknown error snack",
-          }),
-      { variant: "error" }
-    );
-
-    setLocation("/");
-  };
-
+  const handleError = useHandleApiError();
   React.useEffect(() => handleError(error), [error]);
 
-  const onSubmit = async () => {
-    if (!url || !code) {
+  const onSubmit = () => {
+    if (!code) {
       return;
     }
-
-    setIsLoading(true);
-
-    try {
-      await errorAwareFetcher(() =>
-        fetch(url, {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${instanceId}`,
-          },
-        })
-      );
-    } catch (error) {
-      return handleError(error);
-    }
-
-    /* If the code includes a setCharacter action, set it as currently
-     * used character. This is used to control the onboarding screen
-     * within IndexPage.tsx
-     */
-    const setCharacterAction = code.attributes.actions.find(
-      ({ type }: CodeAction) => type === "setCharacter"
-    ) as CodeActionSetCharacter;
-    if (setCharacterAction) {
-      setCharacter(setCharacterAction.character);
-    }
-
-    enqueueSnackbar(
-      intl.formatMessage({
-        defaultMessage: "QR-Code erfolgreich ausgeführt!",
-        description: "success snack on exec qr code",
-      }),
-      { variant: "success" }
-    );
-
-    setLocation("/");
+    return submitCode(code);
   };
 
   return (
