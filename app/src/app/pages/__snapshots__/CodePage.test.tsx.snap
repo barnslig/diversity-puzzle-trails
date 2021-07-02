@@ -9,7 +9,7 @@ exports[`executes a code 1`] = `
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
       <div
-        class="MuiBox-root MuiBox-root-3"
+        class="MuiBox-root MuiBox-root-2"
       >
         <a
           aria-disabled="false"
@@ -45,7 +45,7 @@ exports[`executes a code 1`] = `
     </div>
   </header>
   <main
-    class="MuiBox-root MuiBox-root-4"
+    class="MuiBox-root MuiBox-root-3"
   >
     <div
       class="MuiContainer-root MuiContainer-maxWidthSm"
@@ -156,7 +156,7 @@ exports[`executes a code 1`] = `
         </li>
       </ul>
       <div
-        class="MuiBox-root MuiBox-root-5"
+        class="MuiBox-root MuiBox-root-4"
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge Mui-disabled MuiButton-fullWidth Mui-disabled"
@@ -185,7 +185,7 @@ exports[`executes a code 2`] = `
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
       <div
-        class="MuiBox-root MuiBox-root-3"
+        class="MuiBox-root MuiBox-root-2"
       >
         <a
           aria-disabled="false"
@@ -221,7 +221,7 @@ exports[`executes a code 2`] = `
     </div>
   </header>
   <main
-    class="MuiBox-root MuiBox-root-4"
+    class="MuiBox-root MuiBox-root-3"
   >
     <div
       class="MuiContainer-root MuiContainer-maxWidthSm"
@@ -364,7 +364,7 @@ exports[`executes a code 2`] = `
         </li>
       </ul>
       <div
-        class="MuiBox-root MuiBox-root-5"
+        class="MuiBox-root MuiBox-root-4"
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge MuiButton-fullWidth"
@@ -395,7 +395,7 @@ exports[`loads a code 1`] = `
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
       <div
-        class="MuiBox-root MuiBox-root-3"
+        class="MuiBox-root MuiBox-root-2"
       >
         <a
           aria-disabled="false"
@@ -431,7 +431,7 @@ exports[`loads a code 1`] = `
     </div>
   </header>
   <main
-    class="MuiBox-root MuiBox-root-4"
+    class="MuiBox-root MuiBox-root-3"
   >
     <div
       class="MuiContainer-root MuiContainer-maxWidthSm"
@@ -574,7 +574,7 @@ exports[`loads a code 1`] = `
         </li>
       </ul>
       <div
-        class="MuiBox-root MuiBox-root-5"
+        class="MuiBox-root MuiBox-root-4"
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge MuiButton-fullWidth"
@@ -605,7 +605,7 @@ exports[`renders correctly 1`] = `
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
       <div
-        class="MuiBox-root MuiBox-root-3"
+        class="MuiBox-root MuiBox-root-2"
       >
         <a
           aria-disabled="false"
@@ -641,7 +641,7 @@ exports[`renders correctly 1`] = `
     </div>
   </header>
   <main
-    class="MuiBox-root MuiBox-root-4"
+    class="MuiBox-root MuiBox-root-3"
   >
     <div
       class="MuiContainer-root MuiContainer-maxWidthSm"
@@ -752,7 +752,7 @@ exports[`renders correctly 1`] = `
         </li>
       </ul>
       <div
-        class="MuiBox-root MuiBox-root-5"
+        class="MuiBox-root MuiBox-root-4"
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge Mui-disabled MuiButton-fullWidth Mui-disabled"
