@@ -35,11 +35,15 @@ const StartPage = ({ gameId }: StartPageProps) => {
   const intl = useIntl();
   const joinGame = useJoinGame();
 
-  if (gameId) {
-    // Automatically join the game when a game id is supplied via the url
-    React.useEffect(() => joinGame(gameId), []);
-    return null;
-  }
+  React.useEffect(() => {
+    if (gameId) {
+      // Automatically join the game when a game id is supplied via the url
+      joinGame(gameId);
+    }
+
+    // This hook should only be executed once during mount, thus empty deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const formik = useFormik({
     initialValues: {
@@ -50,7 +54,7 @@ const StartPage = ({ gameId }: StartPageProps) => {
     },
   });
 
-  return (
+  return gameId ? null : (
     <div>
       <AppBar position="fixed" color="inherit">
         <Toolbar>

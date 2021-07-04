@@ -71,7 +71,7 @@ const QRCodeReader = ({ torch = false, onResult }: QRCodeReaderProps) => {
         controls.current.stop();
       }
     };
-  }, [webcamRef]);
+  }, [onResult, webcamRef]);
 
   React.useEffect(() => {
     if (controls.current?.switchTorch) {

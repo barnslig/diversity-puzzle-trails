@@ -46,5 +46,5 @@ export const useScopedParameterResponse = (
       (data?.data || []).filter(
         (param: Parameter) => param.attributes.scope === scope
       ),
-    [data]
+    [scope, data]
   );

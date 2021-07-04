@@ -2,11 +2,11 @@ import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 import * as React from "react";
 
-import { Code } from "../../common/types/Code";
+import { Code as CodeType } from "../../common/types/Code";
 import codeActionMap from "./codeActionMap";
 
 type CodeProps = {
-  code?: Code;
+  code?: CodeType;
 };
 
 const Code = ({ code }: CodeProps) => {

@@ -1,7 +1,7 @@
 import { ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import * as React from "react";
 
-type GameParameter = {
+type GameParameterProps = {
   /**
    * A representing icon, usually from @material-ui/icons
    */
@@ -21,7 +21,7 @@ type GameParameter = {
 /**
  * A single game parameter
  */
-const GameParameter = ({ icon, value, label }: GameParameter) => (
+const GameParameter = ({ icon, value, label }: GameParameterProps) => (
   <ListItem>
     <ListItemIcon>{icon}</ListItemIcon>
     <ListItemText primary={value} secondary={label} />
