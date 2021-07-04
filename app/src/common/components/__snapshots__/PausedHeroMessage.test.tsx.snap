@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<main
+  class="MuiBox-root MuiBox-root-3 makeStyles-root-1 makeStyles-root-2"
+>
+  <div
+    class="MuiContainer-root MuiContainer-maxWidthSm"
+  >
+    <h2
+      class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+    >
+      Spiel pausiert
+    </h2>
+    <p
+      class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
+    >
+      Das Spiel ist pausiert. Du kannst es aber für alle fortsetzen.
+    </p>
+    <div
+      class="MuiBox-root MuiBox-root-4"
+    >
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Spiel für alle fortsetzen
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+  </div>
+</main>
+`;
