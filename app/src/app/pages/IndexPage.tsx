@@ -129,11 +129,11 @@ const IndexPage = (props: IndexPageProps) => {
       </AppBar>
       <MainNav />
 
-      {isPaused && <PausedHeroMessage />}
-
-      {!character && <ChooseCharacterHeroMessage />}
-
-      {!isPaused && character && (
+      {!character ? (
+        <ChooseCharacterHeroMessage />
+      ) : isPaused ? (
+        <PausedHeroMessage />
+      ) : (
         <Box component="main" paddingTop={10} paddingBottom={7}>
           <Container maxWidth="sm">
             <Parameters />
