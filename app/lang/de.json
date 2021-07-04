@@ -11,6 +11,14 @@
     "defaultMessage": "Sende Nachricht",
     "description": "qr code action label"
   },
+  "3eJT2C": {
+    "defaultMessage": "Das Spiel ist pausiert. Du kannst es aber für alle fortsetzen.",
+    "description": "game paused message description"
+  },
+  "7vghdx": {
+    "defaultMessage": "Aktionen anzeigen",
+    "description": "appbar menu toggle"
+  },
   "CC9Sv5": {
     "defaultMessage": "Hygiene",
     "description": "parameter label"
@@ -42,6 +50,10 @@
   "Pvf05a": {
     "defaultMessage": "QR-Code nicht ausführen",
     "description": "app bar close button of the confirm qr code action page"
+  },
+  "R14Oy/": {
+    "defaultMessage": "Spiel für alle fortsetzen",
+    "description": "appbar menu item continue game"
   },
   "R6ODBn": {
     "defaultMessage": "QR-Code scannen",
@@ -75,6 +87,14 @@
     "defaultMessage": "Bewegungspunkte",
     "description": "parameter label"
   },
+  "gyakmc": {
+    "defaultMessage": "Spiel für alle fortsetzen",
+    "description": "game paused message continue button label"
+  },
+  "h1UmHT": {
+    "defaultMessage": "Spiel pausiert",
+    "description": "game paused message title"
+  },
   "hSCLKb": {
     "defaultMessage": "Diese Parameter betreffen nur dich selber. Tausche sie gegen Aktionskarten ein!",
     "description": "personal parameter card description"
@@ -102,6 +122,10 @@
   "uwGpv0": {
     "defaultMessage": "Scanner",
     "description": "main nav scanner page item label"
+  },
+  "vcAwuf": {
+    "defaultMessage": "Spiel für alle pausieren",
+    "description": "appbar menu item pause game"
   },
   "xlGZnG": {
     "defaultMessage": "Spiel-Code",

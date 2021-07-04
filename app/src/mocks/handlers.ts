@@ -1,11 +1,20 @@
 import { rest } from "msw";
 
+let clockState = "running";
+
 export const handlers = [
   rest.get("/games/:gameId/clock", (req, res, ctx) => {
-    return res(ctx.json(require("./data/clock.json")));
+    const clockRes = require("./data/clock.json");
+    clockRes.data.attributes.state = clockState;
+    return res(ctx.json(clockRes));
   }),
   rest.patch("/games/:gameId/clock", (req, res, ctx) => {
-    return res(ctx.json(require("./data/clock.json")));
+    clockState =
+      JSON.parse(req.body as string).data.attributes.state || "running";
+
+    const clockRes = require("./data/clock.json");
+    clockRes.data.attributes.state = clockState;
+    return res(ctx.json(clockRes));
   }),
 
   rest.get("/games/:gameId/codes/:codeId", (req, res, ctx) => {
