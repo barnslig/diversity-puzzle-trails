@@ -43,7 +43,7 @@ const routeFactories = [
  * A custom wouter useLocation hook that preloads the route component before navigating
  * See https://github.com/molefrog/wouter/issues/39
  */
-const lazyUseLocation: BaseLocationHook = () => {
+const useLazyLocation: BaseLocationHook = () => {
   const [location, setLocation] = useLocation();
   const { matcher } = useRouter();
   const progress = new ProgressBar();
@@ -65,7 +65,7 @@ const lazyUseLocation: BaseLocationHook = () => {
 const AppRouter = () => {
   const [gameId] = useGameId();
   return (
-    <Router hook={lazyUseLocation}>
+    <Router hook={useLazyLocation}>
       <React.Suspense fallback={null}>
         <Switch>
           <Route path="/">

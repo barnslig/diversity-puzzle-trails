@@ -29,8 +29,6 @@ type ScannerPageProps = {};
 const ScannerPage = (props: ScannerPageProps) => {
   const classes = useStyles();
 
-  const [result, setResult] = React.useState<Result | null>(null);
-
   // @ts-ignore
   const torchAvailable = navigator.mediaDevices.getSupportedConstraints().torch;
   const [torch, setTorch] = React.useState<boolean>(false);

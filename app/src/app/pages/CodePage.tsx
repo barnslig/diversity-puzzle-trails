@@ -39,7 +39,7 @@ const CodePage = ({ codeId }: CodePageProps) => {
   const code = data?.data;
 
   const handleError = useHandleApiError();
-  React.useEffect(() => handleError(error), [error]);
+  React.useEffect(() => handleError(error), [handleError, error]);
 
   const onSubmit = () => {
     if (!code) {

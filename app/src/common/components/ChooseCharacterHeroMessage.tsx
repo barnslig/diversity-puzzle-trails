@@ -15,7 +15,7 @@ const useStyle = makeStyles((theme) => ({
 
 type ChooseCharacterHeroMessageProps = {};
 
-const ChooseCharacterHeroMessage = ({}: ChooseCharacterHeroMessageProps) => {
+const ChooseCharacterHeroMessage = (props: ChooseCharacterHeroMessageProps) => {
   const classes = useStyle();
 
   return (

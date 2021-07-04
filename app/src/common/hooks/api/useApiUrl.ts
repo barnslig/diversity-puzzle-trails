@@ -11,11 +11,10 @@ import useGameId from "../useGameId";
 const useApiUrl = (urlGenerator: (gameId: string) => string) => {
   const [gameId] = useGameId();
 
-  if (!gameId) {
-    return null;
-  }
-
-  return React.useMemo(() => urlGenerator(gameId), [gameId]);
+  return React.useMemo(
+    () => (gameId ? urlGenerator(gameId) : null),
+    [gameId, urlGenerator]
+  );
 };
 
 export default useApiUrl;
