@@ -50,15 +50,11 @@ const IndexPage = (props: IndexPageProps) => {
         </Toolbar>
       </AppBar>
       <MainNav />
-      {!character ? (
-        <ChooseCharacter />
-      ) : (
         <Box component="main" paddingTop={10} paddingBottom={7}>
           <Container maxWidth="sm">
             <Parameters />
           </Container>
         </Box>
-      )}
     </div>
   );
 };

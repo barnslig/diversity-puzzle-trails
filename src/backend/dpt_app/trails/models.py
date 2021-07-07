@@ -98,3 +98,9 @@ class Character(models.Model):
 
     def __str__(self):
         return "Character {0}".format(self.label())
+
+
+class Log(models.Model):
+    created_at = None
+    game = None
+    code = None

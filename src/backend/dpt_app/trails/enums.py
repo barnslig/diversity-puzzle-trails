@@ -16,3 +16,9 @@ class ParameterType(TextChoices):
     NONE = 'NE', ('None')
     ENERGY = 'EN', ('Energy')
     FOOD = 'FD', ('Food')
+
+
+class ActionType(TextChoices):
+    NONE = 'NE', ('None')
+    PARAMETER = 'PA', ('Parameter')
+    CHARACTER = 'CA', ('Character')
