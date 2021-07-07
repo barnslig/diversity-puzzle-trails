@@ -1,4 +1,4 @@
-from .enums import ClockType, ParameterType, CharacterType
+from .enums import ClockType, ParameterType, ParameterScope, CharacterType
 from django.db import models
 
 
@@ -43,6 +43,12 @@ class Parameter(models.Model):
         choices=ParameterType.choices,
         default=ParameterType.NONE,
     )
+    scope = models.CharField(
+        max_length=2,
+        choices=ParameterScope.choices,
+        default=ParameterScope.GLOBAL,
+    )
+
     min_value = 0
 
     # From the documentation 
@@ -57,6 +63,9 @@ class Parameter(models.Model):
         on_delete=models.CASCADE,
         related_name="parameter"
     )
+
+    def scope_label(self):
+        return ParameterScope(self.scope).label
 
     def label(self):
         return ParameterType(self.name).label

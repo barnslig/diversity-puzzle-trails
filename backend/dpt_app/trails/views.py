@@ -1,5 +1,6 @@
 import time
 from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from .models import Game
 from .qr_models import Code
 from .enums import ClockType, ParameterType, ActionType, CharacterType
@@ -80,6 +81,7 @@ def func_clock_post(game):
     return buildJsonResponse({"Not implemented"})
 
 
+@csrf_exempt
 def code(request, gameId, codeId):
     try: 
         game = Game.objects.get(name=gameId)
@@ -144,10 +146,11 @@ def func_code_get(game, code):
 
 
 def func_code_post(game, code):
-    if code.on_shot == True and code in game.log:
+    return buildJsonResponse({"Errors:": "Not implemented"})
+    if code.one_shot == True and code in game.log:
         "Not allowed"
     game.log.add(code)
-    return buildJsonResponse({"Not implemented"})
+    return buildJsonResponse({"Errors:": "Not implemented"})
 
 
 def parameter(request, gameId):
@@ -162,7 +165,7 @@ def func_parameter_get(game):
                 "type": "parameter",
                 "id": parameter.label(),
                 "attributes": {
-                    "scope": "Not implemented",
+                    "scope": parameter.scope_label(),
                     "value": parameter.value,
                     "rate": parameter.rate,
                     "min": parameter.min_value,
