@@ -1,9 +1,6 @@
-import {
-  render,
-  screen,
-  waitForElementToBeRemoved,
-} from "@testing-library/react";
+import { screen, waitForElementToBeRemoved } from "@testing-library/react";
 import * as React from "react";
+import render from "../testing/render";
 
 import QrCode from "./QrCode";
 
