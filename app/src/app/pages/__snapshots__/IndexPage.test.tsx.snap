@@ -108,7 +108,7 @@ exports[`can show the game is over 1`] = `
     </div>
   </nav>
   <main
-    class="MuiBox-root MuiBox-root-10 makeStyles-root-8 makeStyles-root-9"
+    class="MuiBox-root MuiBox-root-13 makeStyles-root-8 makeStyles-root-12"
   >
     <div
       class="MuiContainer-root MuiContainer-maxWidthSm"
