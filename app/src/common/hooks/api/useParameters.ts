@@ -48,3 +48,15 @@ export const useScopedParameterResponse = (
       ),
     [scope, data]
   );
+
+/**
+ * A React hook that tells whether the game is over from a ParameterResponse
+ *
+ * @param data The ParameterResponse, e.g. from `useParameters`
+ * @returns Whether any of the parameters has reached its minimum
+ */
+export const useIsGameOver = (data?: ParameterApiResponse) => {
+  return !data
+    ? false
+    : data.data.some(({ attributes }) => attributes.value <= attributes.min);
+};

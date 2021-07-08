@@ -48,3 +48,24 @@ it("can show the game is paused message", async () => {
   );
   expect(container.firstChild).toMatchSnapshot();
 });
+
+it("can show the game is over", async () => {
+  jest
+    .spyOn(useCharacter, "default")
+    .mockReturnValue(["engineer", () => {}, () => {}]);
+
+  server.use(
+    rest.get("/games/:gameId/parameters", (req, res, ctx) => {
+      const data = require("../../mocks/data/parameters.json");
+      data.data[0].attributes.value = data.data[0].attributes.min;
+      return res(ctx.json(data));
+    })
+  );
+
+  const { container } = render(<IndexPage />);
+
+  await waitFor(() =>
+    expect(screen.getByText(/Game Over/)).toBeInTheDocument()
+  );
+  expect(container.firstChild).toMatchSnapshot();
+});

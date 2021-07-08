@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<main
+  class="MuiBox-root MuiBox-root-3 makeStyles-root-1 makeStyles-root-2"
+>
+  <div
+    class="MuiContainer-root MuiContainer-maxWidthSm"
+  >
+    <h2
+      class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+    >
+      Game Over
+    </h2>
+    <p
+      class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
+    >
+      Ein Parameter hat null erreicht, weshalb das Spiel verloren ist!
+    </p>
+  </div>
+</main>
+`;
