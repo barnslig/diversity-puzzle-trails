@@ -1,7 +1,11 @@
 import { renderHook } from "@testing-library/react-hooks";
 import { Parameter } from "../../types/Parameter";
 
-import { useParameters, useScopedParameterResponse } from "./useParameters";
+import {
+  useIsGameOver,
+  useParameters,
+  useScopedParameterResponse,
+} from "./useParameters";
 
 const mockResponse = require("../../../mocks/data/parameters.json");
 
@@ -31,4 +35,20 @@ it("filters the parameters by scope", () => {
     useScopedParameterResponse("user", mockResponse)
   );
   expect(result.current).toEqual(expected);
+});
+
+it("calculates game over", () => {
+  const { result, rerender } = renderHook(
+    ({ response }) => useIsGameOver(response),
+    {
+      initialProps: {
+        response: mockResponse,
+      },
+    }
+  );
+  expect(result.current).toEqual(false);
+
+  mockResponse.data[0].attributes.value = mockResponse.data[0].attributes.min;
+  rerender({ response: mockResponse });
+  expect(result.current).toEqual(true);
 });

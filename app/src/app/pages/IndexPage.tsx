@@ -13,8 +13,13 @@ import { MoreVert } from "@material-ui/icons";
 import { FormattedMessage, useIntl } from "react-intl";
 import * as React from "react";
 
+import {
+  useParameters,
+  useIsGameOver,
+} from "../../common/hooks/api/useParameters";
 import ButtonProgressIndicator from "../../common/components/ButtonProgressIndicator";
 import ChooseCharacterHeroMessage from "../../common/components/ChooseCharacterHeroMessage";
+import GameOverHeroMessage from "../../common/components/GameOverHeroMessage";
 import MainNav from "../MainNav";
 import Parameters from "../../features/parameters/Parameters";
 import PausedHeroMessage from "../../common/components/PausedHeroMessage";
@@ -45,6 +50,9 @@ const IndexPage = (props: IndexPageProps) => {
 
   const clock = useClock();
   const isPaused = clock.data?.data.attributes.state === "paused";
+
+  const parameters = useParameters();
+  const isGameOver = useIsGameOver(parameters?.data);
 
   const appBarMenuAnchorEl = React.useRef<HTMLButtonElement>(null);
   const [appBarMenuIsOpen, setAppBarMenuIsOpen] = React.useState(false);
@@ -129,7 +137,9 @@ const IndexPage = (props: IndexPageProps) => {
       </AppBar>
       <MainNav />
 
-      {!character ? (
+      {isGameOver ? (
+        <GameOverHeroMessage />
+      ) : !character ? (
         <ChooseCharacterHeroMessage />
       ) : isPaused ? (
         <PausedHeroMessage />

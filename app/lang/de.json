@@ -27,6 +27,10 @@
     "defaultMessage": "Ein Fehler ist aufgetreten!",
     "description": "unknown error snack"
   },
+  "FahQwU": {
+    "defaultMessage": "Ein Parameter hat null erreicht, weshalb das Spiel verloren ist!",
+    "description": "game over copy"
+  },
   "GGWPU2": {
     "defaultMessage": "Scanne eine Charakterkarte um am Spiel teilzunehmen. Dein gewählter Charakter gibt dir bei jeder Aktion im Spiel einen Bonus!",
     "description": "onboarding choose character paragraph"
@@ -130,6 +134,10 @@
   "xlGZnG": {
     "defaultMessage": "Spiel-Code",
     "description": "start code page game id input label"
+  },
+  "y0i31+": {
+    "defaultMessage": "Game Over",
+    "description": "game over headline"
   },
   "ycjSMD": {
     "defaultMessage": "Ungültiger QR-Code!",
