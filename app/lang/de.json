@@ -43,9 +43,17 @@
     "defaultMessage": "Ausführen",
     "description": "confirm qr code button"
   },
+  "KqZNMU": {
+    "defaultMessage": "Spiel verlassen",
+    "description": "appbar menu item leave game"
+  },
   "OgWAX/": {
     "defaultMessage": "QR-Code Aktionen",
     "description": "title of the confirm qr code actions page"
+  },
+  "OzAuhp": {
+    "defaultMessage": "Spiel wirklich verlassen?",
+    "description": "leave game confirm message"
   },
   "P5jGEu": {
     "defaultMessage": "Lebensmittelvorrat",
@@ -78,6 +86,10 @@
   "Yu/ZRl": {
     "defaultMessage": "Status",
     "description": "main nav main page item label"
+  },
+  "ZelVIn": {
+    "defaultMessage": "Spiel erfolgreich verlassen!",
+    "description": "success snackbar on leave game"
   },
   "eEE+z4": {
     "defaultMessage": "Diversity Puzzle Trails",
