@@ -26,6 +26,7 @@ import PausedHeroMessage from "../../common/components/PausedHeroMessage";
 import useCharacter from "../../common/hooks/useCharacter";
 import useClock from "../../common/hooks/api/useClock";
 import useUpdateClock from "../../common/hooks/api/useUpdateClock";
+import useLeaveGame from "../../common/hooks/useLeaveGame";
 
 const bg = require("./bg.svg");
 
@@ -57,6 +58,21 @@ const IndexPage = (props: IndexPageProps) => {
   const appBarMenuAnchorEl = React.useRef<HTMLButtonElement>(null);
   const [appBarMenuIsOpen, setAppBarMenuIsOpen] = React.useState(false);
   const [updateClockIsLoading, updateClock] = useUpdateClock();
+
+  const leaveGame = useLeaveGame();
+  const onLeaveGame = () => {
+    if (
+      window.confirm(
+        intl.formatMessage({
+          defaultMessage: "Spiel wirklich verlassen?",
+          description: "leave game confirm message",
+        })
+      )
+    ) {
+      leaveGame();
+    }
+    setAppBarMenuIsOpen(false);
+  };
 
   return (
     <div className={classes.root}>
@@ -132,6 +148,12 @@ const IndexPage = (props: IndexPageProps) => {
                 {updateClockIsLoading && <ButtonProgressIndicator />}
               </MenuItem>
             )}
+            <MenuItem onClick={onLeaveGame}>
+              <FormattedMessage
+                defaultMessage="Spiel verlassen"
+                description="appbar menu item leave game"
+              />
+            </MenuItem>
           </Menu>
         </Toolbar>
       </AppBar>
