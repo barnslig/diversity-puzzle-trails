@@ -4,6 +4,8 @@ import * as React from "react";
 
 import HeroMessage from "./HeroMessage";
 
+import config from "../../config";
+
 type ChooseCharacterHeroMessageProps = {};
 
 const ChooseCharacterHeroMessage = (props: ChooseCharacterHeroMessageProps) => {
@@ -26,7 +28,7 @@ const ChooseCharacterHeroMessage = (props: ChooseCharacterHeroMessageProps) => {
           sx={{
             marginBottom: 3,
             marginTop: 3,
-            transform: "translateX(84px)", // TODO remove when the messages nav entry is available
+            transform: config.featureMessages ? "" : "translateX(84px)",
           }}
         />
       }

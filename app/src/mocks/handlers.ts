@@ -54,4 +54,8 @@ export const handlers = [
     }
     return res(ctx.json(require("./data/game.json")));
   }),
+
+  rest.get("/games/:gameId/messages", (req, res, ctx) => {
+    return res(ctx.json(require("./data/messages.json")));
+  }),
 ];
