@@ -4,6 +4,7 @@ import ProgressBar from "@badrap/bar-of-progress";
 import useLocation, { BaseLocationHook } from "wouter/use-location";
 
 import useGameId from "../common/hooks/useGameId";
+import config from "../config";
 
 /**
  * Wrap `React.lazy()` and return the factory as well for preloading the component
@@ -17,6 +18,7 @@ const lazyWithPreload = <T extends React.ComponentType<any>>(
 
 const CodePage = lazyWithPreload(() => import("./pages/CodePage"));
 const IndexPage = lazyWithPreload(() => import("./pages/IndexPage"));
+const MessagesPage = lazyWithPreload(() => import("./pages/MessagesPage"));
 const ScannerPage = lazyWithPreload(() => import("./pages/ScannerPage"));
 const StartPage = lazyWithPreload(() => import("./pages/StartPage"));
 
@@ -36,6 +38,10 @@ const routeFactories = [
   {
     path: "/start/:gameId?",
     factory: StartPage.factory,
+  },
+  {
+    path: "/messages",
+    factory: MessagesPage.factory,
   },
 ];
 
@@ -84,7 +90,13 @@ const AppRouter = () => {
           <Route path="/start/:gameId?">
             {({ gameId }) => <StartPage.Component gameId={gameId} />}
           </Route>
-
+          {config.featureMessages ? (
+            <Route path="/messages">
+              {gameId ? <MessagesPage.Component /> : <Redirect to="/start" />}
+            </Route>
+          ) : (
+            <></>
+          )}
           {/* Redirect to index page on 404 */}
           <Route>
             <Redirect to="/" />

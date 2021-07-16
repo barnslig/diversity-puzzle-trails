@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-1al38ny-MuiPaper-root-MuiCard-root"
+>
+  <div
+    class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
+  >
+    <p
+      class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
+    >
+      Test 123
+    </p>
+    <span
+      class="MuiTypography-root MuiTypography-caption css-2412zy-MuiTypography-root"
+    >
+      <div />
+    </span>
+  </div>
+</div>
+`;

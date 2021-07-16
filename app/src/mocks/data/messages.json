@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "type": "message",
+      "id": "4PyhXohHPCneobX62WsTr",
+      "attributes": {
+        "createdAt": "2021-05-05T12:43:19.728Z",
+        "message": "Irgendeine Nachricht :)"
+      }
+    },
+    {
+      "type": "message",
+      "id": "sStIdEE8qNoPyTlB7yn84",
+      "attributes": {
+        "createdAt": "2021-05-14T12:58:59.063Z",
+        "message": "Test 123"
+      }
+    }
+  ]
+}

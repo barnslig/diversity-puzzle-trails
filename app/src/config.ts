@@ -7,12 +7,18 @@ interface Config {
     code: (codeId: string, gameId: string) => string;
     game: (gameId: string) => string;
     parameters: (gameId: string) => string;
+    messages: (gameId: string) => string;
   };
 
   /**
    * Allowed URL origins for QR codes that are recognized by the scanner
    */
   allowedCodeOrigins: string[];
+
+  /**
+   * Whether the messages feature is enabled
+   */
+  featureMessages: boolean;
 }
 
 const config: Config = {
@@ -23,8 +29,11 @@ const config: Config = {
     game: (gameId: string) => `${process.env.API_ROOT}/games/${gameId}`,
     parameters: (gameId: string) =>
       `${process.env.API_ROOT}/games/${gameId}/parameters`,
+    messages: (gameId: string) =>
+      `${process.env.API_ROOT}/games/${gameId}/messages`,
   },
   allowedCodeOrigins: [window.location.origin, "https://abc-dpt.netlify.app"],
+  featureMessages: true,
 };
 
 export default config;
