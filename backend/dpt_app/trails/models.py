@@ -1,4 +1,5 @@
-from .enums import ClockType, ParameterType, CharacterType
+from .enums import ClockType, ParameterType, ParameterScope, CharacterType
+from .qr_models import Code
 from django.db import models
 
 
@@ -38,11 +39,19 @@ class Clock(models.Model):
 
 
 class Parameter(models.Model):
+    class Meta:
+        unique_together = ('name', 'game',)
     name = models.CharField(
         max_length=2,
         choices=ParameterType.choices,
         default=ParameterType.NONE,
     )
+    scope = models.CharField(
+        max_length=2,
+        choices=ParameterScope.choices,
+        default=ParameterScope.GLOBAL,
+    )
+
     min_value = 0
 
     # From the documentation 
@@ -57,6 +66,9 @@ class Parameter(models.Model):
         on_delete=models.CASCADE,
         related_name="parameter"
     )
+
+    def scope_label(self):
+        return ParameterScope(self.scope).label
 
     def label(self):
         return ParameterType(self.name).label
@@ -98,3 +110,19 @@ class Character(models.Model):
 
     def __str__(self):
         return "Character {0}".format(self.label())
+
+
+class Log(models.Model):
+    game = models.ForeignKey(
+        'Game',
+        on_delete=models.CASCADE,
+        related_name="logs"
+    )
+    created_at = models.DateTimeField(auto_now=False, auto_now_add=True)
+    code = models.ForeignKey(
+        Code,
+        on_delete=models.CASCADE,
+        related_name="logs"
+    )
+    def __str__(self):
+        return "{0} - Game: {1}, Code: {2}".format(str(self.created_at), self.game, self.code)

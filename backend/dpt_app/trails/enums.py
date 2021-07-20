@@ -13,6 +13,20 @@ class CharacterType(TextChoices):
 
 
 class ParameterType(TextChoices):
+    NONE = 'NE', ('none')
+    ENERGY = 'EN', ('energy')
+    FOOD = 'FD', ('food')
+    HYGIENE = 'HY', ('hygiene')
+    MORAL = 'ML', ('moral')
+
+
+class ParameterScope(TextChoices):
     NONE = 'NE', ('None')
-    ENERGY = 'EN', ('Energy')
-    FOOD = 'FD', ('Food')
+    GLOBAL = 'GL', ('global')
+    USER = 'FD', ('user')
+
+
+class ActionType(TextChoices):
+    NONE = 'NE', ('None')
+    PARAMETER = 'PA', ('Parameter')
+    CHARACTER = 'CA', ('Character')
