@@ -1,4 +1,5 @@
 from .enums import ClockType, ParameterType, ParameterScope, CharacterType
+from .qr_models import Code
 from django.db import models
 
 
@@ -38,6 +39,8 @@ class Clock(models.Model):
 
 
 class Parameter(models.Model):
+    class Meta:
+        unique_together = ('name', 'game',)
     name = models.CharField(
         max_length=2,
         choices=ParameterType.choices,
@@ -110,6 +113,16 @@ class Character(models.Model):
 
 
 class Log(models.Model):
-    created_at = None
-    game = None
-    code = None
+    game = models.ForeignKey(
+        'Game',
+        on_delete=models.CASCADE,
+        related_name="logs"
+    )
+    created_at = models.DateTimeField(auto_now=False, auto_now_add=True)
+    code = models.ForeignKey(
+        Code,
+        on_delete=models.CASCADE,
+        related_name="logs"
+    )
+    def __str__(self):
+        return "{0} - Game: {1}, Code: {2}".format(str(self.created_at), self.game, self.code)

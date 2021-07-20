@@ -1,7 +1,7 @@
 import time
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import Game
+from .models import Game, Log, Parameter
 from .qr_models import Code
 from .enums import ClockType, ParameterType, ActionType, CharacterType
 
@@ -146,11 +146,31 @@ def func_code_get(game, code):
 
 
 def func_code_post(game, code):
-    return buildJsonResponse({"Errors:": "Not implemented"})
-    if code.one_shot == True and code in game.log:
-        "Not allowed"
-    game.log.add(code)
-    return buildJsonResponse({"Errors:": "Not implemented"})
+    if code.one_shot is True and game.logs.filter(id=code.id).exists():
+        return JsonResponse({"errors": [
+            {
+              "id": "already-used",
+              "status": 403,
+              "title": "This QR code is already used"
+            }
+          ]}, status=403)
+
+    for action in code.actions.all():
+        if action.action_type == ActionType.PARAMETER:
+            try:
+                parameter = Parameter.objects.get(name=action.parameter, game=game)
+                parameter.value += action.value
+                parameter.save()
+            except:
+                pass
+        elif action.action_type == ActionType.CHARACTER:
+            pass
+        else:
+            pass
+
+    Log(game=game, code=code).save()
+    # Apply code here
+    return func_code_get(game, code)
 
 
 def parameter(request, gameId):
