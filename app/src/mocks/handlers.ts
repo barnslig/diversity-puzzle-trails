@@ -8,7 +8,7 @@ export const handlers = [
     clockRes.data.attributes.state = clockState;
     return res(ctx.json(clockRes));
   }),
-  rest.patch("/games/:gameId/clock", (req, res, ctx) => {
+  rest.post("/games/:gameId/clock", (req, res, ctx) => {
     clockState =
       JSON.parse(req.body as string).data.attributes.state || "running";
 

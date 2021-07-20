@@ -35,9 +35,9 @@ paths:
                         speed: 1
       operationId: get-clock
       description: Get the current server game clock state.
-    patch:
+    post:
       summary: Update game clock state
-      operationId: patch-clock
+      operationId: post-clock
       responses:
         "200":
           description: OK
