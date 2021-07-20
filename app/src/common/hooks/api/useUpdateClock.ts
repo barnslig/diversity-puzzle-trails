@@ -20,7 +20,7 @@ const useUpdateClock = (): [
   const updateClock = async (state: ClockState) => {
     try {
       const res = await callApi({
-        method: "PATCH",
+        method: "POST",
         body: JSON.stringify({
           data: {
             type: "clock",
