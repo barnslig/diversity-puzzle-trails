@@ -94,6 +94,8 @@ class Player(models.Model):
         on_delete=models.CASCADE,
     )
 
+    action_points = models.IntegerField(default=0)
+
     def __str__(self):
         return "Player {0} from game {1}".format(
             self.name, self.game

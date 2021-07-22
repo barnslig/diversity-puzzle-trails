@@ -24,6 +24,12 @@ def calcTimepassingParameters(game):
             parameter.value -= round(passed_tick * parameter.rate)
             parameter.save()
 
+        for player in game.player.all():
+            player.action_points += round(passed_tick * 1)
+            if player.action_points > 15:
+                player.action_points = 15
+            player.save()
+
     else:
         # Clock is not runnig, take no action
         pass
@@ -216,14 +222,19 @@ def func_code_post(game, code, bearer):
 @get_game_or_404
 @has_bearer_or_403
 def parameter(request, game):
+    def get_bearer(request):
+        return request.headers['Authorization']
+
     calcTimepassingParameters(game)
     if request.method == 'GET':
-        return func_parameter_get(game)
+        bearer = get_bearer(request)
+        player = game.player.get(bearer=bearer)
+        return func_parameter_get(game, player)
     elif request.method == 'POST':
         return func_parameter_post(game)
 
 
-def func_parameter_get(game):
+def func_parameter_get(game, player):
     response = []
     for parameter in game.parameter.all():
         response.append(
@@ -239,6 +250,20 @@ def func_parameter_get(game):
                 }
             }
         )
+
+    response.append(
+        {
+            "type": "parameter",
+            "id": "movements",
+            "attributes": {
+                "scope": "user",
+                "value": player.action_points,
+                "rate": 1,
+                "min": 0,
+                "max": 15
+            }
+        }
+    )
 
     return buildJsonResponse(response)
 
