@@ -1,7 +1,7 @@
 import time
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import Game, Log, Parameter
+from .models import Game, Log, Parameter, Player, Character
 from .qr_models import Code
 from .enums import ClockType, ParameterType, ActionType, CharacterType
 
@@ -36,32 +36,51 @@ def buildJsonResponse(data):
         }, json_dumps_params={'indent': 4})
 
 
-def getGameOr404(request, gameId, get, post):
-    try: 
-        game = Game.objects.get(name=gameId)
-    except Game.DoesNotExist:
+def get_game_or_404(func):
+    def inner(request, gameId, *args, **kwargs):
+        try: 
+            game = Game.objects.get(name=gameId)
+        except Game.DoesNotExist:
+            return JsonResponse({"Errors": [
+                {
+                    "id": "not-found",
+                    "status": 404,
+                    "title": "Unknown Game ID"
+                }
+            ]}, status=404)
+        return func(request, game, *args, **kwargs)
+    return inner
+
+
+def has_bearer_or_403(func):
+    def inner(request, game, *args, **kwargs):
+        if "Authorization" in request.headers.keys():
+            bearer = request.headers['Authorization']
+            print(bearer)
+            if game.player.filter(bearer=bearer).exists():
+                return func(request, game, *args, **kwargs)
         return JsonResponse({"Errors": [
             {
-                "id": "not-found",
-                "status": 404,
-                "title": "Unknown Game ID"
+                "id": "not-authorised",
+                "status": 403,
+                "title": "Missing or malformed bearer"
             }
-        ]}, status=404)
-
-    calcTimepassingParameters(game)
-
-    if request.method == 'GET':
-        return get(game)
-    elif request.method == 'POST':
-        return post(game)
+        ]}, status=403)
+    return inner
 
 
+@has_bearer_or_403
 def index(request):
     return HttpResponse("Hello, world.")
 
 
-def clock(request, gameId):
-    return getGameOr404(request, gameId, func_clock_get, func_clock_post)
+@get_game_or_404
+@has_bearer_or_403
+def clock(request, game):
+    if request.method == 'GET':
+        return func_clock_get(game)
+    elif request.method == 'POST':
+        return func_clock_post(game)
 
 
 def func_clock_get(game):
@@ -82,17 +101,19 @@ def func_clock_post(game):
 
 
 @csrf_exempt
-def code(request, gameId, codeId):
-    try: 
-        game = Game.objects.get(name=gameId)
-    except Game.DoesNotExist:
-        return JsonResponse({"Errors": [
-            {
-                "id": "not-found",
-                "status": 404,
-                "title": "Unknown Game ID"
-            }
-        ]}, status=404)
+@get_game_or_404
+def code(request, game, codeId):
+    def is_onboarding(code):
+        return code.actions.filter(action_type=ActionType.CHARACTER).exists()
+    
+    def get_bearer(request):
+        if "Authorization" in request.headers.keys():
+            return request.headers['Authorization']
+        else:
+            return None
+
+    def has_valid_bearer(bearer, game):
+        return game.player.filter(bearer=bearer).exists()
 
     calcTimepassingParameters(game)
 
@@ -107,10 +128,21 @@ def code(request, gameId, codeId):
             }
         ]}, status=404)
 
+    bearer = get_bearer(request)
+
     if request.method == 'GET':
-        return func_code_get(game, code)
+        if has_valid_bearer(bearer, game) or is_onboarding(code):
+            return func_code_get(game, code)
     elif request.method == 'POST':
-        return func_code_post(game, code)
+        if has_valid_bearer(bearer, game) or is_onboarding(code):
+            return func_code_post(game, code, bearer)
+    return JsonResponse({"Errors": [
+            {
+                "id": "not-authorised",
+                "status": 403,
+                "title": "Missing or malformed bearer"
+            }
+        ]}, status=403)
 
 
 def func_code_get(game, code):
@@ -145,7 +177,7 @@ def func_code_get(game, code):
     return buildJsonResponse(response)
 
 
-def func_code_post(game, code):
+def func_code_post(game, code, bearer):
     if code.one_shot is True and game.logs.filter(id=code.id).exists():
         return JsonResponse({"errors": [
             {
@@ -164,17 +196,31 @@ def func_code_post(game, code):
             except:
                 pass
         elif action.action_type == ActionType.CHARACTER:
-            pass
+            if game.player.filter(bearer=bearer).exists():
+                """ Error """
+                pass
+            else:
+                Player(
+                    name="Example Name",
+                    bearer=bearer,
+                    game=game,
+                    character=Character.objects.get(character_class=action.character)
+                ).save()
         else:
             pass
 
     Log(game=game, code=code).save()
-    # Apply code here
     return func_code_get(game, code)
 
 
-def parameter(request, gameId):
-    return getGameOr404(request, gameId, func_parameter_get, func_parameter_post)
+@get_game_or_404
+@has_bearer_or_403
+def parameter(request, game):
+    calcTimepassingParameters(game)
+    if request.method == 'GET':
+        return func_parameter_get(game)
+    elif request.method == 'POST':
+        return func_parameter_post(game)
 
 
 def func_parameter_get(game):
