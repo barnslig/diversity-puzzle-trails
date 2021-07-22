@@ -80,7 +80,10 @@ class Parameter(models.Model):
 
 
 class Player(models.Model):
+    class Meta:
+        unique_together = ('bearer', 'game',)
     name = models.CharField(max_length=255)
+    bearer = models.CharField(max_length=255)
     game = models.ForeignKey(
         'Game',
         on_delete=models.CASCADE,
@@ -90,6 +93,8 @@ class Player(models.Model):
         'Character',
         on_delete=models.CASCADE,
     )
+
+    action_points = models.IntegerField(default=0)
 
     def __str__(self):
         return "Player {0} from game {1}".format(
@@ -124,5 +129,6 @@ class Log(models.Model):
         on_delete=models.CASCADE,
         related_name="logs"
     )
+
     def __str__(self):
         return "{0} - Game: {1}, Code: {2}".format(str(self.created_at), self.game, self.code)
