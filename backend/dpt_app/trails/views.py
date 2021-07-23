@@ -124,7 +124,7 @@ def code(request, game, codeId):
     calcTimepassingParameters(game)
 
     try:
-        code = Code.objects.get(pk=codeId)
+        code = Code.objects.get(uuid=codeId)
     except Code.DoesNotExist:
         return JsonResponse({"Errors": [
             {

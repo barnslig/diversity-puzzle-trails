@@ -1,5 +1,8 @@
+import qrcode
+import uuid
 from .enums import ParameterType, CharacterType, ActionType
 from django.db import models
+from django.core.files import File
 
 
 class Code(models.Model):
@@ -9,6 +12,8 @@ class Code(models.Model):
         blank=True
     )
     one_shot = models.BooleanField(default=False)
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
+    image = models.ImageField(upload_to="media/", blank=True)
 
     def __str__(self):
         ret = ""
@@ -16,7 +21,17 @@ class Code(models.Model):
             ret += self.name + ": "
         ret += "One-Shot: {0}, ".format(str(self.one_shot))
         ret += str([action.label() for action in self.actions.all()])
+        ret += " UUID: "+str(self.uuid)
         return ret
+
+    def save(self, *args, **kwargs):
+        img = qrcode.make("http://localhost:8080/code/"+str(self.uuid))
+        file_name = "{0}.png".format(str(self.name))
+        file_path = "/tmp/{0}".format(file_name)
+        img.save(file_path)
+        self.image.delete(save=False)
+        self.image = File(open(file_path, 'rb'), name=file_name)
+        super(Code, self).save(*args, **kwargs)
 
 
 class Action(models.Model):

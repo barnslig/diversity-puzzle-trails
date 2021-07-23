@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 django = "3.2.4"
 django-cors-headers = "*"
+qrcode = {extras = ["pil"], version = "*"}
 
 [dev-packages]
 
