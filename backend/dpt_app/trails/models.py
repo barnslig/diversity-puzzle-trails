@@ -8,7 +8,8 @@ class Game(models.Model):
     clock = models.OneToOneField(
         'Clock',
         on_delete=models.CASCADE,
-        related_name="game"
+        related_name="game",
+        null=True,
     )
 
     def __str__(self):
