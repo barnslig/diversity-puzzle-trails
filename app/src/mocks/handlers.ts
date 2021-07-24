@@ -44,4 +44,8 @@ export const handlers = [
   rest.get("/games/:gameId/parameters", (req, res, ctx) => {
     return res(ctx.json(require("./data/parameters.json")));
   }),
+
+  rest.get("/games/:gameId", (req, res, ctx) => {
+    return res(ctx.json(require("./data/game.json")));
+  }),
 ];

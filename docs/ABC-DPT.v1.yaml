@@ -358,6 +358,56 @@ paths:
         name: gameId
         in: path
         required: true
+  "/games/{gameId}":
+    parameters:
+      - schema:
+          type: string
+        name: gameId
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/Game"
+              examples:
+                example:
+                  value:
+                    data:
+                      type: game
+                      id: summer-school-2021
+                      attributes:
+                        hasMessages: false
+                        hasUserParameterScope: false
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Error"
+              examples:
+                not-found:
+                  value:
+                    errors:
+                      - id: not-found
+                        status: 404
+                        title: Unknown game
+      operationId: get-game
+      description: Get a game manifest.
+      security: []
 components:
   schemas:
     Clock:
@@ -646,6 +696,21 @@ components:
         - type
         - id
         - attributes
+    Game:
+      title: Game
+      type: object
+      properties:
+        type:
+          type: string
+        id:
+          type: string
+        attributes:
+          type: object
+          properties:
+            hasMessages:
+              type: boolean
+            hasUserParameterScope:
+              type: boolean
   securitySchemes:
     AppInstanceID:
       type: http
