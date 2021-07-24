@@ -46,7 +46,7 @@ const ScannerPage = (props: ScannerPageProps) => {
     if (
       !resUrl ||
       !config.allowedCodeOrigins.includes(resUrl.origin) ||
-      !/^\/code\/\w+$/.test(resUrl.pathname)
+      !/^\/code\/.+$/.test(resUrl.pathname)
     ) {
       enqueueSnackbar(
         intl.formatMessage({
