@@ -23,7 +23,7 @@ it("filters the parameters by scope", () => {
       id: "movements",
       attributes: {
         scope: "user",
-        value: 7,
+        value: 0,
         rate: 0.1,
         min: 0,
         max: 99999,
@@ -48,7 +48,7 @@ it("calculates game over", () => {
   );
   expect(result.current).toEqual(false);
 
-  mockResponse.data[0].attributes.value = mockResponse.data[0].attributes.min;
+  mockResponse.data[1].attributes.value = mockResponse.data[1].attributes.min;
   rerender({ response: mockResponse });
   expect(result.current).toEqual(true);
 });

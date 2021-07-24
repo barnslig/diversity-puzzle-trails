@@ -5,7 +5,7 @@
       "id": "movements",
       "attributes": {
         "scope": "user",
-        "value": 7,
+        "value": 0,
         "rate": 0.1,
         "min": 0,
         "max": 99999

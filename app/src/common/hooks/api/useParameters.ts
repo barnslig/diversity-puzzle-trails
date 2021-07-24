@@ -56,8 +56,10 @@ export const useScopedParameterResponse = (
  * @returns Whether any of the parameters has reached its minimum
  */
 export const useIsGameOver = (data?: ParameterApiResponse) => {
+  const globalParams = useScopedParameterResponse("global", data);
+
   return (
-    data &&
-    data.data.some(({ attributes }) => attributes.value <= attributes.min)
+    globalParams &&
+    globalParams.some(({ attributes }) => attributes.value <= attributes.min)
   );
 };
