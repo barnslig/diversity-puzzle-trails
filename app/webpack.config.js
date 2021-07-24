@@ -85,7 +85,7 @@ module.exports = {
       /**
        * Whether to use the mock service worker instead of the real API
        */
-      API_USE_MOCK: true,
+      API_USE_MOCK: false,
     }),
   ],
   devServer: {
