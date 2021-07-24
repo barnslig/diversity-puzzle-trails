@@ -1,0 +1,10 @@
+{
+  "data": {
+    "type": "game",
+    "id": "summer-school-2021",
+    "attributes": {
+      "hasMessages": false,
+      "hasUserParameterScope": false
+    }
+  }
+}
