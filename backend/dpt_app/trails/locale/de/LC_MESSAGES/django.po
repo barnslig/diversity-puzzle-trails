@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-25 16:57+0100\n"
+"POT-Creation-Date: 2021-12-25 19:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: trails/admin.py:10
+#: trails/admin.py:9
 msgid "Diversity Puzzle Trails Administration"
 msgstr "Diversity Puzzle Trails Administration"
 
-#: trails/admin.py:11
+#: trails/admin.py:10
 msgid "DPT admin"
 msgstr "DPT Admin"
 
@@ -70,18 +70,18 @@ msgstr "Global"
 msgid "User"
 msgstr "User"
 
-#: trails/enums.py:32 trails/models.py:41 trails/models.py:42
+#: trails/enums.py:32 trails/models.py:53 trails/models.py:54
 #: trails/qr_models.py:75
 msgid "Parameter"
 msgstr "Parameter"
 
-#: trails/enums.py:33 trails/models.py:110 trails/models.py:125
+#: trails/enums.py:33 trails/models.py:122 trails/models.py:137
 #: trails/qr_models.py:85
 msgid "Character"
 msgstr "Charakter"
 
-#: trails/models.py:10 trails/models.py:75 trails/models.py:105
-#: trails/models.py:152
+#: trails/models.py:10 trails/models.py:87 trails/models.py:117
+#: trails/models.py:164
 msgid "Game"
 msgstr "Spiel"
 
@@ -94,92 +94,100 @@ msgctxt "Game Name"
 msgid "Name"
 msgstr ""
 
-#: trails/models.py:23
+#: trails/models.py:25
 msgid "Clock State"
 msgstr "Uhr-Zustand"
 
-#: trails/models.py:32
+#: trails/models.py:34
 msgid "Clock Speed"
 msgstr "Spiel-Geschwindigkeit"
 
-#: trails/models.py:49
+#: trails/models.py:39
+msgid "Has User Parameter Scope?"
+msgstr "Parameter mit User-Gültigkeitsbereich aktivieren?"
+
+#: trails/models.py:44
+msgid "Has Messages Feature?"
+msgstr "Nachrichten-Feature aktivieren?"
+
+#: trails/models.py:61
 msgctxt "Parameter Name"
 msgid "Name"
 msgstr "Name"
 
-#: trails/models.py:55
+#: trails/models.py:67
 msgid "Scope"
 msgstr "Gültigkeitsbereich"
 
-#: trails/models.py:64 trails/qr_models.py:79
+#: trails/models.py:76 trails/qr_models.py:79
 msgid "Value"
 msgstr "Wert"
 
-#: trails/models.py:69
+#: trails/models.py:81
 msgid "Rate"
 msgstr "Rate (Tempo)"
 
-#: trails/models.py:82
+#: trails/models.py:94
 #, python-brace-format
 msgid "Parameter {0} from {1}"
 msgstr "Parameter {0} aus dem Spiel {1}"
 
-#: trails/models.py:89
+#: trails/models.py:101 trails/models.py:181
 msgid "Player"
 msgstr "Spieler*in"
 
-#: trails/models.py:90
+#: trails/models.py:102
 msgid "Players"
 msgstr "Spieler*innen"
 
-#: trails/models.py:95
+#: trails/models.py:107
 msgctxt "Player Name"
 msgid "Name"
 msgstr "Name"
 
-#: trails/models.py:99
+#: trails/models.py:111
 msgid "Bearer"
 msgstr "Bearer"
 
-#: trails/models.py:114
+#: trails/models.py:126
 msgid "Action Points"
 msgstr "Aktionspunkte"
 
-#: trails/models.py:118
+#: trails/models.py:130
 #, python-brace-format
 msgid "Player {0} from game {1}"
 msgstr "Spieler*in {0} aus dem Spiel {1}"
 
-#: trails/models.py:126
+#: trails/models.py:138
 msgid "Characters"
 msgstr "Charaktere"
 
-#: trails/models.py:133
+#: trails/models.py:145
 msgid "Character Class"
 msgstr "Charakter-Klasse"
 
-#: trails/models.py:140
+#: trails/models.py:152
 #, python-brace-format
 msgid "Character {0}"
 msgstr "Charakter {0}"
 
-#: trails/models.py:145
+#: trails/models.py:157
 msgid "Log"
 msgstr "Log-Eintrag"
 
-#: trails/models.py:146
+#: trails/models.py:158
 msgid "Logs"
 msgstr "Log-Einträge"
 
-#: trails/models.py:157
+#: trails/models.py:169
 msgid "Created At"
 msgstr "Erstellt um"
 
-#: trails/models.py:163 trails/qr_models.py:12 trails/qr_models.py:63
+#: trails/models.py:175 trails/qr_models.py:12 trails/qr_models.py:63
 msgid "Code"
 msgstr "QR-Code"
 
-#: trails/models.py:167
+#: trails/models.py:185
 #, python-brace-format
 msgid "{0} - Game: {1}, Code: {2}"
 msgstr "{0} - Spiel: {1}, QR-Code: {2}"
@@ -197,11 +205,11 @@ msgstr "Name"
 msgid "One-Shot"
 msgstr "One-Shot"
 
-#: trails/qr_models.py:28
+#: trails/qr_models.py:29
 msgid "UUID"
 msgstr "UUID"
 
-#: trails/qr_models.py:32
+#: trails/qr_models.py:33
 msgid "Image"
 msgstr "Bild"
 

@@ -34,6 +34,16 @@ class Game(models.Model):
         verbose_name=_("Clock Speed")
     )
 
+    hasUserParameterScope = models.BooleanField(
+        default=False,
+        verbose_name=_("Has User Parameter Scope?")
+    )
+
+    hasMessages = models.BooleanField(
+        default=False,
+        verbose_name=_("Has Messages Feature?")
+    )
+
     def __str__(self):
         return self.name
 
@@ -163,6 +173,12 @@ class Log(models.Model):
         on_delete=models.CASCADE,
         related_name="logs",
         verbose_name=_("Code")
+    )
+    player = models.ForeignKey(
+        'Player',
+        on_delete=models.CASCADE,
+        related_name="logs",
+        verbose_name=_("Player")
     )
 
     def __str__(self):

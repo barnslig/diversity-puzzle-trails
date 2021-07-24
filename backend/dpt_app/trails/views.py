@@ -81,12 +81,26 @@ def index(request):
 
 
 @get_game_or_404
+def gameManifest(request, game):
+    game_data = {
+        "type": "game",
+        "id": game.slug,
+        "attributes": {
+          "hasMessages": game.hasMessages,
+          "hasUserParameterScope": game.hasUserParameterScope
+        }
+    }
+    return buildJsonResponse(game_data)
+
+
+@csrf_exempt
+@get_game_or_404
 @has_bearer_or_403
 def clock(request, game):
     if request.method == 'GET':
         return func_clock_get(game)
     elif request.method == 'POST':
-        return func_clock_post(game)
+        return func_clock_post(request, game)
 
 
 def func_clock_get(game):
@@ -102,8 +116,15 @@ def func_clock_get(game):
     return buildJsonResponse(clock_data)
 
 
-def func_clock_post(game):
-    return buildJsonResponse({"Not implemented"})
+def func_clock_post(request, game):
+    import pdb; pdb.set_trace()
+    data = request.POST['data']
+    if data['type'] == 'clock' and data['attributes']['state'] == 'paused':
+        game.clock.state = ClockType.STOPPED
+    if data['type'] == 'clock' and data['attributes']['state'] == 'running':
+        game.clock.state = ClockType.RUNNING
+
+    return func_clock_get(game)
 
 
 @csrf_exempt
@@ -215,7 +236,8 @@ def func_code_post(game, code, bearer):
         else:
             pass
 
-    Log(game=game, code=code).save()
+    player = Player.objects.get(bearer=bearer)
+    Log(game=game, code=code, player=player).save()
     return func_code_get(game, code)
 
 
