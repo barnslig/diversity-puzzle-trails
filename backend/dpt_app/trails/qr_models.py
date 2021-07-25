@@ -22,7 +22,8 @@ class Code(models.Model):
         default=False,
         verbose_name=_("One-Shot")
     )
-    uuid = models.UUIDField(
+    uuid = models.CharField(
+        max_length=255,
         default=uuid.uuid4,
         unique=True,
         verbose_name=_("UUID")
@@ -35,10 +36,9 @@ class Code(models.Model):
     def __str__(self):
         ret = ""
         if len(self.name) > 0:
-            ret += self.name + ": "
-        ret += "One-Shot: {0}, ".format(str(self.one_shot))
-        ret += str([action.label() for action in self.actions.all()])
-        ret += " UUID: "+str(self.uuid)
+            ret += self.name + ": " + str(self.uuid)
+        else:
+            ret = str(self.uuid)
         return ret
 
     def save(self, *args, **kwargs):
