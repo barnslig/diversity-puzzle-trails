@@ -47,7 +47,7 @@ def get_game_or_404(func):
         try:
             game = Game.objects.get(slug=gameId)
         except Game.DoesNotExist:
-            return JsonResponse({"Errors": [
+            return JsonResponse({"errors": [
                 {
                     "id": "not-found",
                     "status": 404,
@@ -65,7 +65,7 @@ def has_bearer_or_403(func):
             print(bearer)
             if game.player.filter(bearer=bearer).exists():
                 return func(request, game, *args, **kwargs)
-        return JsonResponse({"Errors": [
+        return JsonResponse({"errors": [
             {
                 "id": "not-authorised",
                 "status": 403,
@@ -126,7 +126,7 @@ def code(request, game, codeId):
     try:
         code = Code.objects.get(uuid=codeId)
     except Code.DoesNotExist:
-        return JsonResponse({"Errors": [
+        return JsonResponse({"errors": [
             {
                 "id": "not-found",
                 "status": 404,
@@ -142,7 +142,7 @@ def code(request, game, codeId):
     elif request.method == 'POST':
         if has_valid_bearer(bearer, game) or is_onboarding(code):
             return func_code_post(game, code, bearer)
-    return JsonResponse({"Errors": [
+    return JsonResponse({"errors": [
             {
                 "id": "not-authorised",
                 "status": 403,
