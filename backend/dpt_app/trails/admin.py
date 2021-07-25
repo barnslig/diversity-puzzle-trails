@@ -78,7 +78,7 @@ class CodeAdmin(admin.ModelAdmin):
     inlines = [
         ActionInline
     ]
-    readonly_fields = ('image', 'uuid')
+    readonly_fields = ('image',)
 
 
 admin.site.register(Game, GameAdmin)
