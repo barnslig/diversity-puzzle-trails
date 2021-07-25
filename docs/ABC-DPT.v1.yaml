@@ -367,7 +367,8 @@ paths:
         required: true
     get:
       summary: Your GET endpoint
-      tags: []
+      tags:
+        - App
       responses:
         "200":
           description: OK

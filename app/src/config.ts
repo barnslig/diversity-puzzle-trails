@@ -5,6 +5,7 @@ interface Config {
   apiEndpoints: {
     clock: (gameId: string) => string;
     code: (codeId: string, gameId: string) => string;
+    game: (gameId: string) => string;
     parameters: (gameId: string) => string;
   };
 
@@ -19,6 +20,7 @@ const config: Config = {
     clock: (gameId: string) => `${process.env.API_ROOT}/games/${gameId}/clock`,
     code: (codeId: string, gameId: string) =>
       `${process.env.API_ROOT}/games/${gameId}/codes/${codeId}`,
+    game: (gameId: string) => `${process.env.API_ROOT}/games/${gameId}`,
     parameters: (gameId: string) =>
       `${process.env.API_ROOT}/games/${gameId}/parameters`,
   },
