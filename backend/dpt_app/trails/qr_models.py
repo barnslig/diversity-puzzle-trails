@@ -42,7 +42,7 @@ class Code(models.Model):
         return ret
 
     def save(self, *args, **kwargs):
-        img = qrcode.make("http://localhost:8080/code/"+str(self.uuid))
+        img = qrcode.make("https://abc-dpt.netlify.app/code/"+str(self.uuid))
         file_name = "{0}.png".format(str(self.name))
         file_path = "/tmp/{0}".format(file_name)
         img.save(file_path)
