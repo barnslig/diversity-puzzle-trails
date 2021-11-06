@@ -1,10 +1,10 @@
-import { createMuiTheme } from "@material-ui/core";
+import { createTheme } from "@material-ui/core/styles";
 
 // bg: #353432 (dark gray)
 // paper bg: #FFF (white)
 // primary: #FD6B3A (orange)
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     type: "dark",
 
