@@ -20,7 +20,7 @@ const errorAwareFetcher = async (fetcher: () => Promise<Response>) => {
   try {
     res = await fetcher();
   } catch (error) {
-    throw new ApiError(error.message);
+    throw new ApiError((error as Error).message);
   }
 
   if (!res.ok) {

@@ -8,7 +8,7 @@ import config from "../../../config";
 import useApiUrl from "./useApiUrl";
 import useInstanceId from "../useInstanceId";
 
-interface ParameterApiResponse {
+export interface ParameterApiResponse {
   data: Parameter[];
 }
 

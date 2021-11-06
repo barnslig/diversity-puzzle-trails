@@ -2,12 +2,13 @@ import { renderHook } from "@testing-library/react-hooks";
 import { Parameter } from "../../types/Parameter";
 
 import {
+  ParameterApiResponse,
   useIsGameOver,
   useParameters,
   useScopedParameterResponse,
 } from "./useParameters";
 
-const mockResponse = require("../../../mocks/data/parameters.json");
+const mockResponse: ParameterApiResponse = require("../../../mocks/data/parameters.json");
 
 it("loads the parameters", async () => {
   const { result, waitForValueToChange } = renderHook(() => useParameters());

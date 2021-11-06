@@ -1,5 +1,6 @@
 import * as React from "react";
 
+import ApiError from "./helper/ApiError";
 import errorAwareFetcher from "./helper/errorAwareFetcher";
 import useHandleApiError from "./useHandleApiError";
 import useInstanceId from "../useInstanceId";
@@ -38,7 +39,7 @@ const useCallApi = (
         })
       );
     } catch (error) {
-      handleError(error);
+      handleError(error as ApiError);
       throw error;
     } finally {
       setIsLoading(false);

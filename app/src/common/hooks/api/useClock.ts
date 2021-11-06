@@ -7,7 +7,7 @@ import config from "../../../config";
 import useApiUrl from "./useApiUrl";
 import useInstanceId from "../useInstanceId";
 
-interface ClockApiResponse {
+export interface ClockApiResponse {
   data: Clock;
 }
 

@@ -571,7 +571,7 @@ exports[`shows the parameters when a character is set 1`] = `
                 <span
                   class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
                 >
-                  7
+                  0
                 </span>
                 <p
                   class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
