@@ -13,7 +13,7 @@ class Code(models.Model):
     )
     one_shot = models.BooleanField(default=False)
     uuid = models.UUIDField(default=uuid.uuid4, unique=True)
-    image = models.ImageField(upload_to="media/", blank=True)
+    image = models.ImageField(blank=True)
 
     def __str__(self):
         ret = ""
