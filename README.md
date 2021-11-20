@@ -25,3 +25,31 @@ mdbook serve
 ## App Frontend
 
 See [app/README.md](app/README.md).
+
+## App Backend
+
+See [backend/README.md](backend/README.md).
+
+## Production Setup
+
+The production setup is done using a single Docker container.
+
+To build the Docker container, execute:
+
+```
+$ docker build -t abc-dpt .
+```
+
+To run the Docker container, execute:
+
+```
+$ docker run --rm -p 8000:80 -v data:/data abc-dpt
+```
+
+You can now access the app at [localhost:8000](http://localhost:8000).
+
+To persist the database and media files, make sure to provide a volume for `/data`.
+
+The web server is exposed at port 80.
+
+The behavior of the container can be changed by overriding environment variables. Check out the example `.env` file for a list of variables: [.env.example](backend/dpt_app/.env.example).
