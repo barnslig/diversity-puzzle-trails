@@ -34,8 +34,17 @@ export const TestWrapper = ({ children }: TestWrapperProps) => {
         <SnackbarProvider>
           {/* Disable SWR deduping for isolated test behavior.
            * See https://github.com/vercel/swr/pull/231#issuecomment-591614747
+           *
+           * Reset cache between test cases
+           * See https://swr.vercel.app/docs/advanced/cache#reset-cache-between-test-cases
            */}
-          <SWRConfig value={{ dedupingInterval: 0, compare: (a, b) => false }}>
+          <SWRConfig
+            value={{
+              dedupingInterval: 0,
+              compare: (a, b) => false,
+              provider: () => new Map(),
+            }}
+          >
             {children}
           </SWRConfig>
         </SnackbarProvider>
