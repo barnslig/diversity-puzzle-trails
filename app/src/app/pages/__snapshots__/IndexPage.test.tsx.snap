@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`can show the game is over 1`] = `
-<div
-  class="MuiBox-root css-jaofmm"
->
+<div>
   <header
     class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-11b3ww9-MuiPaper-root-MuiAppBar-root"
   >
@@ -119,9 +117,7 @@ exports[`can show the game is over 1`] = `
 `;
 
 exports[`can show the game is paused message 1`] = `
-<div
-  class="MuiBox-root css-jaofmm"
->
+<div>
   <header
     class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-11b3ww9-MuiPaper-root-MuiAppBar-root"
   >
@@ -251,9 +247,7 @@ exports[`can show the game is paused message 1`] = `
 `;
 
 exports[`initially asks the user to choose a character 1`] = `
-<div
-  class="MuiBox-root css-jaofmm"
->
+<div>
   <header
     class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-11b3ww9-MuiPaper-root-MuiAppBar-root"
   >
@@ -380,9 +374,7 @@ exports[`initially asks the user to choose a character 1`] = `
 `;
 
 exports[`shows the parameters when a character is set 1`] = `
-<div
-  class="MuiBox-root css-jaofmm"
->
+<div>
   <header
     class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-11b3ww9-MuiPaper-root-MuiAppBar-root"
   >

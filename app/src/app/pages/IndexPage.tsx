@@ -27,8 +27,6 @@ import useClock from "../../common/hooks/api/useClock";
 import useUpdateClock from "../../common/hooks/api/useUpdateClock";
 import useLeaveGame from "../../common/hooks/useLeaveGame";
 
-const bg = require("./bg.svg");
-
 type IndexPageProps = {};
 
 const IndexPage = (props: IndexPageProps) => {
@@ -62,13 +60,7 @@ const IndexPage = (props: IndexPageProps) => {
   };
 
   return (
-    <Box
-      sx={{
-        backgroundImage: `url(${bg})`,
-        backgroundAttachment: "fixed",
-        backgroundPositionY: (theme) => theme.spacing(7), // top app bar
-      }}
-    >
+    <div>
       <AppBar position="fixed">
         <Toolbar>
           <Typography component="h1" sx={{ flexGrow: 1 }} variant="h6">
@@ -162,7 +154,7 @@ const IndexPage = (props: IndexPageProps) => {
           </Container>
         </Box>
       )}
-    </Box>
+    </div>
   );
 };
 
