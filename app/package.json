@@ -48,7 +48,8 @@
     "webpack": "^5.34.0",
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.6.0",
-    "webpack-dev-server": "^4.5.0"
+    "webpack-dev-server": "^4.5.0",
+    "workbox-webpack-plugin": "^6.4.1"
   },
   "dependencies": {
     "@badrap/bar-of-progress": "^0.1.2",
@@ -67,6 +68,7 @@
     "react-intl": "^5.16.0",
     "react-webcam": "^6.0.0",
     "swr": "^1.0.1",
+    "workbox-window": "^6.4.1",
     "wouter": "^2.7.4"
   },
   "msw": {

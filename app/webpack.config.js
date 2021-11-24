@@ -2,6 +2,7 @@ const { transform } = require("@formatjs/ts-transformer");
 const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Webpack = require("webpack");
+const WorkboxPlugin = require("workbox-webpack-plugin");
 
 module.exports = {
   output: {
@@ -86,6 +87,15 @@ module.exports = {
        * Whether to use the mock service worker instead of the real API
        */
       API_USE_MOCK: false,
+    }),
+    new WorkboxPlugin.GenerateSW({
+      exclude: [
+        /.+LICENSE\.txt$/,
+        "mockServiceWorker.js",
+        "robots.txt",
+        "_redirects",
+        "manifest.json",
+      ],
     }),
   ],
   devServer: {
