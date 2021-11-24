@@ -1,5 +1,5 @@
-import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
-import { Skeleton } from "@material-ui/lab";
+import { List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
+import { Skeleton } from "@mui/material";
 import * as React from "react";
 
 import { Code as CodeType } from "../../common/types/Code";
@@ -18,7 +18,7 @@ const Code = ({ code }: CodeProps) => {
             .map((_, i) => (
               <ListItem key={i}>
                 <ListItemIcon>
-                  <Skeleton variant="circle" width={24} height={24} />
+                  <Skeleton variant="circular" width={24} height={24} />
                 </ListItemIcon>
                 <ListItemText
                   primary={<Skeleton width={24} height={24} />}

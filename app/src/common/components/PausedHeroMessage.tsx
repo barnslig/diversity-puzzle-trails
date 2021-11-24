@@ -1,4 +1,4 @@
-import { Box, Button } from "@material-ui/core";
+import { Box, Button } from "@mui/material";
 import { FormattedMessage } from "react-intl";
 import * as React from "react";
 

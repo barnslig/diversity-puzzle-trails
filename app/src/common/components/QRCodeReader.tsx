@@ -1,25 +1,28 @@
-import { Backdrop, CircularProgress, makeStyles } from "@material-ui/core";
+import { Backdrop, Box, CircularProgress } from "@mui/material";
 import { IScannerControls } from "@zxing/browser";
 import { Result } from "@zxing/library";
+import { styled } from "@mui/material";
 import * as React from "react";
 import Webcam from "react-webcam";
 
-const useStyle = makeStyles((theme) => ({
-  container: {
-    height: "100%",
-    left: 0,
-    position: "fixed",
-    top: 0,
-    width: "100%",
-  },
-  webcam: {
+const PREFIX = "QRCodeReader";
+
+const classes = {
+  webcam: `${PREFIX}-webcam`,
+};
+
+const StyledQRCodeReader = styled(Box)(() => ({
+  height: "100%",
+  left: 0,
+  position: "fixed",
+  top: 0,
+  width: "100%",
+
+  [`& .${classes.webcam}`]: {
     width: "100%",
     height: "100%",
     display: "block",
     objectFit: "cover",
-  },
-  backdrop: {
-    zIndex: 0,
   },
 }));
 
@@ -39,8 +42,6 @@ type QRCodeReaderProps = {
  * A fullscreen QR code reader using the user's webcam
  */
 const QRCodeReader = ({ torch = false, onResult }: QRCodeReaderProps) => {
-  const classes = useStyle();
-
   const webcamRef = React.useRef<Webcam>(null!);
 
   const controls = React.useRef<IScannerControls>(null!);
@@ -80,7 +81,7 @@ const QRCodeReader = ({ torch = false, onResult }: QRCodeReaderProps) => {
   }, [torch]);
 
   return (
-    <div className={classes.container}>
+    <StyledQRCodeReader>
       <Webcam
         className={classes.webcam}
         ref={webcamRef}
@@ -89,10 +90,10 @@ const QRCodeReader = ({ torch = false, onResult }: QRCodeReaderProps) => {
           facingMode: "environment",
         }}
       />
-      <Backdrop className={classes.backdrop} open={!isReady}>
+      <Backdrop sx={{ zIndex: 0 }} open={!isReady}>
         <CircularProgress color="inherit" />
       </Backdrop>
-    </div>
+    </StyledQRCodeReader>
   );
 };
 

@@ -3,22 +3,15 @@ import {
   Box,
   Button,
   Container,
-  makeStyles,
   TextField,
   Toolbar,
   Typography,
-} from "@material-ui/core";
+} from "@mui/material";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useFormik } from "formik";
 import * as React from "react";
 
 import useJoinGame from "../../common/hooks/useJoinGame";
-
-const useStyles = makeStyles(() => ({
-  appBarTitle: {
-    flexGrow: 1,
-  },
-}));
 
 type StartPageProps = {
   gameId?: string;
@@ -30,8 +23,6 @@ type StartPageProps = {
  * The game ID is either supplied via the URL or collected from the user using a form.
  */
 const StartPage = ({ gameId }: StartPageProps) => {
-  const classes = useStyles();
-
   const intl = useIntl();
   const joinGame = useJoinGame();
 
@@ -56,13 +47,9 @@ const StartPage = ({ gameId }: StartPageProps) => {
 
   return gameId ? null : (
     <div>
-      <AppBar position="fixed" color="inherit">
+      <AppBar position="fixed">
         <Toolbar>
-          <Typography
-            className={classes.appBarTitle}
-            component="h1"
-            variant="h6"
-          >
+          <Typography component="h1" sx={{ flexGrow: 1 }} variant="h6">
             <FormattedMessage
               defaultMessage="An einem Spiel teilnehmen"
               description="start code page title"

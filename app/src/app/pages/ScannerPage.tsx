@@ -1,13 +1,6 @@
-import {
-  AppBar,
-  Box,
-  IconButton,
-  makeStyles,
-  Toolbar,
-  Typography,
-} from "@material-ui/core";
+import { AppBar, Box, IconButton, Toolbar, Typography } from "@mui/material";
 import { FormattedMessage, useIntl } from "react-intl";
-import { Highlight } from "@material-ui/icons";
+import { Highlight } from "@mui/icons-material";
 import { Result } from "@zxing/library";
 import { useLocation } from "wouter";
 import { useSnackbar } from "notistack";
@@ -18,17 +11,9 @@ import QRCodeReader from "../../common/components/QRCodeReader";
 
 import config from "../../config";
 
-const useStyles = makeStyles((theme) => ({
-  appBarTitle: {
-    flexGrow: 1,
-  },
-}));
-
 type ScannerPageProps = {};
 
 const ScannerPage = (props: ScannerPageProps) => {
-  const classes = useStyles();
-
   // @ts-ignore
   const torchAvailable = navigator.mediaDevices.getSupportedConstraints().torch;
   const [torch, setTorch] = React.useState<boolean>(false);
@@ -67,13 +52,9 @@ const ScannerPage = (props: ScannerPageProps) => {
 
   return (
     <div>
-      <AppBar position="fixed" color="inherit">
+      <AppBar position="fixed">
         <Toolbar>
-          <Typography
-            className={classes.appBarTitle}
-            component="h1"
-            variant="h6"
-          >
+          <Typography component="h1" sx={{ flexGrow: 1 }} variant="h6">
             <FormattedMessage
               defaultMessage="QR-Code scannen"
               description="scanner page title"
@@ -84,6 +65,7 @@ const ScannerPage = (props: ScannerPageProps) => {
               edge="end"
               color="inherit"
               onClick={() => setTorch(!torch)}
+              size="large"
             >
               <Highlight />
             </IconButton>

@@ -2,27 +2,27 @@
 
 exports[`renders correctly 1`] = `
 <article
-  class="MuiPaper-root MuiCard-root makeStyles-card-1 MuiPaper-elevation1 MuiPaper-rounded"
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-xaep3o-MuiPaper-root-MuiCard-root"
 >
   <div
-    class="MuiCardContent-root"
+    class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
   >
     <header
-      class="makeStyles-cardHeader-2"
+      class="MuiBox-root css-19idom"
     >
       <h2
-        class="MuiTypography-root makeStyles-cardHeaderHl-3 MuiTypography-h5"
+        class="MuiTypography-root MuiTypography-h5 css-1jcm1rz-MuiTypography-root"
       >
         Spielstand
       </h2>
       <p
-        class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
+        class="MuiTypography-root MuiTypography-body2 css-r40f8v-MuiTypography-root"
       >
         Der Status eurer gemeinsamen Mission. Achtet darauf, dass kein Wert 0 erreicht!
       </p>
     </header>
     <ul
-      class="MuiList-root"
+      class="MuiList-root css-1mk9mw3-MuiList-root"
     >
       <div>
         hypothetical GameParameter

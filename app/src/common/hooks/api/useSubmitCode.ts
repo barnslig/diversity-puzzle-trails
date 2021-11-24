@@ -42,7 +42,7 @@ const useSubmitCode = (
           defaultMessage: "QR-Code erfolgreich ausgeführt!",
           description: "success snack on exec qr code",
         }),
-        { variant: "success" }
+        { variant: "success", persist: true }
       );
 
       setLocation("/");

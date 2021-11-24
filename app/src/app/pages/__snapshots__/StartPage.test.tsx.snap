@@ -3,42 +3,42 @@
 exports[`renders correctly when no game id is supplied 1`] = `
 <div>
   <header
-    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorInherit mui-fixed MuiPaper-elevation4"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-11b3ww9-MuiPaper-root-MuiAppBar-root"
   >
     <div
-      class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+      class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-1t29gy6-MuiToolbar-root"
     >
       <h1
-        class="MuiTypography-root makeStyles-appBarTitle-1 MuiTypography-h6"
+        class="MuiTypography-root MuiTypography-h6 css-1juivf6-MuiTypography-root"
       >
         An einem Spiel teilnehmen
       </h1>
     </div>
   </header>
   <main
-    class="MuiBox-root MuiBox-root-2"
+    class="MuiBox-root css-130jr3z"
   >
     <div
-      class="MuiContainer-root MuiContainer-maxWidthSm"
+      class="MuiContainer-root MuiContainer-maxWidthSm css-cuefkz-MuiContainer-root"
     >
       <form>
         <div
-          class="MuiBox-root MuiBox-root-3"
+          class="MuiBox-root css-1qm1lh"
         >
           <p
-            class="MuiTypography-root MuiTypography-body1"
+            class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
           >
             Um an einem Spiel teilzunehmen ist ein Spiel-Code erforderlich. Bitte tippe diesen hier ein:
           </p>
         </div>
         <div
-          class="MuiBox-root MuiBox-root-4"
+          class="MuiBox-root css-i3pbo"
         >
           <div
-            class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+            class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
           >
             <label
-              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-required Mui-required"
+              class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary Mui-required css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
               data-shrink="false"
               for="gameId"
               id="gameId-label"
@@ -46,18 +46,18 @@ exports[`renders correctly when no game id is supplied 1`] = `
               Spiel-Code
               <span
                 aria-hidden="true"
-                class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+                class="MuiInputLabel-asterisk MuiFormLabel-asterisk css-wgai2y-MuiFormLabel-asterisk"
               >
                  
                 *
               </span>
             </label>
             <div
-              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+              class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
             >
               <input
                 aria-invalid="false"
-                class="MuiInputBase-input MuiOutlinedInput-input"
+                class="MuiOutlinedInput-input MuiInputBase-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
                 id="gameId"
                 name="gameId"
                 required=""
@@ -66,10 +66,10 @@ exports[`renders correctly when no game id is supplied 1`] = `
               />
               <fieldset
                 aria-hidden="true"
-                class="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
+                class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
               >
                 <legend
-                  class="PrivateNotchedOutline-legendLabelled-7"
+                  class="css-173wfxe"
                 >
                   <span>
                     Spiel-Code
@@ -81,20 +81,16 @@ exports[`renders correctly when no game id is supplied 1`] = `
           </div>
         </div>
         <div
-          class="MuiBox-root MuiBox-root-9"
+          class="MuiBox-root css-1bvc4cc"
         >
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge MuiButton-fullWidth"
+            class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-fullWidth MuiButtonBase-root  css-189e9pj-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="submit"
           >
+            Am Spiel teilnehmen
             <span
-              class="MuiButton-label"
-            >
-              Am Spiel teilnehmen
-            </span>
-            <span
-              class="MuiTouchRipple-root"
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </button>
         </div>

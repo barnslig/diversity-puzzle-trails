@@ -3,152 +3,148 @@
 exports[`executes a code 1`] = `
 <div>
   <header
-    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorInherit mui-fixed MuiPaper-elevation4"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-11b3ww9-MuiPaper-root-MuiAppBar-root"
   >
     <div
-      class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+      class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-1t29gy6-MuiToolbar-root"
     >
       <div
-        class="MuiBox-root MuiBox-root-2"
+        class="MuiBox-root css-1ay9vb9"
       >
         <a
-          aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeStart"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeStart MuiIconButton-sizeLarge css-184mzhy-MuiButtonBase-root-MuiIconButton-root"
           href="/"
           tabindex="0"
           title="QR-Code nicht ausführen"
         >
-          <span
-            class="MuiIconButton-label"
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="CloseIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-              />
-            </svg>
-          </span>
+            <path
+              d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            />
+          </svg>
           <span
-            class="MuiTouchRipple-root"
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
           />
         </a>
       </div>
       <h1
-        class="MuiTypography-root makeStyles-appBarTitle-1 MuiTypography-h6"
+        class="MuiTypography-root MuiTypography-h6 css-1juivf6-MuiTypography-root"
       >
         QR-Code Aktionen
       </h1>
     </div>
   </header>
   <main
-    class="MuiBox-root MuiBox-root-3"
+    class="MuiBox-root css-130jr3z"
   >
     <div
-      class="MuiContainer-root MuiContainer-maxWidthSm"
+      class="MuiContainer-root MuiContainer-maxWidthSm css-cuefkz-MuiContainer-root"
     >
       <p
-        class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
+        class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom css-d3wcwz-MuiTypography-root"
       >
         Dieser QR-Code führt folgende Aktionen aus:
       </p>
       <ul
-        class="MuiList-root MuiList-padding"
+        class="MuiList-root MuiList-padding css-h4y409-MuiList-root"
       >
         <li
-          class="MuiListItem-root MuiListItem-gutters"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
         >
           <div
-            class="MuiListItemIcon-root"
+            class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
           >
             <span
-              class="MuiSkeleton-root MuiSkeleton-circle MuiSkeleton-pulse"
+              class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse css-fomgco-MuiSkeleton-root"
               style="width: 24px; height: 24px;"
             />
           </div>
           <div
-            class="MuiListItemText-root MuiListItemText-multiline"
+            class="MuiListItemText-root MuiListItemText-multiline css-konndc-MuiListItemText-root"
           >
             <span
-              class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
             >
               <span
-                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse"
+                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1n7gpw1-MuiSkeleton-root"
                 style="width: 24px; height: 24px;"
               />
             </span>
             <p
-              class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
             >
               <span
-                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse"
+                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1n7gpw1-MuiSkeleton-root"
                 style="width: 140px; height: 20px;"
               />
             </p>
           </div>
         </li>
         <li
-          class="MuiListItem-root MuiListItem-gutters"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
         >
           <div
-            class="MuiListItemIcon-root"
+            class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
           >
             <span
-              class="MuiSkeleton-root MuiSkeleton-circle MuiSkeleton-pulse"
+              class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse css-fomgco-MuiSkeleton-root"
               style="width: 24px; height: 24px;"
             />
           </div>
           <div
-            class="MuiListItemText-root MuiListItemText-multiline"
+            class="MuiListItemText-root MuiListItemText-multiline css-konndc-MuiListItemText-root"
           >
             <span
-              class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
             >
               <span
-                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse"
+                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1n7gpw1-MuiSkeleton-root"
                 style="width: 24px; height: 24px;"
               />
             </span>
             <p
-              class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
             >
               <span
-                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse"
+                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1n7gpw1-MuiSkeleton-root"
                 style="width: 140px; height: 20px;"
               />
             </p>
           </div>
         </li>
         <li
-          class="MuiListItem-root MuiListItem-gutters"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
         >
           <div
-            class="MuiListItemIcon-root"
+            class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
           >
             <span
-              class="MuiSkeleton-root MuiSkeleton-circle MuiSkeleton-pulse"
+              class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse css-fomgco-MuiSkeleton-root"
               style="width: 24px; height: 24px;"
             />
           </div>
           <div
-            class="MuiListItemText-root MuiListItemText-multiline"
+            class="MuiListItemText-root MuiListItemText-multiline css-konndc-MuiListItemText-root"
           >
             <span
-              class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
             >
               <span
-                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse"
+                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1n7gpw1-MuiSkeleton-root"
                 style="width: 24px; height: 24px;"
               />
             </span>
             <p
-              class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
             >
               <span
-                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse"
+                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1n7gpw1-MuiSkeleton-root"
                 style="width: 140px; height: 20px;"
               />
             </p>
@@ -156,19 +152,15 @@ exports[`executes a code 1`] = `
         </li>
       </ul>
       <div
-        class="MuiBox-root MuiBox-root-4"
+        class="MuiBox-root css-7fvgf6"
       >
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge Mui-disabled MuiButton-fullWidth Mui-disabled"
+          class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-fullWidth MuiButtonBase-root Mui-disabled  css-189e9pj-MuiButtonBase-root-MuiButton-root"
           disabled=""
           tabindex="-1"
           type="submit"
         >
-          <span
-            class="MuiButton-label"
-          >
-            Ausführen
-          </span>
+          Ausführen
         </button>
       </div>
     </div>
@@ -179,70 +171,67 @@ exports[`executes a code 1`] = `
 exports[`executes a code 2`] = `
 <div>
   <header
-    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorInherit mui-fixed MuiPaper-elevation4"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-11b3ww9-MuiPaper-root-MuiAppBar-root"
   >
     <div
-      class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+      class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-1t29gy6-MuiToolbar-root"
     >
       <div
-        class="MuiBox-root MuiBox-root-2"
+        class="MuiBox-root css-1ay9vb9"
       >
         <a
-          aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeStart"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeStart MuiIconButton-sizeLarge css-184mzhy-MuiButtonBase-root-MuiIconButton-root"
           href="/"
           tabindex="0"
           title="QR-Code nicht ausführen"
         >
-          <span
-            class="MuiIconButton-label"
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="CloseIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-              />
-            </svg>
-          </span>
+            <path
+              d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            />
+          </svg>
           <span
-            class="MuiTouchRipple-root"
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
           />
         </a>
       </div>
       <h1
-        class="MuiTypography-root makeStyles-appBarTitle-1 MuiTypography-h6"
+        class="MuiTypography-root MuiTypography-h6 css-1juivf6-MuiTypography-root"
       >
         QR-Code Aktionen
       </h1>
     </div>
   </header>
   <main
-    class="MuiBox-root MuiBox-root-3"
+    class="MuiBox-root css-130jr3z"
   >
     <div
-      class="MuiContainer-root MuiContainer-maxWidthSm"
+      class="MuiContainer-root MuiContainer-maxWidthSm css-cuefkz-MuiContainer-root"
     >
       <p
-        class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
+        class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom css-d3wcwz-MuiTypography-root"
       >
         Dieser QR-Code führt folgende Aktionen aus:
       </p>
       <ul
-        class="MuiList-root MuiList-padding"
+        class="MuiList-root MuiList-padding css-h4y409-MuiList-root"
       >
         <li
-          class="MuiListItem-root MuiListItem-gutters"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
         >
           <div
-            class="MuiListItemIcon-root"
+            class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="PersonIcon"
               focusable="false"
               viewBox="0 0 24 24"
             >
@@ -252,29 +241,30 @@ exports[`executes a code 2`] = `
             </svg>
           </div>
           <div
-            class="MuiListItemText-root MuiListItemText-multiline"
+            class="MuiListItemText-root MuiListItemText-multiline css-konndc-MuiListItemText-root"
           >
             <span
-              class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
             >
               engineer
             </span>
             <p
-              class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
             >
               Setze Charakter
             </p>
           </div>
         </li>
         <li
-          class="MuiListItem-root MuiListItem-gutters"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
         >
           <div
-            class="MuiListItemIcon-root"
+            class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="BarChartIcon"
               focusable="false"
               viewBox="0 0 24 24"
             >
@@ -284,29 +274,30 @@ exports[`executes a code 2`] = `
             </svg>
           </div>
           <div
-            class="MuiListItemText-root MuiListItemText-multiline"
+            class="MuiListItemText-root MuiListItemText-multiline css-konndc-MuiListItemText-root"
           >
             <span
-              class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
             >
               +2
             </span>
             <p
-              class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
             >
               Lebensmittelvorrat
             </p>
           </div>
         </li>
         <li
-          class="MuiListItem-root MuiListItem-gutters"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
         >
           <div
-            class="MuiListItemIcon-root"
+            class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="BarChartIcon"
               focusable="false"
               viewBox="0 0 24 24"
             >
@@ -316,29 +307,30 @@ exports[`executes a code 2`] = `
             </svg>
           </div>
           <div
-            class="MuiListItemText-root MuiListItemText-multiline"
+            class="MuiListItemText-root MuiListItemText-multiline css-konndc-MuiListItemText-root"
           >
             <span
-              class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
             >
               -3
             </span>
             <p
-              class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
             >
               Bewegungspunkte
             </p>
           </div>
         </li>
         <li
-          class="MuiListItem-root MuiListItem-gutters"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
         >
           <div
-            class="MuiListItemIcon-root"
+            class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="ChatBubbleIcon"
               focusable="false"
               viewBox="0 0 24 24"
             >
@@ -348,15 +340,15 @@ exports[`executes a code 2`] = `
             </svg>
           </div>
           <div
-            class="MuiListItemText-root MuiListItemText-multiline"
+            class="MuiListItemText-root MuiListItemText-multiline css-konndc-MuiListItemText-root"
           >
             <span
-              class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
             >
               Wir haben den Tresor geknackt!
             </span>
             <p
-              class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
             >
               Sende Nachricht
             </p>
@@ -364,20 +356,16 @@ exports[`executes a code 2`] = `
         </li>
       </ul>
       <div
-        class="MuiBox-root MuiBox-root-4"
+        class="MuiBox-root css-7fvgf6"
       >
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge MuiButton-fullWidth"
+          class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-fullWidth MuiButtonBase-root  css-189e9pj-MuiButtonBase-root-MuiButton-root"
           tabindex="0"
           type="submit"
         >
+          Ausführen
           <span
-            class="MuiButton-label"
-          >
-            Ausführen
-          </span>
-          <span
-            class="MuiTouchRipple-root"
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
           />
         </button>
       </div>
@@ -389,70 +377,67 @@ exports[`executes a code 2`] = `
 exports[`loads a code 1`] = `
 <div>
   <header
-    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorInherit mui-fixed MuiPaper-elevation4"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-11b3ww9-MuiPaper-root-MuiAppBar-root"
   >
     <div
-      class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+      class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-1t29gy6-MuiToolbar-root"
     >
       <div
-        class="MuiBox-root MuiBox-root-2"
+        class="MuiBox-root css-1ay9vb9"
       >
         <a
-          aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeStart"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeStart MuiIconButton-sizeLarge css-184mzhy-MuiButtonBase-root-MuiIconButton-root"
           href="/"
           tabindex="0"
           title="QR-Code nicht ausführen"
         >
-          <span
-            class="MuiIconButton-label"
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="CloseIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-              />
-            </svg>
-          </span>
+            <path
+              d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            />
+          </svg>
           <span
-            class="MuiTouchRipple-root"
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
           />
         </a>
       </div>
       <h1
-        class="MuiTypography-root makeStyles-appBarTitle-1 MuiTypography-h6"
+        class="MuiTypography-root MuiTypography-h6 css-1juivf6-MuiTypography-root"
       >
         QR-Code Aktionen
       </h1>
     </div>
   </header>
   <main
-    class="MuiBox-root MuiBox-root-3"
+    class="MuiBox-root css-130jr3z"
   >
     <div
-      class="MuiContainer-root MuiContainer-maxWidthSm"
+      class="MuiContainer-root MuiContainer-maxWidthSm css-cuefkz-MuiContainer-root"
     >
       <p
-        class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
+        class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom css-d3wcwz-MuiTypography-root"
       >
         Dieser QR-Code führt folgende Aktionen aus:
       </p>
       <ul
-        class="MuiList-root MuiList-padding"
+        class="MuiList-root MuiList-padding css-h4y409-MuiList-root"
       >
         <li
-          class="MuiListItem-root MuiListItem-gutters"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
         >
           <div
-            class="MuiListItemIcon-root"
+            class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="PersonIcon"
               focusable="false"
               viewBox="0 0 24 24"
             >
@@ -462,29 +447,30 @@ exports[`loads a code 1`] = `
             </svg>
           </div>
           <div
-            class="MuiListItemText-root MuiListItemText-multiline"
+            class="MuiListItemText-root MuiListItemText-multiline css-konndc-MuiListItemText-root"
           >
             <span
-              class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
             >
               engineer
             </span>
             <p
-              class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
             >
               Setze Charakter
             </p>
           </div>
         </li>
         <li
-          class="MuiListItem-root MuiListItem-gutters"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
         >
           <div
-            class="MuiListItemIcon-root"
+            class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="BarChartIcon"
               focusable="false"
               viewBox="0 0 24 24"
             >
@@ -494,29 +480,30 @@ exports[`loads a code 1`] = `
             </svg>
           </div>
           <div
-            class="MuiListItemText-root MuiListItemText-multiline"
+            class="MuiListItemText-root MuiListItemText-multiline css-konndc-MuiListItemText-root"
           >
             <span
-              class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
             >
               +2
             </span>
             <p
-              class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
             >
               Lebensmittelvorrat
             </p>
           </div>
         </li>
         <li
-          class="MuiListItem-root MuiListItem-gutters"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
         >
           <div
-            class="MuiListItemIcon-root"
+            class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="BarChartIcon"
               focusable="false"
               viewBox="0 0 24 24"
             >
@@ -526,29 +513,30 @@ exports[`loads a code 1`] = `
             </svg>
           </div>
           <div
-            class="MuiListItemText-root MuiListItemText-multiline"
+            class="MuiListItemText-root MuiListItemText-multiline css-konndc-MuiListItemText-root"
           >
             <span
-              class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
             >
               -3
             </span>
             <p
-              class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
             >
               Bewegungspunkte
             </p>
           </div>
         </li>
         <li
-          class="MuiListItem-root MuiListItem-gutters"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
         >
           <div
-            class="MuiListItemIcon-root"
+            class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="ChatBubbleIcon"
               focusable="false"
               viewBox="0 0 24 24"
             >
@@ -558,15 +546,15 @@ exports[`loads a code 1`] = `
             </svg>
           </div>
           <div
-            class="MuiListItemText-root MuiListItemText-multiline"
+            class="MuiListItemText-root MuiListItemText-multiline css-konndc-MuiListItemText-root"
           >
             <span
-              class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
             >
               Wir haben den Tresor geknackt!
             </span>
             <p
-              class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
             >
               Sende Nachricht
             </p>
@@ -574,20 +562,16 @@ exports[`loads a code 1`] = `
         </li>
       </ul>
       <div
-        class="MuiBox-root MuiBox-root-4"
+        class="MuiBox-root css-7fvgf6"
       >
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge MuiButton-fullWidth"
+          class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-fullWidth MuiButtonBase-root  css-189e9pj-MuiButtonBase-root-MuiButton-root"
           tabindex="0"
           type="submit"
         >
+          Ausführen
           <span
-            class="MuiButton-label"
-          >
-            Ausführen
-          </span>
-          <span
-            class="MuiTouchRipple-root"
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
           />
         </button>
       </div>
@@ -599,152 +583,148 @@ exports[`loads a code 1`] = `
 exports[`renders correctly 1`] = `
 <div>
   <header
-    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorInherit mui-fixed MuiPaper-elevation4"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-11b3ww9-MuiPaper-root-MuiAppBar-root"
   >
     <div
-      class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+      class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-1t29gy6-MuiToolbar-root"
     >
       <div
-        class="MuiBox-root MuiBox-root-2"
+        class="MuiBox-root css-1ay9vb9"
       >
         <a
-          aria-disabled="false"
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeStart"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeStart MuiIconButton-sizeLarge css-184mzhy-MuiButtonBase-root-MuiIconButton-root"
           href="/"
           tabindex="0"
           title="QR-Code nicht ausführen"
         >
-          <span
-            class="MuiIconButton-label"
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="CloseIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-              />
-            </svg>
-          </span>
+            <path
+              d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            />
+          </svg>
           <span
-            class="MuiTouchRipple-root"
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
           />
         </a>
       </div>
       <h1
-        class="MuiTypography-root makeStyles-appBarTitle-1 MuiTypography-h6"
+        class="MuiTypography-root MuiTypography-h6 css-1juivf6-MuiTypography-root"
       >
         QR-Code Aktionen
       </h1>
     </div>
   </header>
   <main
-    class="MuiBox-root MuiBox-root-3"
+    class="MuiBox-root css-130jr3z"
   >
     <div
-      class="MuiContainer-root MuiContainer-maxWidthSm"
+      class="MuiContainer-root MuiContainer-maxWidthSm css-cuefkz-MuiContainer-root"
     >
       <p
-        class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
+        class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom css-d3wcwz-MuiTypography-root"
       >
         Dieser QR-Code führt folgende Aktionen aus:
       </p>
       <ul
-        class="MuiList-root MuiList-padding"
+        class="MuiList-root MuiList-padding css-h4y409-MuiList-root"
       >
         <li
-          class="MuiListItem-root MuiListItem-gutters"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
         >
           <div
-            class="MuiListItemIcon-root"
+            class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
           >
             <span
-              class="MuiSkeleton-root MuiSkeleton-circle MuiSkeleton-pulse"
+              class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse css-fomgco-MuiSkeleton-root"
               style="width: 24px; height: 24px;"
             />
           </div>
           <div
-            class="MuiListItemText-root MuiListItemText-multiline"
+            class="MuiListItemText-root MuiListItemText-multiline css-konndc-MuiListItemText-root"
           >
             <span
-              class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
             >
               <span
-                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse"
+                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1n7gpw1-MuiSkeleton-root"
                 style="width: 24px; height: 24px;"
               />
             </span>
             <p
-              class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
             >
               <span
-                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse"
+                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1n7gpw1-MuiSkeleton-root"
                 style="width: 140px; height: 20px;"
               />
             </p>
           </div>
         </li>
         <li
-          class="MuiListItem-root MuiListItem-gutters"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
         >
           <div
-            class="MuiListItemIcon-root"
+            class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
           >
             <span
-              class="MuiSkeleton-root MuiSkeleton-circle MuiSkeleton-pulse"
+              class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse css-fomgco-MuiSkeleton-root"
               style="width: 24px; height: 24px;"
             />
           </div>
           <div
-            class="MuiListItemText-root MuiListItemText-multiline"
+            class="MuiListItemText-root MuiListItemText-multiline css-konndc-MuiListItemText-root"
           >
             <span
-              class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
             >
               <span
-                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse"
+                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1n7gpw1-MuiSkeleton-root"
                 style="width: 24px; height: 24px;"
               />
             </span>
             <p
-              class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
             >
               <span
-                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse"
+                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1n7gpw1-MuiSkeleton-root"
                 style="width: 140px; height: 20px;"
               />
             </p>
           </div>
         </li>
         <li
-          class="MuiListItem-root MuiListItem-gutters"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
         >
           <div
-            class="MuiListItemIcon-root"
+            class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
           >
             <span
-              class="MuiSkeleton-root MuiSkeleton-circle MuiSkeleton-pulse"
+              class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse css-fomgco-MuiSkeleton-root"
               style="width: 24px; height: 24px;"
             />
           </div>
           <div
-            class="MuiListItemText-root MuiListItemText-multiline"
+            class="MuiListItemText-root MuiListItemText-multiline css-konndc-MuiListItemText-root"
           >
             <span
-              class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
             >
               <span
-                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse"
+                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1n7gpw1-MuiSkeleton-root"
                 style="width: 24px; height: 24px;"
               />
             </span>
             <p
-              class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+              class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
             >
               <span
-                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse"
+                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1n7gpw1-MuiSkeleton-root"
                 style="width: 140px; height: 20px;"
               />
             </p>
@@ -752,19 +732,15 @@ exports[`renders correctly 1`] = `
         </li>
       </ul>
       <div
-        class="MuiBox-root MuiBox-root-4"
+        class="MuiBox-root css-7fvgf6"
       >
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge Mui-disabled MuiButton-fullWidth Mui-disabled"
+          class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-fullWidth MuiButtonBase-root Mui-disabled  css-189e9pj-MuiButtonBase-root-MuiButton-root"
           disabled=""
           tabindex="-1"
           type="submit"
         >
-          <span
-            class="MuiButton-label"
-          >
-            Ausführen
-          </span>
+          Ausführen
         </button>
       </div>
     </div>

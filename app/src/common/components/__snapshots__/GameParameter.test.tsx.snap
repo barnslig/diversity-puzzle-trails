@@ -2,21 +2,21 @@
 
 exports[`renders correctly 1`] = `
 <li
-  class="MuiListItem-root MuiListItem-gutters"
+  class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
 >
   <div
-    class="MuiListItemIcon-root"
+    class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
   />
   <div
-    class="MuiListItemText-root MuiListItemText-multiline"
+    class="MuiListItemText-root MuiListItemText-multiline css-konndc-MuiListItemText-root"
   >
     <span
-      class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+      class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
     >
       37
     </span>
     <p
-      class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+      class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
     >
       Bewegungspunkte
     </p>

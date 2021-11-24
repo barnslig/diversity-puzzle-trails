@@ -5,7 +5,7 @@ import {
   Fastfood,
   FitnessCenter,
   Group,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import Soap from "../../common/icons/Soap";
 
 import { ParameterType } from "../../common/types/Parameter";

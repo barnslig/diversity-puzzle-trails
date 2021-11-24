@@ -2,29 +2,30 @@
 
 exports[`renders correctly 1`] = `
 <main
-  class="MuiBox-root MuiBox-root-4 makeStyles-root-2 makeStyles-root-3"
+  class="MuiBox-root css-elj48x"
 >
   <div
-    class="MuiContainer-root MuiContainer-maxWidthSm"
+    class="MuiContainer-root MuiContainer-maxWidthSm css-cuefkz-MuiContainer-root"
   >
     <h2
-      class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+      class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom css-h93ljk-MuiTypography-root"
     >
       Charakter wählen
     </h2>
     <p
-      class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
+      class="MuiTypography-root MuiTypography-body2 css-r40f8v-MuiTypography-root"
     >
       Scanne eine Charakterkarte um am Spiel teilzunehmen. Dein gewählter Charakter gibt dir bei jeder Aktion im Spiel einen Bonus!
     </p>
     <svg
       aria-hidden="true"
-      class="MuiSvgIcon-root makeStyles-arrow-1"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1w920nw-MuiSvgIcon-root"
+      data-testid="ArrowDownwardIcon"
       focusable="false"
       viewBox="0 0 24 24"
     >
       <path
-        d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+        d="m20 12-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
       />
     </svg>
   </div>
