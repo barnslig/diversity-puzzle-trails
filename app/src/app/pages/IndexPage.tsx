@@ -3,13 +3,12 @@ import {
   Box,
   Container,
   IconButton,
-  makeStyles,
   Menu,
   MenuItem,
   Toolbar,
   Typography,
-} from "@material-ui/core";
-import { MoreVert } from "@material-ui/icons";
+} from "@mui/material";
+import { MoreVert } from "@mui/icons-material";
 import { FormattedMessage, useIntl } from "react-intl";
 import * as React from "react";
 
@@ -30,21 +29,9 @@ import useLeaveGame from "../../common/hooks/useLeaveGame";
 
 const bg = require("./bg.svg");
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundImage: `url(${bg})`,
-    backgroundAttachment: "fixed",
-    backgroundPositionY: theme.spacing(7), // top app bar
-  },
-  appBarTitle: {
-    flexGrow: 1,
-  },
-}));
-
 type IndexPageProps = {};
 
 const IndexPage = (props: IndexPageProps) => {
-  const classes = useStyles();
   const intl = useIntl();
 
   const [character] = useCharacter();
@@ -75,14 +62,16 @@ const IndexPage = (props: IndexPageProps) => {
   };
 
   return (
-    <div className={classes.root}>
-      <AppBar position="fixed" color="inherit">
+    <Box
+      sx={{
+        backgroundImage: `url(${bg})`,
+        backgroundAttachment: "fixed",
+        backgroundPositionY: (theme) => theme.spacing(7), // top app bar
+      }}
+    >
+      <AppBar position="fixed">
         <Toolbar>
-          <Typography
-            className={classes.appBarTitle}
-            component="h1"
-            variant="h6"
-          >
+          <Typography component="h1" sx={{ flexGrow: 1 }} variant="h6">
             <FormattedMessage
               defaultMessage="Diversity Puzzle Trails"
               description="main page title"
@@ -101,6 +90,7 @@ const IndexPage = (props: IndexPageProps) => {
             onClick={() => {
               setAppBarMenuIsOpen(!appBarMenuIsOpen);
             }}
+            size="large"
           >
             <MoreVert />
           </IconButton>
@@ -172,7 +162,7 @@ const IndexPage = (props: IndexPageProps) => {
           </Container>
         </Box>
       )}
-    </div>
+    </Box>
   );
 };
 

@@ -4,11 +4,10 @@ import {
   Button,
   Container,
   IconButton,
-  makeStyles,
   Toolbar,
   Typography,
-} from "@material-ui/core";
-import { Close } from "@material-ui/icons";
+} from "@mui/material";
+import { Close } from "@mui/icons-material";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "wouter";
 import * as React from "react";
@@ -20,19 +19,12 @@ import useCode from "../../common/hooks/api/useCode";
 import useHandleApiError from "../../common/hooks/api/useHandleApiError";
 import useSubmitCode from "../../common/hooks/api/useSubmitCode";
 
-const useStyles = makeStyles((theme) => ({
-  appBarTitle: {
-    flexGrow: 1,
-  },
-}));
-
 type CodePageProps = {
   codeId: string;
 };
 
 const CodePage = ({ codeId }: CodePageProps) => {
   const { data, error } = useCode(codeId);
-  const classes = useStyles();
   const intl = useIntl();
   const [isLoading, submitCode] = useSubmitCode(codeId);
 
@@ -50,27 +42,25 @@ const CodePage = ({ codeId }: CodePageProps) => {
 
   return (
     <div>
-      <AppBar position="fixed" color="inherit">
+      <AppBar position="fixed">
         <Toolbar>
           <Box marginRight={2}>
             <Link href="/">
               <IconButton
+                color="inherit"
                 edge="start"
                 title={intl.formatMessage({
                   defaultMessage: "QR-Code nicht ausführen",
                   description:
                     "app bar close button of the confirm qr code action page",
                 })}
+                size="large"
               >
                 <Close />
               </IconButton>
             </Link>
           </Box>
-          <Typography
-            className={classes.appBarTitle}
-            component="h1"
-            variant="h6"
-          >
+          <Typography component="h1" sx={{ flexGrow: 1 }} variant="h6">
             <FormattedMessage
               defaultMessage="QR-Code Aktionen"
               description="title of the confirm qr code actions page"

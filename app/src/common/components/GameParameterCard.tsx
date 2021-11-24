@@ -1,23 +1,5 @@
-import {
-  Card,
-  CardContent,
-  List,
-  makeStyles,
-  Typography,
-} from "@material-ui/core";
+import { Box, Card, CardContent, List, Typography } from "@mui/material";
 import * as React from "react";
-
-const useStyle = makeStyles((theme) => ({
-  card: {
-    marginBottom: theme.spacing(2),
-  },
-  cardHeader: {
-    marginBottom: theme.spacing(1),
-  },
-  cardHeaderHl: {
-    marginBottom: theme.spacing(1),
-  },
-}));
 
 type GameParameterCardProps = {
   /**
@@ -44,23 +26,17 @@ const GameParameterCard = ({
   description,
   children,
 }: GameParameterCardProps) => {
-  const classes = useStyle();
-
   return (
-    <Card className={classes.card} component="article">
+    <Card component="article" sx={{ marginBottom: 2 }}>
       <CardContent>
-        <header className={classes.cardHeader}>
-          <Typography
-            className={classes.cardHeaderHl}
-            variant="h5"
-            component="h2"
-          >
+        <Box component="header" sx={{ marginBottom: 1 }}>
+          <Typography sx={{ marginBottom: 1 }} variant="h5" component="h2">
             {title}
           </Typography>
           <Typography variant="body2" color="textSecondary">
             {description}
           </Typography>
-        </header>
+        </Box>
         <List disablePadding>{children}</List>
       </CardContent>
     </Card>

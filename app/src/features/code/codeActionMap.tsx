@@ -1,4 +1,4 @@
-import { BarChart, ChatBubble, Person } from "@material-ui/icons";
+import { BarChart, ChatBubble, Person } from "@mui/icons-material";
 import * as React from "react";
 import { FormattedMessage } from "react-intl";
 import {

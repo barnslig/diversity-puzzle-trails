@@ -2,18 +2,18 @@
 
 exports[`renders correctly 1`] = `
 <main
-  class="MuiBox-root MuiBox-root-3 makeStyles-root-1 makeStyles-root-2"
+  class="MuiBox-root css-elj48x"
 >
   <div
-    class="MuiContainer-root MuiContainer-maxWidthSm"
+    class="MuiContainer-root MuiContainer-maxWidthSm css-cuefkz-MuiContainer-root"
   >
     <h2
-      class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+      class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom css-h93ljk-MuiTypography-root"
     >
       Test title
     </h2>
     <p
-      class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
+      class="MuiTypography-root MuiTypography-body2 css-r40f8v-MuiTypography-root"
     >
       Test description
     </p>

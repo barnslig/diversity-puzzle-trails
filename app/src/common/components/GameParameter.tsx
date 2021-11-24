@@ -1,9 +1,9 @@
-import { ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
+import { ListItem, ListItemIcon, ListItemText } from "@mui/material";
 import * as React from "react";
 
 type GameParameterProps = {
   /**
-   * A representing icon, usually from @material-ui/icons
+   * A representing icon, usually from @mui/icons-material
    */
   icon: React.ReactNode;
 

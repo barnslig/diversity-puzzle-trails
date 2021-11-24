@@ -1,4 +1,4 @@
-import { Skeleton } from "@material-ui/lab";
+import { Skeleton } from "@mui/material";
 import * as React from "react";
 
 import GameParameter from "../../common/components/GameParameter";
@@ -27,7 +27,7 @@ const ParameterCard = ({
           .map((_, i) => (
             <GameParameter
               key={i}
-              icon={<Skeleton variant="circle" width={24} height={24} />}
+              icon={<Skeleton variant="circular" width={24} height={24} />}
               label={<Skeleton width={140} height={20} />}
               value={<Skeleton width={24} height={24} />}
             />

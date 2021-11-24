@@ -2,26 +2,25 @@
 
 exports[`renders correctly 1`] = `
 <div
-  class="makeStyles-wrapper-1"
+  class="MuiBox-root css-k008qs"
 >
   <div
-    class="makeStyles-code-2"
+    class="MuiBox-root css-mmhdrf"
   />
   <div
-    class="makeStyles-loading-3"
-    style="width: 300px; height: 300px;"
+    class="MuiBox-root css-vejl0j"
   >
-    <div
-      class="MuiCircularProgress-root MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
+    <span
+      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
       role="progressbar"
       style="width: 40px; height: 40px;"
     >
       <svg
-        class="MuiCircularProgress-svg"
+        class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
         viewBox="22 22 44 44"
       >
         <circle
-          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
           cx="44"
           cy="44"
           fill="none"
@@ -29,17 +28,17 @@ exports[`renders correctly 1`] = `
           stroke-width="3.6"
         />
       </svg>
-    </div>
+    </span>
   </div>
 </div>
 `;
 
 exports[`renders correctly 2`] = `
 <div
-  class="makeStyles-wrapper-1"
+  class="MuiBox-root css-k008qs"
 >
   <div
-    class="makeStyles-code-2"
+    class="MuiBox-root css-mmhdrf"
   >
     <svg
       height="300"
