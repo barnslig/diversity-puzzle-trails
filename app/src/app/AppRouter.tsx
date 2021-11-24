@@ -84,6 +84,11 @@ const AppRouter = () => {
           <Route path="/start/:gameId?">
             {({ gameId }) => <StartPage.Component gameId={gameId} />}
           </Route>
+
+          {/* Redirect to index page on 404 */}
+          <Route>
+            <Redirect to="/" />
+          </Route>
         </Switch>
       </React.Suspense>
     </Router>
