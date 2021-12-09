@@ -3,6 +3,10 @@
     "defaultMessage": "Persönliches",
     "description": "personal parameter card title"
   },
+  "0r4nkq": {
+    "defaultMessage": "Zum Homescreen hinzufügen",
+    "description": "appbar menu item install pwa"
+  },
   "1H9EKZ": {
     "defaultMessage": "Am Spiel teilnehmen",
     "description": "start code page submit button"

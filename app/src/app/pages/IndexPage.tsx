@@ -16,16 +16,20 @@ import {
   useParameters,
   useIsGameOver,
 } from "../../common/hooks/api/useParameters";
+import useCharacter from "../../common/hooks/useCharacter";
+import useClock from "../../common/hooks/api/useClock";
+import useLeaveGame from "../../common/hooks/useLeaveGame";
+import usePwaInstaller from "../../common/hooks/usePwaInstaller";
+import useUpdateClock from "../../common/hooks/api/useUpdateClock";
+
 import ButtonProgressIndicator from "../../common/components/ButtonProgressIndicator";
 import ChooseCharacterHeroMessage from "../../common/components/ChooseCharacterHeroMessage";
 import GameOverHeroMessage from "../../common/components/GameOverHeroMessage";
-import MainNav from "../MainNav";
-import Parameters from "../../features/parameters/Parameters";
 import PausedHeroMessage from "../../common/components/PausedHeroMessage";
-import useCharacter from "../../common/hooks/useCharacter";
-import useClock from "../../common/hooks/api/useClock";
-import useUpdateClock from "../../common/hooks/api/useUpdateClock";
-import useLeaveGame from "../../common/hooks/useLeaveGame";
+
+import Parameters from "../../features/parameters/Parameters";
+
+import MainNav from "../MainNav";
 
 type IndexPageProps = {};
 
@@ -58,6 +62,8 @@ const IndexPage = (props: IndexPageProps) => {
     }
     setAppBarMenuIsOpen(false);
   };
+
+  const { canInstall, triggerInstall } = usePwaInstaller();
 
   return (
     <div>
@@ -136,6 +142,14 @@ const IndexPage = (props: IndexPageProps) => {
                 description="appbar menu item leave game"
               />
             </MenuItem>
+            {canInstall && (
+              <MenuItem onClick={triggerInstall}>
+                <FormattedMessage
+                  defaultMessage="Zum Homescreen hinzufügen"
+                  description="appbar menu item install pwa"
+                />
+              </MenuItem>
+            )}
           </Menu>
         </Toolbar>
       </AppBar>
