@@ -39,7 +39,7 @@
     "html-webpack-plugin": "^5.3.1",
     "jest": "^27.0.4",
     "jq-cli-wrapper": "^1.6.1",
-    "msw": "^0.35.0",
+    "msw": "^0.36.3",
     "node-fetch": "^2.6.1",
     "shell-loader": "^1.2.1",
     "ts-jest": "^27.0.2",
