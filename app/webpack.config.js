@@ -74,7 +74,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "Diversity Puzzle Trails",
       meta: {
-        "theme-color": "#424242",
+        "theme-color": "#1976d2",
       },
     }),
     new Webpack.EnvironmentPlugin({
