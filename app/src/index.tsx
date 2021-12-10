@@ -4,13 +4,35 @@ import * as ReactDOM from "react-dom";
 
 import App from "./app/App";
 
+declare global {
+  interface Window {
+    /**
+     * The Workbox Window instance
+     */
+    wb?: Workbox;
+
+    /**
+     * Whether the Workbox Service Worker is waiting
+     */
+    swIsWaiting: boolean;
+  }
+}
+
 if (process.env.API_USE_MOCK) {
   const { worker } = require("./mocks/browser");
   worker.start();
 }
 
-if ("serviceWorker" in navigator) {
+if (process.env.NODE_ENV === "production" && "serviceWorker" in navigator) {
   const wb = new Workbox("/service-worker.js");
+
+  window.wb = wb;
+
+  window.swIsWaiting = false;
+  wb.addEventListener("waiting", () => {
+    window.swIsWaiting = true;
+  });
+
   wb.register();
 }
 

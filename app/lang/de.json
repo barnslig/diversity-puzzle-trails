@@ -95,6 +95,14 @@
     "defaultMessage": "Spiel erfolgreich verlassen!",
     "description": "success snackbar on leave game"
   },
+  "bjS+5W": {
+    "defaultMessage": "Neu laden",
+    "description": "pwa reload snackbar action button label"
+  },
+  "d7QnMY": {
+    "defaultMessage": "Neue Inhalte sind verfügbar.",
+    "description": "pwa reload snackbar"
+  },
   "eEE+z4": {
     "defaultMessage": "Diversity Puzzle Trails",
     "description": "main page title"
