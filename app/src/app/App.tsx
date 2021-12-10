@@ -8,6 +8,7 @@ import theme from "./theme";
 
 import AppRouter from "./AppRouter";
 import NotificationProvider from "./NotificationProvider";
+import PwaReloadNotification from "./PwaReloadNotification";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <IntlProvider messages={messages} locale="de" defaultLocale="de">
           <NotificationProvider>
             <CssBaseline />
+            <PwaReloadNotification />
             <AppRouter />
           </NotificationProvider>
         </IntlProvider>

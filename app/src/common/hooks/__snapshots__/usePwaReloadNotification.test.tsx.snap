@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`does not show a snackbar when no SW is waiting to be activated 1`] = `null`;
+
+exports[`shows a snackbar with an action when a SW is waiting to be activated 1`] = `
+<div
+  class="SnackbarContainer-bottom SnackbarContainer-left SnackbarContainer-root css-uwcd5u"
+>
+  <div
+    class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-entered css-pwcg7p-MuiCollapse-root"
+    style="min-height: 0px;"
+  >
+    <div
+      class="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"
+    >
+      <div
+        class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
+      >
+        <div
+          class="SnackbarItem-wrappedRoot css-96yce9"
+        >
+          <div
+            aria-describedby="notistack-snackbar"
+            class="SnackbarContent-root SnackbarItem-contentRoot css-hped4j"
+            role="alert"
+            style="webkit-transform: none; transform: none; webkit-transition: -webkit-transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;"
+          >
+            <div
+              class="SnackbarItem-message"
+              id="notistack-snackbar"
+            >
+              Neue Inhalte sind verfügbar.
+            </div>
+            <div
+              class="SnackbarItem-action"
+            >
+              <button
+                class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root  css-1e6y48t-MuiButtonBase-root-MuiButton-root"
+                tabindex="0"
+                type="button"
+              >
+                Neu laden
+                <span
+                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
