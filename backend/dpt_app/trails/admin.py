@@ -1,16 +1,14 @@
 from django import forms
 from django.contrib import admin
 from django.contrib.auth.models import User, Group
-from .models import Game, Clock, Parameter, Player, Character, Log
+from .models import Game, Parameter, Player, Character, Log
 from .qr_models import Code, Action
 # Register your models here.
 
 
 class GameForm(forms.ModelForm):
-    class Meta:
-        exclude = ('clock', )
-
-    template_game = forms.ModelChoiceField(queryset=Game.objects.all(), required=False)
+    template_game = forms.ModelChoiceField(
+        queryset=Game.objects.all(), required=False)
     # ToDo: validate
 
 
@@ -31,12 +29,6 @@ class GameAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         if 'template_game' in form.data.keys() and form.data['template_game']:
             template_game = Game.objects.get(pk=form.data['template_game'])
-            
-            new_clock = Clock.objects.get(game=template_game)
-            new_clock.pk = None
-            new_clock._state.adding = True
-            new_clock.save()
-            obj.clock = new_clock
 
         super().save_model(request, obj, form, change)
 
@@ -53,7 +45,6 @@ class ParameterAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Game, GameAdmin)
-admin.site.register(Clock)
 admin.site.register(Parameter, ParameterAdmin)
 admin.site.register(Player)
 admin.site.register(Character)

@@ -12,12 +12,12 @@ last_time = time.time()
 
 def calcTimepassingParameters(game):
     global last_time
-    if game.clock.state == ClockType.RUNNING:
+    if game.clock_state == ClockType.RUNNING:
         current_time = time.time()
         passed_time_ms = (current_time - last_time) * 1000
         if passed_time_ms < 500:
             return
-        passed_tick = passed_time_ms / game.clock.speed
+        passed_tick = passed_time_ms / game.clock_speed
         last_time = current_time
 
         for parameter in game.parameter.all():
@@ -92,10 +92,10 @@ def clock(request, game):
 def func_clock_get(game):
     clock_data = {
         "type": "clock",
-        "id": game.clock.id,
+        "id": game.id,
         "attributes": {
-            "state": ClockType(game.clock.state).label,
-            "speed": game.clock.speed
+            "state": ClockType(game.clock_state).label,
+            "speed": game.clock_speed
         }
     }
 

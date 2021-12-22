@@ -10,11 +10,11 @@ class TrailsConfig(AppConfig):
         if 'runserver' not in sys.argv:
             return True
 
-        # you must import your modules here 
-        # to avoid AppRegistryNotReady exception 
-        from .models import Clock
+        # you must import your modules here
+        # to avoid AppRegistryNotReady exception
+        from .models import Game
         from .enums import ClockType
-        for clk in Clock.objects.all():
-            if clk.state != ClockType.STOPPED:
-                clk.state = ClockType.STOPPED
-                clk.save()
+        for game in Game.objects.all():
+            if game.clock_state != ClockType.STOPPED:
+                game.clock_state = ClockType.STOPPED
+                game.save()

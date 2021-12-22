@@ -5,19 +5,8 @@ from django.db import models
 
 class Game(models.Model):
     name = models.CharField(max_length=255, unique=True)
-    clock = models.OneToOneField(
-        'Clock',
-        on_delete=models.CASCADE,
-        related_name="game",
-        null=True,
-    )
 
-    def __str__(self):
-        return self.name
-
-
-class Clock(models.Model):
-    state = models.CharField(
+    clock_state = models.CharField(
         max_length=2,
         choices=ClockType.choices,
         default=ClockType.STOPPED,
@@ -26,17 +15,10 @@ class Clock(models.Model):
     # 2000 => Half-Speed, "slow time"
     #  500 => Double speed, "fast time"
     # amount of miliseconds resulting in one 'tick'
-    speed = models.IntegerField()
+    clock_speed = models.IntegerField(default=1000)
 
     def __str__(self):
-        try:
-            return "Clock from {0} at state {1}".format(
-                self.game, self.state
-            )
-        except Game.DoesNotExist:
-            return "Clock without game at state {0}".format(
-                self.state
-            )
+        return self.name
 
 
 class Parameter(models.Model):
