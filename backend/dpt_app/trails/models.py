@@ -16,6 +16,8 @@ class Game(models.Model):
         verbose_name=pgettext_lazy("Game Name", "Name")
     )
 
+    slug = models.SlugField()
+
     clock_state = models.CharField(
         max_length=255,
         choices=ClockType.choices,

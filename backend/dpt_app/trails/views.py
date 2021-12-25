@@ -44,8 +44,8 @@ def buildJsonResponse(data):
 
 def get_game_or_404(func):
     def inner(request, gameId, *args, **kwargs):
-        try: 
-            game = Game.objects.get(name=gameId)
+        try:
+            game = Game.objects.get(slug=gameId)
         except Game.DoesNotExist:
             return JsonResponse({"Errors": [
                 {
