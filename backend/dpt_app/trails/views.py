@@ -94,7 +94,7 @@ def func_clock_get(game):
         "type": "clock",
         "id": game.id,
         "attributes": {
-            "state": ClockType(game.clock_state).label,
+            "state": game.clock_state,
             "speed": game.clock_speed
         }
     }
@@ -166,7 +166,7 @@ def func_code_get(game, code):
             response["attributes"]["actions"].append(
                 {
                     "type": "changeParameter",
-                    "parameter": ParameterType(action.parameter).label,
+                    "parameter": action.parameter,
                     "add": action.value
                 }
             )
@@ -174,7 +174,7 @@ def func_code_get(game, code):
             response["attributes"]["actions"].append(
                 {
                     "type": "setCharacter",
-                    "character": CharacterType(action.character).label,
+                    "character": action.character,
                 }
             )
         else:
@@ -240,9 +240,9 @@ def func_parameter_get(game, player):
         response.append(
             {
                 "type": "parameter",
-                "id": parameter.label(),
+                "id": parameter.name,
                 "attributes": {
-                    "scope": parameter.scope_label(),
+                    "scope": parameter.scope,
                     "value": parameter.value,
                     "rate": parameter.rate,
                     "min": parameter.min_value,
