@@ -89,4 +89,4 @@ class Action(models.Model):
         return ActionType(self.action_type).label
 
     def __str__(self):
-        return "Action: {0}".format(self.label())
+        return _("Action: {0}").format(self.label())
