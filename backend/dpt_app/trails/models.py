@@ -79,7 +79,7 @@ class Parameter(models.Model):
         return ParameterType(self.name).label
 
     def __str__(self):
-        return "Paramter {0} from {1}".format(
+        return _("Parameter {0} from {1}").format(
             self.label(), self.game
         )
 
@@ -115,7 +115,7 @@ class Player(models.Model):
     )
 
     def __str__(self):
-        return "Player {0} from game {1}".format(
+        return _("Player {0} from game {1}").format(
             self.name, self.game
         )
 
@@ -137,7 +137,7 @@ class Character(models.Model):
         return CharacterType(self.character_class).label
 
     def __str__(self):
-        return "Character {0}".format(self.label())
+        return _("Character {0}").format(self.label())
 
 
 class Log(models.Model):
@@ -164,4 +164,6 @@ class Log(models.Model):
     )
 
     def __str__(self):
-        return "{0} - Game: {1}, Code: {2}".format(str(self.created_at), self.game, self.code)
+        return _("{0} - Game: {1}, Code: {2}").format(
+            str(self.created_at), self.game, self.code
+        )
