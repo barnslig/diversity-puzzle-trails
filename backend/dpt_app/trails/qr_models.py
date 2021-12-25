@@ -63,13 +63,13 @@ class Action(models.Model):
         verbose_name=_("Code")
     )
     action_type = models.CharField(
-        max_length=2,
+        max_length=255,
         choices=ActionType.choices,
         default=ActionType.NONE,
         verbose_name=_("Action Type")
     )
     parameter = models.CharField(
-        max_length=2,
+        max_length=255,
         choices=ParameterType.choices,
         default=ParameterType.NONE,
         verbose_name=_("Parameter")
@@ -79,7 +79,7 @@ class Action(models.Model):
         verbose_name=_("Value")
     )
     character = models.CharField(
-        max_length=2,
+        max_length=255,
         choices=CharacterType.choices,
         default=CharacterType.NONE,
         verbose_name=_("Character")

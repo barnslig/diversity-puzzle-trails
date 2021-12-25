@@ -17,7 +17,7 @@ class Game(models.Model):
     )
 
     clock_state = models.CharField(
-        max_length=2,
+        max_length=255,
         choices=ClockType.choices,
         default=ClockType.STOPPED,
         verbose_name=_("Clock State")
@@ -43,13 +43,13 @@ class Parameter(models.Model):
         unique_together = ('name', 'game',)
 
     name = models.CharField(
-        max_length=2,
+        max_length=255,
         choices=ParameterType.choices,
         default=ParameterType.NONE,
         verbose_name=pgettext_lazy("Parameter Name", "Name")
     )
     scope = models.CharField(
-        max_length=2,
+        max_length=255,
         choices=ParameterScope.choices,
         default=ParameterScope.GLOBAL,
         verbose_name=_("Scope")
@@ -74,9 +74,6 @@ class Parameter(models.Model):
         related_name="parameter",
         verbose_name=_("Game")
     )
-
-    def scope_label(self):
-        return ParameterScope(self.scope).label
 
     def label(self):
         return ParameterType(self.name).label
@@ -129,7 +126,7 @@ class Character(models.Model):
         verbose_name_plural = _('Characters')
 
     character_class = models.CharField(
-        max_length=2,
+        max_length=255,
         choices=CharacterType.choices,
         default=CharacterType.NONE,
         unique=True,

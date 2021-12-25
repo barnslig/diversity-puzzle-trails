@@ -1,32 +1,33 @@
 from django.db.models import TextChoices
+from django.utils.translation import gettext_lazy as _
 
 
 class ClockType(TextChoices):
-    STOPPED = 'ST', ('Stopped')
-    RUNNING = 'RN', ('Running')
+    STOPPED = 'stopped', _('Stopped')
+    RUNNING = 'running', _('Running')
 
 
 class CharacterType(TextChoices):
-    NONE = 'NE', ('None')
-    ENGINEER = 'ER', ('Engineer')
-    PILOT = 'PT', ('Pilot')
+    NONE = 'none', _('None')
+    ENGINEER = 'engineer', _('Engineer')
+    PILOT = 'pilot', _('Pilot')
 
 
 class ParameterType(TextChoices):
-    NONE = 'NE', ('none')
-    ENERGY = 'EN', ('energy')
-    FOOD = 'FD', ('food')
-    HYGIENE = 'HY', ('hygiene')
-    MORAL = 'ML', ('moral')
+    NONE = 'none', _('None')
+    ENERGY = 'energy', _('Energy')
+    FOOD = 'food', _('Food')
+    HYGIENE = 'hygiene', _('Hygiene')
+    MORAL = 'moral', _('Moral')
 
 
 class ParameterScope(TextChoices):
-    NONE = 'NE', ('None')
-    GLOBAL = 'GL', ('global')
-    USER = 'FD', ('user')
+    NONE = 'none', _('None')
+    GLOBAL = 'global', _('Global')
+    USER = 'user', _('User')
 
 
 class ActionType(TextChoices):
-    NONE = 'NE', ('None')
-    PARAMETER = 'PA', ('Parameter')
-    CHARACTER = 'CA', ('Character')
+    NONE = 'none', _('None')
+    PARAMETER = 'parameter', _('Parameter')
+    CHARACTER = 'character', _('Character')
