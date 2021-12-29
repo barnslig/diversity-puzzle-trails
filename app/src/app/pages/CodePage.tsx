@@ -16,7 +16,6 @@ import ButtonProgressIndicator from "../../common/components/ButtonProgressIndic
 import Code from "../../features/code/Code";
 import StickyActionButtons from "../../common/components/StickyActionButtons";
 import useCode from "../../common/hooks/api/useCode";
-import useHandleApiError from "../../common/hooks/api/useHandleApiError";
 import useSubmitCode from "../../common/hooks/api/useSubmitCode";
 
 type CodePageProps = {
@@ -24,14 +23,11 @@ type CodePageProps = {
 };
 
 const CodePage = ({ codeId }: CodePageProps) => {
-  const { data, error } = useCode(codeId);
+  const { data } = useCode(codeId);
   const intl = useIntl();
   const [isLoading, submitCode] = useSubmitCode(codeId);
 
   const code = data?.data;
-
-  const handleError = useHandleApiError();
-  React.useEffect(() => handleError(error), [handleError, error]);
 
   const onSubmit = () => {
     if (!code) {

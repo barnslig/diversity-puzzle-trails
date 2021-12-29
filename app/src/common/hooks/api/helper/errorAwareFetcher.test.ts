@@ -1,8 +1,8 @@
-import ApiError from "./ApiError";
+import ApiError, { ApiErrorResponse } from "./ApiError";
 import errorAwareFetcher from "./errorAwareFetcher";
 
 it("throws an error when the response is not ok", async () => {
-  const mockError = {
+  const mockError: ApiErrorResponse = {
     errors: [
       {
         id: "unknown-error",

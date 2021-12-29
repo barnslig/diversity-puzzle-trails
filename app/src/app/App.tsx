@@ -9,6 +9,7 @@ import theme from "./theme";
 import AppRouter from "./AppRouter";
 import NotificationProvider from "./NotificationProvider";
 import PwaReloadNotification from "./PwaReloadNotification";
+import SWRProvider from "./SWRProvider";
 
 const App = () => {
   return (
@@ -17,9 +18,11 @@ const App = () => {
         {/* @ts-expect-error */}
         <IntlProvider messages={messages} locale="de" defaultLocale="de">
           <NotificationProvider>
-            <CssBaseline />
-            <PwaReloadNotification />
-            <AppRouter />
+            <SWRProvider>
+              <CssBaseline />
+              <PwaReloadNotification />
+              <AppRouter />
+            </SWRProvider>
           </NotificationProvider>
         </IntlProvider>
       </ThemeProvider>

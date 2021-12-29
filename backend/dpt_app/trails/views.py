@@ -49,7 +49,7 @@ def get_game_or_404(func):
         except Game.DoesNotExist:
             return JsonResponse({"errors": [
                 {
-                    "id": "not-found",
+                    "id": "game-not-found",
                     "status": 404,
                     "title": "Unknown Game ID"
                 }
@@ -149,7 +149,7 @@ def code(request, game, codeId):
     except Code.DoesNotExist:
         return JsonResponse({"errors": [
             {
-                "id": "not-found",
+                "id": "code-not-found",
                 "status": 404,
                 "title": "Unknown QR code ID"
             }

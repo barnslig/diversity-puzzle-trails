@@ -1,7 +1,7 @@
 {
   "errors": [
     {
-      "id": "not-found",
+      "id": "code-not-found",
       "status": 404,
       "title": "Unbekannter QR-Code."
     }
