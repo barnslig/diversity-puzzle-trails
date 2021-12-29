@@ -37,10 +37,13 @@ it("shows a snackbar with an action when a SW is waiting to be activated", () =>
 it("skips waiting and reloads the page when the user clicks the action button", () => {
   jest.spyOn(usePwaIsWaiting, "default").mockReturnValue(true);
 
+  const location = window.location;
   // @ts-ignore
   delete window.location;
-  // @ts-ignore
-  window.location = { reload: jest.fn() };
+  window.location = {
+    ...location,
+    reload: jest.fn(),
+  };
 
   const wb = new EventTarget() as unknown as Workbox;
   wb.messageSkipWaiting = jest.fn();

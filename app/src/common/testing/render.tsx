@@ -2,8 +2,9 @@ import { IntlProvider, ReactIntlErrorCode } from "react-intl";
 import { OnErrorFn } from "@formatjs/intl";
 import { render, RenderOptions } from "@testing-library/react";
 import { SnackbarProvider } from "notistack";
-import { SWRConfig } from "swr";
 import * as React from "react";
+
+import SWRProvider from "../../app/SWRProvider";
 
 // https://github.com/formatjs/formatjs/issues/1776#issuecomment-653930959
 const onError: OnErrorFn = (e) => {
@@ -27,7 +28,7 @@ export const TestWrapper = ({ children }: TestWrapperProps) => {
          * Reset cache between test cases
          * See https://swr.vercel.app/docs/advanced/cache#reset-cache-between-test-cases
          */}
-        <SWRConfig
+        <SWRProvider
           value={{
             dedupingInterval: 0,
             compare: (a, b) => false,
@@ -35,7 +36,7 @@ export const TestWrapper = ({ children }: TestWrapperProps) => {
           }}
         >
           {children}
-        </SWRConfig>
+        </SWRProvider>
       </SnackbarProvider>
     </IntlProvider>
   );
