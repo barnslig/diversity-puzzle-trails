@@ -1,10 +1,17 @@
-interface ApiErrorResponseError {
-  id: string;
+export type ApiErrorResponseTypes =
+  | "already-used"
+  | "code-not-found"
+  | "game-not-found"
+  | "not-authorised"
+  | "unknown-error";
+
+export interface ApiErrorResponseError {
+  id: ApiErrorResponseTypes;
   status: number;
   title: string;
 }
 
-interface ApiErrorResponse {
+export interface ApiErrorResponse {
   errors: ApiErrorResponseError[];
 }
 

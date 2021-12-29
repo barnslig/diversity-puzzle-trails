@@ -153,10 +153,10 @@ paths:
                     items:
                       $ref: "#/components/schemas/Error"
               examples:
-                not-found:
+                code-not-found:
                   value:
                     errors:
-                      - id: not-found
+                      - id: code-not-found
                         status: 404
                         title: Unknown QR code ID
       description: Get the actions represented by a QR code id.
@@ -400,10 +400,10 @@ paths:
                     items:
                       $ref: "#/components/schemas/Error"
               examples:
-                not-found:
+                game-not-found:
                   value:
                     errors:
-                      - id: not-found
+                      - id: game-not-found
                         status: 404
                         title: Unknown game
       operationId: get-game
