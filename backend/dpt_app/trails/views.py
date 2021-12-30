@@ -1,9 +1,11 @@
-import time
 from django.http import HttpResponse, JsonResponse
+from django.utils.translation import gettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
+import time
+
+from .enums import ClockType, ActionType
 from .models import Game, Log, Parameter, Player, Character
 from .qr_models import Code
-from .enums import ClockType, ParameterType, ActionType, CharacterType
 
 # TODO: For production, protect this variable with a mutex
 # or move it into the DB
@@ -51,7 +53,7 @@ def get_game_or_404(func):
                 {
                     "id": "game-not-found",
                     "status": 404,
-                    "title": "Unknown Game ID"
+                    "title": _("Unknown Game ID")
                 }
             ]}, status=404)
         return func(request, game, *args, **kwargs)
@@ -69,7 +71,7 @@ def has_bearer_or_403(func):
             {
                 "id": "not-authorised",
                 "status": 403,
-                "title": "Missing or malformed bearer"
+                "title": _("Missing or malformed bearer")
             }
         ]}, status=403)
     return inner
@@ -151,7 +153,7 @@ def code(request, game, codeId):
             {
                 "id": "code-not-found",
                 "status": 404,
-                "title": "Unknown QR code ID"
+                "title": _("Unknown QR code ID")
             }
         ]}, status=404)
 
@@ -164,12 +166,12 @@ def code(request, game, codeId):
         if has_valid_bearer(bearer, game) or is_onboarding(code):
             return func_code_post(game, code, bearer)
     return JsonResponse({"errors": [
-            {
-                "id": "not-authorised",
-                "status": 403,
-                "title": "Missing or malformed bearer"
-            }
-        ]}, status=403)
+        {
+            "id": "not-authorised",
+            "status": 403,
+            "title": _("Missing or malformed bearer")
+        }
+    ]}, status=403)
 
 
 def func_code_get(game, code):
@@ -208,11 +210,11 @@ def func_code_post(game, code, bearer):
     if code.one_shot is True and game.logs.filter(id=code.id).exists():
         return JsonResponse({"errors": [
             {
-              "id": "already-used",
-              "status": 403,
-              "title": "This QR code is already used"
+                "id": "already-used",
+                "status": 403,
+                "title": _("This QR code is already used")
             }
-          ]}, status=403)
+        ]}, status=403)
 
     for action in code.actions.all():
         if action.action_type == ActionType.PARAMETER:

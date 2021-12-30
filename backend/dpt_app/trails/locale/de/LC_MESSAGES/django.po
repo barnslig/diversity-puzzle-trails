@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-25 19:24+0000\n"
+"POT-Creation-Date: 2021-12-30 14:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -229,3 +229,19 @@ msgstr "Spiel-Aktion"
 #, python-brace-format
 msgid "Action: {0}"
 msgstr "Spiel-Aktion: {0}"
+
+#: trails/views.py:56
+msgid "Unknown Game ID"
+msgstr "Unbekannter Spiel-Code!"
+
+#: trails/views.py:74 trails/views.py:177
+msgid "Missing or malformed bearer"
+msgstr "Fehler bei der Authentifizierung!"
+
+#: trails/views.py:161
+msgid "Unknown QR code ID"
+msgstr "Unbekannter QR-Code!"
+
+#: trails/views.py:220
+msgid "This QR code is already used"
+msgstr "Der QR-Code wurde bereits verwendet!"
