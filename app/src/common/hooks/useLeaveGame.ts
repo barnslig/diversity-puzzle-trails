@@ -1,6 +1,8 @@
 import { useIntl } from "react-intl";
 import { useLocation } from "wouter";
 import { useSnackbar } from "notistack";
+import * as React from "react";
+
 import useCharacter from "./useCharacter";
 import useGameId from "./useGameId";
 
@@ -16,7 +18,7 @@ const useLeaveGame = () => {
   const { enqueueSnackbar } = useSnackbar();
   const intl = useIntl();
 
-  return () => {
+  return React.useCallback(() => {
     deleteCharacter();
     deleteGameId();
     enqueueSnackbar(
@@ -26,8 +28,8 @@ const useLeaveGame = () => {
       }),
       { variant: "success" }
     );
-    setLocation("/");
-  };
+    setLocation("/start");
+  }, [deleteCharacter, deleteGameId, enqueueSnackbar, intl, setLocation]);
 };
 
 export default useLeaveGame;

@@ -12,9 +12,9 @@ jest.mock("../../common/hooks/useJoinGame", () => ({
   default: () => useJoinGame,
 }));
 
-it("renders nothing when a game id is supplied", () => {
+it("renders nothing when a game id is supplied", async () => {
   const { container } = render(<StartPage gameId="foobar" />);
-  expect(container.firstChild).toBe(null);
+  await waitFor(() => expect(container.firstChild).not.toBeVisible());
 });
 
 it("sets the game id when a game id is supplied", async () => {
