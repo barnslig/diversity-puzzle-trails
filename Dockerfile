@@ -24,6 +24,10 @@ COPY docker /
 
 WORKDIR /usr/src/app/dpt_app
 RUN python manage.py collectstatic --no-input
+
+RUN apt update && apt install -y \
+  gettext \
+  && rm -rf /var/lib/apt/lists/*
 RUN python manage.py compilemessages
 
 EXPOSE 80
