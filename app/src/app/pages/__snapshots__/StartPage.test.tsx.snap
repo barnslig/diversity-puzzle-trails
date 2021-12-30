@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly when no game id is supplied 1`] = `
-<div>
+<div
+  class="MuiBox-root css-rrm59m"
+>
   <header
     class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-11b3ww9-MuiPaper-root-MuiAppBar-root"
   >
@@ -21,7 +23,9 @@ exports[`renders correctly when no game id is supplied 1`] = `
     <div
       class="MuiContainer-root MuiContainer-maxWidthSm css-cuefkz-MuiContainer-root"
     >
-      <form>
+      <form
+        action="#"
+      >
         <div
           class="MuiBox-root css-1qm1lh"
         >
