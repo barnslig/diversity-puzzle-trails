@@ -1,6 +1,8 @@
 from django import forms
-from django.contrib import admin
+from django.contrib import admin, messages
 from django.contrib.auth.models import User, Group
+from django.http import HttpResponse
+from django.http.response import HttpResponseRedirect
 from django.utils.translation import gettext as _
 
 from .models import Game, Parameter, Player, Character, Log
@@ -25,6 +27,8 @@ class LogInline(admin.TabularInline):
 class ParameterInline(admin.TabularInline):
     model = Parameter
     extra = 0
+    exclude = ('min_value', 'max_value',)
+    readonly_fields = ('current_value',)
 
 
 class PlayerInline(admin.TabularInline):
@@ -49,6 +53,48 @@ class GameAdmin(admin.ModelAdmin):
 
     # form = GameForm
     add_form = GameForm
+
+    exclude = ('clock_last_change', 'clock_duration',)
+
+    readonly_fields = (
+        'total_clock_duration',
+        'max_clock_duration',
+        'is_game_over',
+    )
+
+    save_on_top = True
+
+    change_form_template = "game_change_form.html"
+
+    def response_change(self, request: HttpResponse, obj: Game):
+        if "_add-points" in request.POST:
+            num_points = 10
+            param = obj.resolve_game_over_add_points(num_points)
+
+            if param:
+                self.message_user(request, _(
+                    f"Added {num_points} points to the lowest parameter {param.name}"))
+            else:
+                self.message_user(request, _(
+                    "Not in game over state!"), level=messages.WARNING)
+
+            return HttpResponseRedirect(".")
+
+        if "_add-minutes" in request.POST:
+            num_minutes = 15
+            obj.resolve_game_over_add_time(num_minutes * 60)
+
+            self.message_user(request, _(
+                f"Added {num_minutes} minutes to the game"))
+            return HttpResponseRedirect(".")
+
+        if "_reset-game" in request.POST:
+            obj.reset()
+
+            self.message_user(request, _("Game is resetted"))
+            return HttpResponseRedirect(".")
+
+        return super().response_change(request, obj)
 
     def get_form(self, request, obj=None, **kwargs):
         """

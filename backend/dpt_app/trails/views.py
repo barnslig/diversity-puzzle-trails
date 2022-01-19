@@ -1,40 +1,10 @@
 from django.http import HttpResponse, JsonResponse
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
-import time
 
 from .enums import ClockType, ActionType
 from .models import Game, Log, Parameter, Player, Character
 from .qr_models import Code
-
-# TODO: For production, protect this variable with a mutex
-# or move it into the DB
-last_time = time.time()
-
-
-def calcTimepassingParameters(game):
-    global last_time
-    if game.clock_state == ClockType.RUNNING:
-        current_time = time.time()
-        passed_time_ms = (current_time - last_time) * 1000
-        if passed_time_ms < 500:
-            return
-        passed_tick = passed_time_ms / game.clock_speed
-        last_time = current_time
-
-        for parameter in game.parameter.all():
-            parameter.value -= round(passed_tick * parameter.rate)
-            parameter.save()
-
-        for player in game.player.all():
-            player.action_points += round(passed_tick * 1)
-            if player.action_points > 15:
-                player.action_points = 15
-            player.save()
-
-    else:
-        # Clock is not runnig, take no action
-        pass
 
 
 def buildJsonResponse(data):
@@ -144,8 +114,6 @@ def code(request, game, codeId):
     def has_valid_bearer(bearer, game):
         return game.player.filter(bearer=bearer).exists()
 
-    calcTimepassingParameters(game)
-
     try:
         code = Code.objects.get(uuid=codeId)
     except Code.DoesNotExist:
@@ -249,7 +217,6 @@ def parameter(request, game):
     def get_bearer(request):
         return request.headers['Authorization']
 
-    calcTimepassingParameters(game)
     if request.method == 'GET':
         bearer = get_bearer(request)
         player = game.player.get(bearer=bearer)
@@ -267,10 +234,10 @@ def func_parameter_get(game, player):
                 "id": parameter.name,
                 "attributes": {
                     "scope": parameter.scope,
-                    "value": parameter.value,
+                    "value": parameter.current_value,
                     "rate": parameter.rate,
                     "min": parameter.min_value,
-                    "max": parameter.max_value 
+                    "max": parameter.max_value
                 }
             }
         )
