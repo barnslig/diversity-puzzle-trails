@@ -201,7 +201,7 @@ class Parameter(models.Model):
         query = Parameter.objects.filter(game=game).annotate(
             dur_when_zero=-1 * (F('initial_value') + F('value')) / ((F('game__clock_speed') / F('game__clock_unit')) * F('rate')))
 
-        return query.aggregate(Min('dur_when_zero'))['dur_when_zero__min']
+        return query.aggregate(Min('dur_when_zero'))['dur_when_zero__min'] or 0
 
     def value_at(self, clock_duration):
         """Get the parameter value at a specific game clock duration"""

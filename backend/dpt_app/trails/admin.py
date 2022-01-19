@@ -56,15 +56,20 @@ class GameAdmin(admin.ModelAdmin):
 
     exclude = ('clock_last_change', 'clock_duration',)
 
-    readonly_fields = (
-        'total_clock_duration',
-        'max_clock_duration',
-        'is_game_over',
-    )
-
     save_on_top = True
 
     change_form_template = "game_change_form.html"
+
+    def get_readonly_fields(self, request, obj=None):
+        if obj:
+            # Only show readonly fields on the edit page of an existing object
+            return (
+                'total_clock_duration',
+                'max_clock_duration',
+                'is_game_over',
+            )
+
+        return super().get_readonly_fields(request, obj)
 
     def response_change(self, request: HttpResponse, obj: Game):
         if "_add-points" in request.POST:
