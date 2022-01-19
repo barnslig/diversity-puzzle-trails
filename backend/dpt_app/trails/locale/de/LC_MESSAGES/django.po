@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-19 16:11+0000\n"
+"POT-Creation-Date: 2022-01-19 18:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,9 @@ msgstr "DPT Admin"
 #: trails/admin.py:76
 #, python-brace-format
 msgid "Added {num_points} points to the lowest parameter {param.name}"
-msgstr "Es wurden {num_points} Punkte zum niedrigsten Parameter {param.name} hinzugefügt."
+msgstr ""
+"Es wurden {num_points} Punkte zum niedrigsten Parameter {param.name} "
+"hinzugefügt."
 
 #: trails/admin.py:79
 msgid "Not in game over state!"
@@ -52,54 +54,62 @@ msgstr "Gestoppt"
 msgid "Running"
 msgstr "Läuft"
 
-#: trails/enums.py:11 trails/enums.py:17 trails/enums.py:25 trails/enums.py:31
+#: trails/enums.py:11
+msgid "Seconds"
+msgstr "Sekunden"
+
+#: trails/enums.py:12
+msgid "Minutes"
+msgstr "Minuten"
+
+#: trails/enums.py:16 trails/enums.py:22 trails/enums.py:30 trails/enums.py:36
 msgid "None"
 msgstr "Nicht gesetzt"
 
-#: trails/enums.py:12
+#: trails/enums.py:17
 msgid "Engineer"
 msgstr "Ingenieur*in"
 
-#: trails/enums.py:13
+#: trails/enums.py:18
 msgid "Pilot"
 msgstr "Pilot*in"
 
-#: trails/enums.py:18
+#: trails/enums.py:23
 msgid "Energy"
 msgstr "Energie"
 
-#: trails/enums.py:19
+#: trails/enums.py:24
 msgid "Food"
 msgstr "Nahrung"
 
-#: trails/enums.py:20
+#: trails/enums.py:25
 msgid "Hygiene"
 msgstr "Hygiene"
 
-#: trails/enums.py:21
+#: trails/enums.py:26
 msgid "Moral"
 msgstr "Moral"
 
-#: trails/enums.py:26
+#: trails/enums.py:31
 msgid "Global"
 msgstr "Global"
 
-#: trails/enums.py:27
+#: trails/enums.py:32
 msgid "User"
 msgstr "User"
 
-#: trails/enums.py:32 trails/models.py:141 trails/models.py:142
+#: trails/enums.py:37 trails/models.py:148 trails/models.py:149
 #: trails/qr_models.py:75
 msgid "Parameter"
 msgstr "Parameter"
 
-#: trails/enums.py:33 trails/models.py:250 trails/models.py:265
+#: trails/enums.py:38 trails/models.py:257 trails/models.py:272
 #: trails/qr_models.py:85
 msgid "Character"
 msgstr "Charakter"
 
-#: trails/models.py:15 trails/models.py:188 trails/models.py:245
-#: trails/models.py:292
+#: trails/models.py:15 trails/models.py:195 trails/models.py:252
+#: trails/models.py:299
 msgid "Game"
 msgstr "Spiel"
 
@@ -124,128 +134,132 @@ msgstr "Spiel-Geschwindigkeit"
 msgid "Last clock state change"
 msgstr "Letztes Update vom Uhr-Zustand"
 
-#: trails/models.py:48
+#: trails/models.py:49
+msgid "Clock Unit"
+msgstr "Einheit der Uhr"
+
+#: trails/models.py:55
 msgid "Total clock running duration"
 msgstr "Bisherige Spieldauer"
 
-#: trails/models.py:53
+#: trails/models.py:60
 msgid "Has User Parameter Scope?"
 msgstr "Parameter mit User-Gültigkeitsbereich aktivieren?"
 
-#: trails/models.py:58
+#: trails/models.py:65
 msgid "Has Messages Feature?"
 msgstr "Nachrichten-Feature aktivieren?"
 
-#: trails/models.py:62
+#: trails/models.py:69
 msgid "Maximum Game Duration"
 msgstr "Maximale Spieldauer"
 
-#: trails/models.py:68
+#: trails/models.py:75
 msgid "Total Game Duration"
 msgstr "Bisherige Spieldauer"
 
-#: trails/models.py:79
+#: trails/models.py:86
 msgid "Is Game Over?"
 msgstr "Game Over?"
 
-#: trails/models.py:149
+#: trails/models.py:156
 msgctxt "Parameter Name"
 msgid "Name"
 msgstr "Name"
 
-#: trails/models.py:155
+#: trails/models.py:162
 msgid "Scope"
 msgstr "Gültigkeitsbereich"
 
-#: trails/models.py:160
+#: trails/models.py:167
 msgid "Minimum Value"
 msgstr "Minimaler Wert"
 
-#: trails/models.py:167
+#: trails/models.py:174
 msgid "Maximum Value"
 msgstr "Maximaler Wert"
 
-#: trails/models.py:171
+#: trails/models.py:178
 msgid "Initial Value"
 msgstr "Initialer Wert"
 
-#: trails/models.py:176 trails/qr_models.py:79
+#: trails/models.py:183 trails/qr_models.py:79
 msgid "Value"
 msgstr "Wert"
 
-#: trails/models.py:182
+#: trails/models.py:189
 msgid "Rate"
 msgstr "Rate (Tempo)"
 
-#: trails/models.py:207
+#: trails/models.py:214
 msgid "Current Value"
 msgstr "Aktueller Wert"
 
-#: trails/models.py:213
+#: trails/models.py:220
 msgid "Clock Duration When Zero"
 msgstr "Spieldauer zu der der Parameter null ist"
 
-#: trails/models.py:222
+#: trails/models.py:229
 #, python-brace-format
 msgid "Parameter {0} from {1}"
 msgstr "Parameter {0} aus dem Spiel {1}"
 
-#: trails/models.py:229 trails/models.py:309
+#: trails/models.py:236 trails/models.py:316
 msgid "Player"
 msgstr "Spieler*in"
 
-#: trails/models.py:230
+#: trails/models.py:237
 msgid "Players"
 msgstr "Spieler*innen"
 
-#: trails/models.py:235
+#: trails/models.py:242
 msgctxt "Player Name"
 msgid "Name"
 msgstr "Name"
 
-#: trails/models.py:239
+#: trails/models.py:246
 msgid "Bearer"
 msgstr "Bearer"
 
-#: trails/models.py:254
+#: trails/models.py:261
 msgid "Action Points"
 msgstr "Aktionspunkte"
 
-#: trails/models.py:258
+#: trails/models.py:265
 #, python-brace-format
 msgid "Player {0} from game {1}"
 msgstr "Spieler*in {0} aus dem Spiel {1}"
 
-#: trails/models.py:266
+#: trails/models.py:273
 msgid "Characters"
 msgstr "Charaktere"
 
-#: trails/models.py:273
+#: trails/models.py:280
 msgid "Character Class"
 msgstr "Charakter-Klasse"
 
-#: trails/models.py:280
+#: trails/models.py:287
 #, python-brace-format
 msgid "Character {0}"
 msgstr "Charakter {0}"
 
-#: trails/models.py:285
+#: trails/models.py:292
 msgid "Log"
 msgstr "Log-Eintrag"
 
-#: trails/models.py:286
+#: trails/models.py:293
 msgid "Logs"
 msgstr "Log-Einträge"
 
-#: trails/models.py:297
+#: trails/models.py:304
 msgid "Created At"
 msgstr "Erstellt um"
 
-#: trails/models.py:303 trails/qr_models.py:12 trails/qr_models.py:63
+#: trails/models.py:310 trails/qr_models.py:12 trails/qr_models.py:63
 msgid "Code"
 msgstr "QR-Code"
 
-#: trails/models.py:313
+#: trails/models.py:320
 #, python-brace-format
 msgid "{0} - Game: {1}, Code: {2}"
 msgstr "{0} - Spiel: {1}, QR-Code: {2}"

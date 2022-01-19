@@ -3,7 +3,7 @@ from django.test import TestCase
 from django.utils import timezone
 from unittest.mock import patch
 
-from .enums import CharacterType, ClockType, ParameterScope, ParameterType
+from .enums import CharacterType, ClockType, ClockUnit, ParameterScope, ParameterType
 from .models import Character, Game, Parameter, Player
 
 CLOCK_DURATION = 70
@@ -16,7 +16,8 @@ class GameTestCase(TestCase):
         cls.game: Game = Game.objects.create(
             name="Test Game",
             slug="test-game",
-            clock_duration=CLOCK_DURATION
+            clock_duration=CLOCK_DURATION,
+            clock_unit=ClockUnit.SECONDS
         )
 
         # Manually set clock_last_change as it otherwise gets overridden by auto_now_add=True
