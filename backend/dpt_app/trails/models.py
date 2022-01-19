@@ -68,8 +68,11 @@ class Game(models.Model):
     @property
     @admin.display(description=_("Maximum Game Duration"))
     def max_clock_duration(self):
-        """Get the maximum clock duration, in seconds"""
-        return Parameter.max_clock_duration(self)
+        """Get the maximum  clock duration in seconds at which the first parameter is zero"""
+        query = self.parameter.annotate(
+            dur_when_zero=-1 * (F('initial_value') + F('value')) / ((F('game__clock_speed') / F('game__clock_unit')) * F('rate')))
+
+        return query.aggregate(Min('dur_when_zero'))['dur_when_zero__min'] or 0
 
     @property
     @admin.display(description=_("Total Game Duration"))
@@ -194,14 +197,6 @@ class Parameter(models.Model):
         related_name="parameter",
         verbose_name=_("Game")
     )
-
-    @staticmethod
-    def max_clock_duration(game: Game):
-        """Get the maximum game clock duration in seconds at which the first parameter is zero"""
-        query = Parameter.objects.filter(game=game).annotate(
-            dur_when_zero=-1 * (F('initial_value') + F('value')) / ((F('game__clock_speed') / F('game__clock_unit')) * F('rate')))
-
-        return query.aggregate(Min('dur_when_zero'))['dur_when_zero__min'] or 0
 
     def value_at(self, clock_duration):
         """Get the parameter value at a specific game clock duration"""

@@ -226,6 +226,12 @@ def parameter(request, game):
 
 
 def func_parameter_get(game, player):
+    # By retrieving the duration only once, then call `.value_at(dur)`
+    # on every parameter instead of `.current_value`, we only need a
+    # single SQL query for the duration instead of N, where N is the
+    # number of parameters.
+    dur = game.total_clock_duration
+
     response = []
     for parameter in game.parameter.all():
         response.append(
@@ -234,7 +240,7 @@ def func_parameter_get(game, player):
                 "id": parameter.name,
                 "attributes": {
                     "scope": parameter.scope,
-                    "value": parameter.current_value,
+                    "value": parameter.value_at(dur),
                     "rate": parameter.rate,
                     "min": parameter.min_value,
                     "max": parameter.max_value
