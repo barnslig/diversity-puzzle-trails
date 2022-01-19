@@ -4,9 +4,12 @@
 
 {% block submit_buttons_top %}
   {{ block.super }}
-  <div class="submit-row">
-    <input type="submit" name="_add-points" value="{% translate 'Add +10 Points' %}" />
-    <input type="submit" name="_add-minutes" value="{% translate 'Add +15 Minutes' %}" />
-    <input type="submit" name="_reset-game" value="{% translate 'Reset Game' %}" />
-  </div>
+
+  {% if original %}
+    <div class="submit-row">
+      <input type="submit" name="_add-points" value="{% translate 'Add +10 Points' %}" />
+      <input type="submit" name="_add-minutes" value="{% translate 'Add +15 Minutes' %}" />
+      <input type="submit" name="_reset-game" value="{% translate 'Reset Game' %}" />
+    </div>
+  {% endif %}
 {% endblock %}
