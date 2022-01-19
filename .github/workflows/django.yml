@@ -34,4 +34,6 @@ jobs:
 
       - name: Run Tests
         working-directory: backend/dpt_app
-        run: python manage.py test
+        run: |
+          cp .env.example .env
+          python manage.py test
