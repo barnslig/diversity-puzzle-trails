@@ -1,10 +1,15 @@
-from django.db.models import TextChoices
+from django.db.models import IntegerChoices, TextChoices
 from django.utils.translation import gettext_lazy as _
 
 
 class ClockType(TextChoices):
     STOPPED = 'stopped', _('Stopped')
     RUNNING = 'running', _('Running')
+
+
+class ClockUnit(IntegerChoices):
+    SECONDS = 1, _('Seconds')
+    MINUTES = 60, _('Minutes')
 
 
 class CharacterType(TextChoices):

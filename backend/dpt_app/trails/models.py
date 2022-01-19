@@ -6,7 +6,7 @@ from django.dispatch import receiver
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _, pgettext_lazy
 
-from .enums import ClockType, ParameterType, ParameterScope, CharacterType
+from .enums import ClockType, ClockUnit, ParameterType, ParameterScope, CharacterType
 from .qr_models import Code
 
 
@@ -43,6 +43,13 @@ class Game(models.Model):
         verbose_name=_("Last clock state change")
     )
 
+    clock_unit = models.IntegerField(
+        default=ClockUnit.MINUTES,
+        choices=ClockUnit.choices,
+        verbose_name=_("Clock Unit")
+    )
+
+    # Game duration until clock_last_change, in seconds
     clock_duration = models.IntegerField(
         default=0,
         verbose_name=_("Total clock running duration")
@@ -61,13 +68,13 @@ class Game(models.Model):
     @property
     @admin.display(description=_("Maximum Game Duration"))
     def max_clock_duration(self):
-        """Get the maximum clock duration"""
+        """Get the maximum clock duration, in seconds"""
         return Parameter.max_clock_duration(self)
 
     @property
     @admin.display(description=_("Total Game Duration"))
     def total_clock_duration(self):
-        """Get the current clock duration"""
+        """Get the current clock duration, in seconds"""
         clock_duration = self.clock_duration
         if self.clock_state == ClockType.RUNNING:
             clock_duration = self.clock_duration + \
@@ -96,11 +103,11 @@ class Game(models.Model):
 
                 return param
 
-    def resolve_game_over_add_time(self, num_time):
+    def resolve_game_over_add_time(self, num_seconds):
         """Resolve a game over state by adding time to the game"""
         self.clock_state = ClockType.RUNNING
         self.clock_last_change = timezone.now()
-        self.clock_duration = max(0, self.clock_duration - num_time)
+        self.clock_duration = max(0, self.clock_duration - num_seconds)
         self.save()
 
     def reset(self):
@@ -190,16 +197,16 @@ class Parameter(models.Model):
 
     @staticmethod
     def max_clock_duration(game: Game):
-        """Get the maximum game clock duration at which the first parameter is zero"""
+        """Get the maximum game clock duration in seconds at which the first parameter is zero"""
         query = Parameter.objects.filter(game=game).annotate(
-            dur_when_zero=-1 * (F('initial_value') + F('value')) / (F('game__clock_speed') * F('rate')))
+            dur_when_zero=-1 * (F('initial_value') + F('value')) / ((F('game__clock_speed') / F('game__clock_unit')) * F('rate')))
 
         return query.aggregate(Min('dur_when_zero'))['dur_when_zero__min']
 
     def value_at(self, clock_duration):
         """Get the parameter value at a specific game clock duration"""
         value = round((self.initial_value + self.value) + clock_duration
-                      * self.game.clock_speed * self.rate)
+                      * (self.game.clock_speed / self.game.clock_unit) * self.rate)
 
         return max(min(value, self.max_value), self.min_value)
 
@@ -213,7 +220,7 @@ class Parameter(models.Model):
     @admin.display(description=_("Clock Duration When Zero"))
     def game_clock_duration_when_value_zero(self):
         """Get the game.clock_duration at which this parameter is zero"""
-        return -1 * (self.initial_value + self.value) / (self.game.clock_speed * self.rate)
+        return -1 * (self.initial_value + self.value) / ((self.game.clock_speed / self.game.clock_unit) * self.rate)
 
     def label(self):
         return ParameterType(self.name).label
