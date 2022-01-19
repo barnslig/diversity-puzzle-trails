@@ -185,3 +185,27 @@ class GameModelTest(GameTestCase):
             self.assertEqual(self.game.clock_state, ClockType.STOPPED)
             self.assertEqual(self.game.clock_last_change, now)
             self.assertEqual(self.game.clock_duration, CLOCK_DURATION + 10)
+
+
+class ParameterModelTest(GameTestCase):
+    def test_value_at(self):
+        # it returns the parameter value at the requested game duration
+        self.assertEqual(self.param.value_at(
+            0), self.param.initial_value + self.param.value)
+
+        # it does not go below the minimum parameter value
+        self.assertEqual(self.param.value_at(99999999), self.param.min_value)
+
+        # it does not go above the maximum parameter value
+        self.assertEqual(self.param.value_at(-99999999), self.param.max_value)
+
+    def test_current_value(self):
+        # it returns the current parameter value
+        self.assertEqual(self.param.current_value, 30)
+
+    def test_game_clock_duration_when_value_zero(self):
+        # it calculates the duration at which the parameter value first gets zero
+        duration_when_zero = self.param.game_clock_duration_when_value_zero
+
+        self.assertEqual(duration_when_zero, 100)
+        self.assertEqual(self.param.value_at(duration_when_zero), 0)
