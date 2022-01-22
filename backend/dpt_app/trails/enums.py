@@ -36,3 +36,4 @@ class ActionType(TextChoices):
     NONE = 'none', _('None')
     PARAMETER = 'parameter', _('Parameter')
     CHARACTER = 'character', _('Character')
+    MESSAGE = 'message', _('Message')

@@ -84,6 +84,12 @@ class Action(models.Model):
         default=CharacterType.NONE,
         verbose_name=_("Character")
     )
+    message = models.CharField(
+        blank=True,
+        default="",
+        max_length=255,
+        verbose_name=_("Message")
+    )
 
     def label(self):
         return ActionType(self.action_type).label

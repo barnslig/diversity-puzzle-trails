@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.http.response import HttpResponseRedirect
 from django.utils.translation import gettext as _
 
-from .models import Game, Parameter, Player, Character, Log
+from .models import Game, Message, Parameter, Player, Character, Log
 from .qr_models import Code, Action
 
 admin.site.site_header = _("Diversity Puzzle Trails Administration")
@@ -14,7 +14,7 @@ admin.site.site_title = _("DPT admin")
 # Register your models here.
 
 
-class ActionInline(admin.TabularInline):
+class ActionInline(admin.StackedInline):
     model = Action
     extra = 0
 
@@ -31,6 +31,12 @@ class ParameterInline(admin.TabularInline):
     readonly_fields = ('current_value',)
 
 
+class MessageInline(admin.TabularInline):
+    model = Message
+    extra = 1
+    readonly_fields = ('created_at',)
+
+
 class PlayerInline(admin.TabularInline):
     model = Player
     extra = 0
@@ -45,6 +51,7 @@ class GameForm(forms.ModelForm):
 class GameAdmin(admin.ModelAdmin):
     inlines = [
         ParameterInline,
+        MessageInline,
         PlayerInline,
         LogInline
     ]

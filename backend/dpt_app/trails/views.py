@@ -3,7 +3,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
 
 from .enums import ClockType, ActionType
-from .models import Game, Log, Parameter, Player, Character
+from .models import Game, Log, Message, Parameter, Player, Character
 from .qr_models import Code
 
 
@@ -168,6 +168,13 @@ def func_code_get(game, code):
                     "character": action.character,
                 }
             )
+        elif action.action_type == ActionType.MESSAGE and game.hasMessages:
+            response["attributes"]["actions"].append(
+                {
+                    "type": "sendMessage",
+                    "message": action.message,
+                }
+            )
         else:
             pass
 
@@ -203,6 +210,11 @@ def func_code_post(game, code, bearer):
                     game=game,
                     character=Character.objects.get(character_class=action.character)
                 ).save()
+        elif action.action_type == ActionType.MESSAGE and game.hasMessages:
+            Message.objects.create(
+                message=action.message,
+                game=game
+            )
         else:
             pass
 
@@ -267,3 +279,33 @@ def func_parameter_get(game, player):
 
 def func_parameter_post(game):
     return buildJsonResponse({"Not implemented"})
+
+
+@get_game_or_404
+@has_bearer_or_403
+def messages(request, game):
+    if not game.hasMessages:
+        return JsonResponse({"errors": [
+            {
+                "id": "messages-not-enabled",
+                "status": 404,
+                "title": _("Game does not have messages enabled")
+            }
+        ]}, status=404)
+
+    return func_messages_get(game)
+
+
+def func_messages_get(game):
+    response = []
+    for message in game.message.all():
+        response.append({
+            "type": "message",
+            "id": message.id,
+            "attributes": {
+                "createdAt": message.created_at,
+                "message": message.message
+            }
+        })
+
+    return buildJsonResponse(response)

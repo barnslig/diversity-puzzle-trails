@@ -1,10 +1,15 @@
 from datetime import datetime
+from django.core.serializers.json import DjangoJSONEncoder
 from django.test import TestCase
+from django.urls import reverse
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 from unittest.mock import patch
+import json
 
-from .enums import CharacterType, ClockType, ClockUnit, ParameterScope, ParameterType
-from .models import Character, Game, Parameter, Player
+from .enums import ActionType, CharacterType, ClockType, ClockUnit, ParameterScope, ParameterType
+from .models import Character, Game, Message, Parameter, Player
+from .qr_models import Action, Code
 
 CLOCK_DURATION = 70
 MAX_CLOCK_DURATION = 80
@@ -16,6 +21,7 @@ class GameTestCase(TestCase):
         cls.game: Game = Game.objects.create(
             name="Test Game",
             slug="test-game",
+            hasMessages=True,
             clock_duration=CLOCK_DURATION,
             clock_unit=ClockUnit.SECONDS
         )
@@ -209,3 +215,136 @@ class ParameterModelTest(GameTestCase):
 
         self.assertEqual(duration_when_zero, 100)
         self.assertEqual(self.param.value_at(duration_when_zero), 0)
+
+
+class MessageViewTest(GameTestCase):
+    @classmethod
+    def setUpTestData(cls):
+        super().setUpTestData()
+
+        cls.message: Message = Message.objects.create(
+            message="Test 123",
+            game=cls.game
+        )
+
+        cls.code: Code = Code.objects.create(
+            name="Test Send Message"
+        )
+
+        cls.action: Action = Action.objects.create(
+            code=cls.code,
+            action_type=ActionType.MESSAGE,
+            message="Send Alpaca Pics"
+        )
+
+    def test_get(self):
+        url = reverse("message", args=(self.game.slug,))
+
+        # it returns the messages of a game
+        self.assertTrue(self.game.hasMessages)
+
+        res = self.client.get(url, HTTP_AUTHORIZATION=self.player.bearer)
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.json(), {
+            "data": [
+                {
+                    "type": "message",
+                    "id": self.message.id,
+                    "attributes": {
+                        "createdAt": json.loads(json.dumps(self.message.created_at, cls=DjangoJSONEncoder)),
+                        "message": self.message.message
+                    }
+                }
+            ]
+        })
+
+    def test_get_game_has_no_messages(self):
+        url = reverse("message", args=(self.game.slug,))
+
+        # disable messages
+        self.game.hasMessages = False
+        self.game.save()
+
+        # it returns 404 when messages are disabled
+        self.assertFalse(self.game.hasMessages)
+
+        res = self.client.get(url, HTTP_AUTHORIZATION=self.player.bearer)
+        self.assertEqual(res.status_code, 404)
+        self.assertEqual(res.json(), {
+            "errors": [
+                {
+                    "id": "messages-not-enabled",
+                    "status": 404,
+                    "title": _("Game does not have messages enabled")
+                }
+            ]
+        })
+
+    def test_get_code(self):
+        url = reverse("code", args=(self.game.slug, self.code.uuid,))
+
+        # it includes sendMessage actions when messages are enabled
+        self.assertTrue(self.game.hasMessages)
+
+        res = self.client.get(url, HTTP_AUTHORIZATION=self.player.bearer)
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.json(), {
+            'data': {
+                'type': 'code',
+                'id': self.code.id,
+                'attributes': {
+                    'oneShot': False,
+                    'actions': [
+                        {
+                            'type': 'sendMessage',
+                            'message': self.action.message
+                        }
+                    ]
+                }
+            }
+        })
+
+    def test_get_code_game_has_no_messages(self):
+        url = reverse("code", args=(self.game.slug, self.code.uuid,))
+
+        # disable messages
+        self.game.hasMessages = False
+        self.game.save()
+
+        # it excludes sendMessage actions when messages are disabled
+        self.assertFalse(self.game.hasMessages)
+
+        res = self.client.get(url, HTTP_AUTHORIZATION=self.player.bearer)
+        self.assertEqual(res.status_code, 200)
+
+        hasSendMessage = False
+        for action in res.json()["data"]["attributes"]["actions"]:
+            if action["type"] == "sendMessage":
+                hasSendMessage = True
+                break
+
+        self.assertFalse(hasSendMessage)
+
+    def test_post_code(self):
+        url = reverse("code", args=(self.game.slug, self.code.uuid,))
+
+        # it sends a message using a code
+        self.assertTrue(self.game.hasMessages)
+
+        res = self.client.post(url, HTTP_AUTHORIZATION=self.player.bearer)
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(self.game.message.last().message, self.action.message)
+
+    def test_post_code_game_has_no_messages(self):
+        url = reverse("code", args=(self.game.slug, self.code.uuid,))
+
+        # disable messages
+        self.game.hasMessages = False
+        self.game.save()
+
+        # it does nothing when messages are disabled
+        self.assertFalse(self.game.hasMessages)
+        res = self.client.post(url, HTTP_AUTHORIZATION=self.player.bearer)
+        self.assertEqual(res.status_code, 200)
+        self.assertFalse(self.game.message.filter(
+            message=self.action.message).exists())

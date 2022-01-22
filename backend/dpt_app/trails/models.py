@@ -315,3 +315,26 @@ class Log(models.Model):
         return _("{0} - Game: {1}, Code: {2}").format(
             str(self.created_at), self.game, self.code
         )
+
+
+class Message(models.Model):
+    class Meta:
+        verbose_name = _('Message')
+        verbose_name_plural = _('Messages')
+        ordering = ['created_at']
+
+    created_at = models.DateTimeField(
+        auto_now=False,
+        auto_now_add=True,
+        verbose_name=_("Created At")
+    )
+    message = models.CharField(
+        max_length=255,
+        verbose_name=_("Message")
+    )
+    game = models.ForeignKey(
+        "Game",
+        on_delete=models.CASCADE,
+        related_name="message",
+        verbose_name=_("Game")
+    )
