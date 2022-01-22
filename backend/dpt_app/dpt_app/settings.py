@@ -17,6 +17,7 @@ env = environ.Env(
     DEBUG=(bool, False),
     ALLOWED_HOSTS=(list, ["localhost"]),
     CORS_ALLOWED_ORIGINS=(list, ["http://localhost:8000"]),
+    CSRF_TRUSTED_ORIGINS=(list, ["http://localhost:8000"]),
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -42,6 +43,10 @@ ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 
 CORS_ALLOWED_ORIGINS = env('CORS_ALLOWED_ORIGINS')
 
+# CSRF protection
+# https://docs.djangoproject.com/en/4.0/ref/settings/#csrf-trusted-origins
+
+CSRF_TRUSTED_ORIGINS = env('CSRF_TRUSTED_ORIGINS')
 
 # Application definition
 
@@ -123,8 +128,6 @@ LANGUAGE_CODE = 'de-de'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
-
-USE_L10N = True
 
 USE_TZ = True
 
