@@ -3,7 +3,7 @@
     "type": "game",
     "id": "summer-school-2021",
     "attributes": {
-      "hasMessages": false,
+      "hasMessages": true,
       "hasUserParameterScope": true
     }
   }

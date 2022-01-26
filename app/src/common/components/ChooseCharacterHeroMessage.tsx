@@ -2,13 +2,18 @@ import { ArrowDownward } from "@mui/icons-material";
 import { FormattedMessage } from "react-intl";
 import * as React from "react";
 
-import HeroMessage from "./HeroMessage";
-
 import config from "../../config";
+import HeroMessage from "./HeroMessage";
+import useGame from "../hooks/api/useGame";
 
 type ChooseCharacterHeroMessageProps = {};
 
 const ChooseCharacterHeroMessage = (props: ChooseCharacterHeroMessageProps) => {
+  const { data: game } = useGame();
+
+  const hasMessages =
+    config.featureMessages && game && game.data.attributes.hasMessages;
+
   return (
     <HeroMessage
       title={
@@ -28,7 +33,7 @@ const ChooseCharacterHeroMessage = (props: ChooseCharacterHeroMessageProps) => {
           sx={{
             marginBottom: 3,
             marginTop: 3,
-            transform: config.featureMessages ? "" : "translateX(84px)",
+            transform: hasMessages ? "" : "translateX(84px)",
           }}
         />
       }

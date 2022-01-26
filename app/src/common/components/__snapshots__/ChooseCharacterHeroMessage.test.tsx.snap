@@ -19,7 +19,7 @@ exports[`renders correctly 1`] = `
     </p>
     <svg
       aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-q2ql64-MuiSvgIcon-root"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1w920nw-MuiSvgIcon-root"
       data-testid="ArrowDownwardIcon"
       focusable="false"
       viewBox="0 0 24 24"

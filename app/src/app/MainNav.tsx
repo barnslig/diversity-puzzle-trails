@@ -4,14 +4,19 @@ import { Paper, BottomNavigation, BottomNavigationAction } from "@mui/material";
 import { useLocation } from "wouter";
 import * as React from "react";
 
-import QrCodeScanner from "../common/icons/QrCodeScanner";
-
 import config from "../config";
+import QrCodeScanner from "../common/icons/QrCodeScanner";
+import useGame from "../common/hooks/api/useGame";
 
 type MainNavProps = {};
 
 const MainNav = (props: MainNavProps) => {
   const [location, setLocation] = useLocation();
+
+  const { data: game } = useGame();
+
+  const hasMessages =
+    config.featureMessages && game && game.data.attributes.hasMessages;
 
   return (
     <Paper
@@ -50,7 +55,7 @@ const MainNav = (props: MainNavProps) => {
           }
           icon={<QrCodeScanner />}
         />
-        {config.featureMessages && (
+        {hasMessages && (
           <BottomNavigationAction
             value="/messages"
             label={
