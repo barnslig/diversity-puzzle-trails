@@ -217,6 +217,24 @@ class ParameterModelTest(GameTestCase):
         self.assertEqual(self.param.value_at(duration_when_zero), 0)
 
 
+class GameApiTest(GameTestCase):
+    def test_get(self):
+        url = reverse("api-1.0.0:gameManifest", args=(self.game.slug,))
+        res = self.client.get(url)
+
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.json(), {
+            "data": {
+                "type": "game",
+                "id": self.game.slug,
+                "attributes": {
+                    "hasMessages": self.game.hasMessages,
+                    "hasUserParameterScope": self.game.hasUserParameterScope
+                }
+            }
+        })
+
+
 class PlayerApiTest(GameTestCase):
     def test_put(self):
         bearer = "Bearer test54321"

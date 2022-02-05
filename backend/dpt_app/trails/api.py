@@ -138,7 +138,7 @@ def wrap_get_player(func):
             request.player = request.game.player.get(bearer=bearer)
 
             return func(request, *args, **kwargs)
-        except Player.DoesNotExist:
+        except (KeyError, Player.DoesNotExist):
             raise PlayerNotAuthorized()
 
     return inner
@@ -159,7 +159,6 @@ def serialize_game(game: Game):
 
 @api.get("games/{str:gameId}", response=GameSchema, url_name="gameManifest")
 @wrap_get_game
-@wrap_get_player
 def get_game(request: HttpRequest, gameId: str):
     return serialize_game(request.game)
 
