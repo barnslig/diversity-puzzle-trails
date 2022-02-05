@@ -58,4 +58,14 @@ export const handlers = [
   rest.get("/games/:gameId/messages", (req, res, ctx) => {
     return res(ctx.json(require("./data/messages.json")));
   }),
+
+  rest.put("/games/:gameId/players", (req, res, ctx) => {
+    if (req.params.gameId === "not-found") {
+      return res(
+        ctx.status(404),
+        ctx.json(require("./data/game-not-found.json"))
+      );
+    }
+    return res(ctx.json(require("./data/player.json")));
+  }),
 ];

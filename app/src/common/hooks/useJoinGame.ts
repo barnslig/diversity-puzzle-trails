@@ -7,6 +7,7 @@ import config from "../../config";
 import errorAwareFetcher from "./api/helper/errorAwareFetcher";
 import useCharacter from "./useCharacter";
 import useGameId from "../../common/hooks/useGameId";
+import useInstanceId from "./useInstanceId";
 
 /**
  * A React hook to join a game using a game ID
@@ -19,13 +20,26 @@ const useJoinGame = () => {
   const [, , deleteCharacter] = useCharacter();
   const { enqueueSnackbar } = useSnackbar();
   const intl = useIntl();
+  const instanceId = useInstanceId();
 
   return React.useCallback(
     async (gameId: string) => {
       try {
-        // Retrieve the game manifest
-        const url = config.apiEndpoints.game(gameId);
-        await errorAwareFetcher(() => fetch(url));
+        const url = config.apiEndpoints.players(gameId);
+
+        await errorAwareFetcher(() =>
+          fetch(url, {
+            method: "PUT",
+            headers: {
+              Authorization: `Bearer ${instanceId}`,
+            },
+            body: JSON.stringify({
+              data: {
+                type: "player",
+              },
+            }),
+          })
+        );
 
         deleteCharacter();
         setGameId(gameId);
@@ -50,6 +64,7 @@ const useJoinGame = () => {
       deleteCharacter,
       deleteGameId,
       enqueueSnackbar,
+      instanceId,
       intl,
       setGameId,
       setLocation,
