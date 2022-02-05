@@ -8,6 +8,7 @@ django = "~=4.0"
 django-cors-headers = "*"
 qrcode = {extras = ["pil"], version = "*"}
 django-environ = "*"
+django-ninja = "*"
 
 [dev-packages]
 

@@ -366,7 +366,7 @@ paths:
         in: path
         required: true
     get:
-      summary: Your GET endpoint
+      summary: Get game manifest
       tags:
         - App
       responses:
@@ -408,6 +408,49 @@ paths:
                         title: Unknown game
       operationId: get-game
       description: Get a game manifest.
+      security: []
+  "/games/{gameId}/players":
+    parameters:
+      - schema:
+          type: string
+        name: gameId
+        in: path
+        required: true
+    put:
+      summary: Create player
+      operationId: put-player
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/Player"
+              examples:
+                example:
+                  value:
+                    data:
+                      type: player
+                      id: "1"
+                      attributes:
+                        name: Example Name
+      description: "Create a new player. The endpoint expects the HTTP Bearer to be set to a client-generated, unique identifier."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  $ref: "#/components/schemas/Player"
+            examples:
+              example:
+                value:
+                  data:
+                    type: player
       security: []
 components:
   schemas:
@@ -656,7 +699,7 @@ components:
             rate: 0
             min: 0
             max: 99999
-      description: A game parameter
+      description: ""
       properties:
         type:
           type: string
@@ -712,6 +755,33 @@ components:
               type: boolean
             hasUserParameterScope:
               type: boolean
+    Player:
+      title: Player
+      type: object
+      x-examples:
+        example:
+          type: player
+          id: "1"
+          attributes:
+            name: Example Name
+            character: engineer
+      properties:
+        type:
+          type: string
+          default: player
+          enum:
+            - player
+        id:
+          type: string
+        attributes:
+          type: object
+          properties:
+            name:
+              type: string
+            character:
+              type: string
+      required:
+        - type
   securitySchemes:
     AppInstanceID:
       type: http
