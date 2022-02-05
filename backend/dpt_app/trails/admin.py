@@ -137,6 +137,7 @@ class CodeAdmin(admin.ModelAdmin):
         ActionInline
     ]
     readonly_fields = ('image',)
+    change_form_template = "code_change_form.html"
 
 
 admin.site.register(Game, GameAdmin)
