@@ -6,8 +6,9 @@ interface Config {
     clock: (gameId: string) => string;
     code: (codeId: string, gameId: string) => string;
     game: (gameId: string) => string;
-    parameters: (gameId: string) => string;
     messages: (gameId: string) => string;
+    parameters: (gameId: string) => string;
+    players: (gameId: string) => string;
   };
 
   /**
@@ -27,10 +28,12 @@ const config: Config = {
     code: (codeId: string, gameId: string) =>
       `${process.env.API_ROOT}/games/${gameId}/codes/${codeId}`,
     game: (gameId: string) => `${process.env.API_ROOT}/games/${gameId}`,
-    parameters: (gameId: string) =>
-      `${process.env.API_ROOT}/games/${gameId}/parameters`,
     messages: (gameId: string) =>
       `${process.env.API_ROOT}/games/${gameId}/messages`,
+    parameters: (gameId: string) =>
+      `${process.env.API_ROOT}/games/${gameId}/parameters`,
+    players: (gameId: string) =>
+      `${process.env.API_ROOT}/games/${gameId}/players`,
   },
   allowedCodeOrigins: [window.location.origin, "https://abc-dpt.netlify.app"],
   featureMessages: true,
