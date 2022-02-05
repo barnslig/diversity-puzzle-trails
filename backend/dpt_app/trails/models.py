@@ -249,6 +249,7 @@ class Player(models.Model):
     character = models.ForeignKey(
         'Character',
         on_delete=models.CASCADE,
+        null=True,
         verbose_name=_("Character")
     )
     action_points = models.IntegerField(

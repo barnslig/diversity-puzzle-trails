@@ -217,7 +217,33 @@ class ParameterModelTest(GameTestCase):
         self.assertEqual(self.param.value_at(duration_when_zero), 0)
 
 
-class MessageViewTest(GameTestCase):
+class PlayerApiTest(GameTestCase):
+    def test_put(self):
+        bearer = "Bearer test54321"
+
+        url = reverse("api-1.0.0:player", args=(self.game.slug,))
+
+        res = self.client.put(url, HTTP_AUTHORIZATION=bearer, data={
+            "data": {
+                "type": "player"
+            }
+        })
+
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.json(), {
+            "data": {
+                "type": "player",
+                "id": "2",
+                "attributes": {
+                    "name": "Example Name",
+                    "character": None
+                }
+            }
+        })
+        self.assertEqual(self.game.player.last().bearer, bearer)
+
+
+class MessageApiTest(GameTestCase):
     @classmethod
     def setUpTestData(cls):
         super().setUpTestData()
@@ -238,7 +264,7 @@ class MessageViewTest(GameTestCase):
         )
 
     def test_get(self):
-        url = reverse("message", args=(self.game.slug,))
+        url = reverse("api-1.0.0:message", args=(self.game.slug,))
 
         # it returns the messages of a game
         self.assertTrue(self.game.hasMessages)
@@ -259,7 +285,7 @@ class MessageViewTest(GameTestCase):
         })
 
     def test_get_game_has_no_messages(self):
-        url = reverse("message", args=(self.game.slug,))
+        url = reverse("api-1.0.0:message", args=(self.game.slug,))
 
         # disable messages
         self.game.hasMessages = False
@@ -281,7 +307,7 @@ class MessageViewTest(GameTestCase):
         })
 
     def test_get_code(self):
-        url = reverse("code", args=(self.game.slug, self.code.uuid,))
+        url = reverse("api-1.0.0:code", args=(self.game.slug, self.code.uuid,))
 
         # it includes sendMessage actions when messages are enabled
         self.assertTrue(self.game.hasMessages)
@@ -305,7 +331,7 @@ class MessageViewTest(GameTestCase):
         })
 
     def test_get_code_game_has_no_messages(self):
-        url = reverse("code", args=(self.game.slug, self.code.uuid,))
+        url = reverse("api-1.0.0:code", args=(self.game.slug, self.code.uuid,))
 
         # disable messages
         self.game.hasMessages = False
@@ -326,7 +352,7 @@ class MessageViewTest(GameTestCase):
         self.assertFalse(hasSendMessage)
 
     def test_post_code(self):
-        url = reverse("code", args=(self.game.slug, self.code.uuid,))
+        url = reverse("api-1.0.0:code", args=(self.game.slug, self.code.uuid,))
 
         # it sends a message using a code
         self.assertTrue(self.game.hasMessages)
@@ -336,7 +362,7 @@ class MessageViewTest(GameTestCase):
         self.assertEqual(self.game.message.last().message, self.action.message)
 
     def test_post_code_game_has_no_messages(self):
-        url = reverse("code", args=(self.game.slug, self.code.uuid,))
+        url = reverse("api-1.0.0:code", args=(self.game.slug, self.code.uuid,))
 
         # disable messages
         self.game.hasMessages = False
