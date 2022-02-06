@@ -6,10 +6,10 @@ import render from "../../common/testing/render";
 
 import StartPage from "./StartPage";
 
-const useJoinGame = jest.fn();
+const mockUseJoinGame = jest.fn();
 jest.mock("../../common/hooks/useJoinGame", () => ({
   __esModule: true,
-  default: () => useJoinGame,
+  default: () => mockUseJoinGame,
 }));
 
 it("renders nothing when a game id is supplied", async () => {
@@ -19,7 +19,7 @@ it("renders nothing when a game id is supplied", async () => {
 
 it("sets the game id when a game id is supplied", async () => {
   render(<StartPage gameId="foobar" />);
-  await waitFor(() => expect(useJoinGame).toHaveBeenCalledWith("foobar"));
+  await waitFor(() => expect(mockUseJoinGame).toHaveBeenCalledWith("foobar"));
 });
 
 it("renders correctly when no game id is supplied", () => {
@@ -33,5 +33,5 @@ it("lets the user input a game id when no game id is supplied", async () => {
   userEvent.type(screen.getByLabelText(/Spiel-Code/i), "test-123");
   userEvent.click(screen.getByText(/Am Spiel teilnehmen/i));
 
-  await waitFor(() => expect(useJoinGame).toHaveBeenCalledWith("test-123"));
+  await waitFor(() => expect(mockUseJoinGame).toHaveBeenCalledWith("test-123"));
 });

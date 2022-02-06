@@ -77,7 +77,8 @@ exports[`renders correctly when no game id is supplied 1`] = `
                 >
                   <span>
                     Spiel-Code
-                     *
+                     
+                    *
                   </span>
                 </legend>
               </fieldset>

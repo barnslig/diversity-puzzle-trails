@@ -1,5 +1,4 @@
 module.exports = {
-  preset: "ts-jest",
   testEnvironment: "jsdom",
   clearMocks: true,
 
@@ -9,22 +8,6 @@ module.exports = {
 
     // See https://github.com/molefrog/wouter/issues/126#issuecomment-667661129
     "^wouter/(.*)$": "wouter/cjs/$1",
-  },
-
-  globals: {
-    "ts-jest": {
-      astTransformers: {
-        before: [
-          {
-            path: "@formatjs/ts-transformer/ts-jest-integration",
-            options: {
-              overrideIdFn: "[sha512:contenthash:base64:6]",
-              ast: true,
-            },
-          },
-        ],
-      },
-    },
   },
 
   setupFilesAfterEnv: ["<rootDir>/src/setupTests.tsx"],

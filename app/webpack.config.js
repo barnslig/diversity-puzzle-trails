@@ -1,4 +1,3 @@
-const { transform } = require("@formatjs/ts-transformer");
 const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Webpack = require("webpack");
@@ -19,18 +18,7 @@ module.exports = {
         test: /\.tsx?$/,
         use: [
           {
-            loader: "ts-loader",
-            options: {
-              getCustomTransformers() {
-                return {
-                  before: [
-                    transform({
-                      overrideIdFn: "[sha512:contenthash:base64:6]",
-                    }),
-                  ],
-                };
-              },
-            },
+            loader: "babel-loader",
           },
         ],
       },
