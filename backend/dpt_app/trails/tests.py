@@ -65,7 +65,8 @@ class GameTestCase(TestCase):
             name="Test Player",
             bearer="Bearer test123",
             game=cls.game,
-            character=cls.character
+            character=cls.character,
+            action_points=15
         )
 
     def cause_game_over(self):
@@ -235,6 +236,52 @@ class GameApiTest(GameTestCase):
         })
 
 
+class ClockApiTest(GameTestCase):
+    def test_get(self):
+        url = reverse("api-1.0.0:clock", args=(self.game.slug,))
+        res = self.client.get(url, HTTP_AUTHORIZATION=self.player.bearer)
+
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.json(), {
+            "data": {
+                "type": "clock",
+                "id": "1",
+                "attributes": {
+                    "state": "paused",
+                    "speed": 1.0
+                }
+            }
+        })
+
+    def test_post(self):
+        self.assertEqual(self.game.clock_state, ClockType.STOPPED)
+
+        url = reverse("api-1.0.0:clock", args=(self.game.slug,))
+        res = self.client.post(url, HTTP_AUTHORIZATION=self.player.bearer, content_type="application/json", data={
+            "data": {
+                "type": "clock",
+                "attributes": {
+                    "state": "running"
+                }
+            }
+        })
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.json(), {
+            "data": {
+                "type": "clock",
+                "id": "1",
+                "attributes": {
+                    "state": "running",
+                    "speed": 1.0
+                }
+            }
+        })
+
+        self.game.refresh_from_db()
+
+        self.assertEqual(self.game.clock_state, ClockType.RUNNING)
+
+
 class PlayerApiTest(GameTestCase):
     def test_put(self):
         bearer = "Bearer test54321"
@@ -259,6 +306,43 @@ class PlayerApiTest(GameTestCase):
             }
         })
         self.assertEqual(self.game.player.last().bearer, bearer)
+
+
+class ParameterApiTest(GameTestCase):
+    def test_get(self):
+        url = reverse("api-1.0.0:parameter", args=(self.game.slug,))
+        res = self.client.get(url, HTTP_AUTHORIZATION=self.player.bearer)
+
+        self.assertEqual(res.status_code, 200)
+
+        expect = [self.param,
+                  self.param2,
+                  self.param3,
+                  Parameter(
+                      game=self.game,
+                      name="movements",
+                      scope="user",
+                      value=self.player.action_points,
+                      initial_value=0,
+                      rate=1,
+                      min_value=0,
+                      max_value=15)
+                  ]
+
+        resData = res.json()
+
+        for i, param in enumerate(expect):
+            self.assertEqual(resData["data"][i], {
+                "type": "parameter",
+                "id": param.name,
+                "attributes": {
+                    "scope": param.scope,
+                    "value": param.current_value,
+                    "rate": param.rate,
+                    "min": param.min_value,
+                    "max": param.max_value
+                }
+            })
 
 
 class MessageApiTest(GameTestCase):
