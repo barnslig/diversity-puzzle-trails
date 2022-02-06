@@ -16,11 +16,21 @@ const lazyWithPreload = <T extends React.ComponentType<any>>(
   factory,
 });
 
-const CodePage = lazyWithPreload(() => import("./pages/CodePage"));
-const IndexPage = lazyWithPreload(() => import("./pages/IndexPage"));
-const MessagesPage = lazyWithPreload(() => import("./pages/MessagesPage"));
-const ScannerPage = lazyWithPreload(() => import("./pages/ScannerPage"));
-const StartPage = lazyWithPreload(() => import("./pages/StartPage"));
+const CodePage = lazyWithPreload(
+  () => import(/* webpackChunkName: "CodePage" */ "./pages/CodePage")
+);
+const IndexPage = lazyWithPreload(
+  () => import(/* webpackChunkName: "IndexPage" */ "./pages/IndexPage")
+);
+const MessagesPage = lazyWithPreload(
+  () => import(/* webpackChunkName: "MessagesPage" */ "./pages/MessagesPage")
+);
+const ScannerPage = lazyWithPreload(
+  () => import(/* webpackChunkName: "ScannerPage" */ "./pages/ScannerPage")
+);
+const StartPage = lazyWithPreload(
+  () => import(/* webpackChunkName: "StartPage" */ "./pages/StartPage")
+);
 
 const routeFactories = [
   {

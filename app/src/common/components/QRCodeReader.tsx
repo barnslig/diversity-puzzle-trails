@@ -56,7 +56,9 @@ const QRCodeReader = ({ torch = false, onResult }: QRCodeReaderProps) => {
       }
 
       // The zxing library is HUGE, thus we load it asynchronously
-      const { BrowserQRCodeReader } = await import("@zxing/browser");
+      const { BrowserQRCodeReader } = await import(
+        /* webpackChunkName: "zxing" */ "@zxing/browser"
+      );
 
       const codeReader = new BrowserQRCodeReader();
       controls.current = await codeReader.decodeFromVideoElement(

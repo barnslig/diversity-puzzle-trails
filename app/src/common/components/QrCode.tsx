@@ -31,7 +31,9 @@ const QrCode = ({ contents, width = 300, height = 300 }: QrCodeProps) => {
   React.useEffect(() => {
     (async () => {
       if (!writer.current) {
-        const { BrowserQRCodeSvgWriter } = await import("@zxing/browser");
+        const { BrowserQRCodeSvgWriter } = await import(
+          /* webpackChunkName: "zxing" */ "@zxing/browser"
+        );
         writer.current = new BrowserQRCodeSvgWriter();
       }
 
