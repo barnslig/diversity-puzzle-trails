@@ -27,7 +27,7 @@ class LogInline(admin.TabularInline):
 class ParameterInline(admin.TabularInline):
     model = Parameter
     extra = 0
-    exclude = ('min_value', 'max_value',)
+    exclude = ('fixup_value', 'min_value', 'max_value',)
     readonly_fields = ('current_value',)
 
 

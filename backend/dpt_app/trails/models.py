@@ -70,7 +70,7 @@ class Game(models.Model):
     def max_clock_duration(self):
         """Get the maximum  clock duration in seconds at which the first parameter is zero"""
         query = self.parameter.annotate(
-            dur_when_zero=-1 * (F('initial_value') + F('value')) / ((F('game__clock_speed') / F('game__clock_unit')) * F('rate')))
+            dur_when_zero=-1 * (F('initial_value') + F('value') + F('fixup_value')) / ((F('game__clock_speed') / F('game__clock_unit')) * F('rate')))
 
         return query.aggregate(Min('dur_when_zero'))['dur_when_zero__min'] or 0
 
@@ -120,7 +120,7 @@ class Game(models.Model):
         self.clock_last_change = timezone.now()
         self.save()
 
-        self.parameter.all().update(value=0)
+        self.parameter.all().update(value=0, fixup_value=0)
 
     def __str__(self):
         return self.name
@@ -132,10 +132,12 @@ def update_clock_last_change(sender, instance: Game, *args, **kwargs):
     if not instance.id:
         return
 
-    clock_current_state = Game.objects.get(id=instance.id).clock_state
-    clock_next_state = instance.clock_state
+    # The game without applied changes
+    current = Game.objects.get(id=instance.id)
 
-    if clock_current_state != clock_next_state:
+    clock_current_state = current.clock_state
+    if clock_current_state != instance.clock_state:
+        # Update the clock_duration when switching from RUNNING to STOPPED
         if clock_current_state == ClockType.RUNNING:
             next_clock_duration = instance.clock_duration + \
                 timezone.now().timestamp() - instance.clock_last_change.timestamp()
@@ -143,7 +145,15 @@ def update_clock_last_change(sender, instance: Game, *args, **kwargs):
             instance.clock_duration = min(
                 instance.max_clock_duration, next_clock_duration)
 
+        # Always update clock_last_change when the clock_state changes
         instance.clock_last_change = timezone.now()
+
+    clock_current_speed = current.clock_speed
+    if clock_current_speed != instance.clock_speed:
+        # Update fixup values when the clock speed is modified to achive constant current_value
+        for param in current.parameter.all():
+            param.fixup_value = param.calculate_fixup_with_game(instance)
+            param.save()
 
 
 class Parameter(models.Model):
@@ -186,6 +196,12 @@ class Parameter(models.Model):
         verbose_name=_("Value")
     )
 
+    # Fixup value that is added when the clock_speed or rate change to keep the previous value
+    fixup_value = models.IntegerField(
+        default=0,
+        verbose_name=_("Fixup Value")
+    )
+
     # Amount to subtrac during one "tick"
     rate = models.FloatField(
         default=0,
@@ -198,10 +214,33 @@ class Parameter(models.Model):
         verbose_name=_("Game")
     )
 
+    @property
+    def actual_value(self):
+        """Get the actual parameter value, consisting of initial, actual and fixup value"""
+        return self.initial_value + self.value + self.fixup_value
+
+    @property
+    def actual_rate(self):
+        """Get the actual parameter rate, consisting of game clock speed and parameter rate"""
+        return (self.game.clock_speed / self.game.clock_unit) * self.rate
+
+    def calculate_fixup_with_game(self, game):
+        """Calculate the fixup value with regard to another game instance"""
+        value = round(self.actual_value + game.total_clock_duration *
+                      (game.clock_speed / game.clock_unit) * self.rate)
+
+        return self.fixup_value + self.current_value - value
+
+    def calculate_fixup(self, previous_current_value):
+        """Calculate the fixup value with regard to another current_value"""
+        value = round(self.actual_value +
+                      self.game.total_clock_duration * self.actual_rate)
+
+        return self.fixup_value + previous_current_value - value
+
     def value_at(self, clock_duration):
         """Get the parameter value at a specific game clock duration"""
-        value = round((self.initial_value + self.value) + clock_duration
-                      * (self.game.clock_speed / self.game.clock_unit) * self.rate)
+        value = round(self.actual_value + clock_duration * self.actual_rate)
 
         return max(min(value, self.max_value), self.min_value)
 
@@ -215,7 +254,7 @@ class Parameter(models.Model):
     @admin.display(description=_("Clock Duration When Zero"))
     def game_clock_duration_when_value_zero(self):
         """Get the game.clock_duration at which this parameter is zero"""
-        return -1 * (self.initial_value + self.value) / ((self.game.clock_speed / self.game.clock_unit) * self.rate)
+        return -1 * self.actual_value / self.actual_rate
 
     def label(self):
         return ParameterType(self.name).label
@@ -224,6 +263,18 @@ class Parameter(models.Model):
         return _("Parameter {0} from {1}").format(
             self.label(), self.game
         )
+
+
+@receiver(pre_save, sender=Parameter)
+def update_fixup_value(sender, instance: Parameter, *args, **kwargs):
+    # Do nothing when no id is set. This is the case when a new model instance gets created
+    if not instance.id:
+        return
+
+    current = Parameter.objects.get(id=instance.id)
+    if current.rate != instance.rate:
+        # Update fixup value when the rate is modified to achive a constant current_value
+        instance.fixup_value = instance.calculate_fixup(current.current_value)
 
 
 class Player(models.Model):

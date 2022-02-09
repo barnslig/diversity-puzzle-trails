@@ -164,6 +164,10 @@ class GameModelTest(GameTestCase):
         self.assertEqual(self.game.clock_state, ClockType.STOPPED)
         self.assertEqual(self.game.total_clock_duration, 0)
 
+        for param in self.game.parameter.all():
+            self.assertEqual(param.value, 0)
+            self.assertEqual(param.fixup_value, 0)
+
     def test_update_clock_last_change(self):
         # it updates only the clock_last_change when switching the clock_state from stopped to running
         with patch('django.utils.timezone.now') as mock_timezone_now:
@@ -193,6 +197,27 @@ class GameModelTest(GameTestCase):
             self.assertEqual(self.game.clock_last_change, now)
             self.assertEqual(self.game.clock_duration, CLOCK_DURATION + 10)
 
+    def test_parameters_keep_value_on_clock_speed_change(self):
+        initial_value = self.game.parameter.first().current_value
+
+        # it keeps the parameter current_value on clock speed change
+        self.game.clock_speed = 10
+        self.game.save()
+
+        self.assertEqual(
+            initial_value,
+            self.game.parameter.first().current_value
+        )
+
+        # it keeps the parameter current_value when changing back to the initial clock speed
+        self.game.clock_speed = 1
+        self.game.save()
+
+        self.assertEqual(
+            initial_value,
+            self.game.parameter.first().current_value
+        )
+
 
 class ParameterModelTest(GameTestCase):
     def test_value_at(self):
@@ -216,6 +241,21 @@ class ParameterModelTest(GameTestCase):
 
         self.assertEqual(duration_when_zero, 100)
         self.assertEqual(self.param.value_at(duration_when_zero), 0)
+
+    def test_keeps_value_on_rate_change(self):
+        initial_value = self.param.current_value
+
+        # it keeps the current_value on rate change
+        self.param.rate = -0.1
+        self.param.save()
+
+        self.assertEqual(initial_value, self.param.current_value)
+
+        # it keeps the current_value when changing back to the initial rate
+        self.param.rate = -1
+        self.param.save()
+
+        self.assertEqual(initial_value, self.param.current_value)
 
 
 class GameApiTest(GameTestCase):
