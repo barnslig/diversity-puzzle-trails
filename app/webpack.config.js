@@ -26,19 +26,6 @@ module.exports = (env, argv) => {
           test: /\.css$/i,
           use: [MiniCssExtractPlugin.loader, "css-loader"],
         },
-        {
-          test: /lang\/[a-z_-]+\.json$/i,
-          type: "json",
-          use: [
-            {
-              loader: "shell-loader",
-              options: {
-                script:
-                  "cat > /tmp/lang.json && formatjs compile /tmp/lang.json --ast",
-              },
-            },
-          ],
-        },
       ],
     },
     resolve: {

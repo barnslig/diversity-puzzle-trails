@@ -1,0 +1,284 @@
+{
+  "0GSRiN": [
+    {
+      "type": 0,
+      "value": "Persönliches"
+    }
+  ],
+  "0r4nkq": [
+    {
+      "type": 0,
+      "value": "Zum Homescreen hinzufügen"
+    }
+  ],
+  "1H9EKZ": [
+    {
+      "type": 0,
+      "value": "Am Spiel teilnehmen"
+    }
+  ],
+  "3XBbzE": [
+    {
+      "type": 0,
+      "value": "Sende Nachricht"
+    }
+  ],
+  "3eJT2C": [
+    {
+      "type": 0,
+      "value": "Das Spiel ist pausiert. Du kannst es aber für alle fortsetzen."
+    }
+  ],
+  "7vghdx": [
+    {
+      "type": 0,
+      "value": "Aktionen anzeigen"
+    }
+  ],
+  "CC9Sv5": [
+    {
+      "type": 0,
+      "value": "Hygiene"
+    }
+  ],
+  "DZHDmU": [
+    {
+      "type": 0,
+      "value": "Nachrichten"
+    }
+  ],
+  "Ejhsxh": [
+    {
+      "type": 0,
+      "value": "Ein Fehler ist aufgetreten!"
+    }
+  ],
+  "FahQwU": [
+    {
+      "type": 0,
+      "value": "Ein Parameter hat null erreicht, weshalb das Spiel verloren ist!"
+    }
+  ],
+  "GGWPU2": [
+    {
+      "type": 0,
+      "value": "Scanne eine Charakterkarte um am Spiel teilzunehmen. Dein gewählter Charakter gibt dir bei jeder Aktion im Spiel einen Bonus!"
+    }
+  ],
+  "HeZ2A+": [
+    {
+      "type": 0,
+      "value": "QR-Code erfolgreich ausgeführt!"
+    }
+  ],
+  "K7B9pw": [
+    {
+      "type": 0,
+      "value": "Ausführen"
+    }
+  ],
+  "KqZNMU": [
+    {
+      "type": 0,
+      "value": "Spiel verlassen"
+    }
+  ],
+  "OgWAX/": [
+    {
+      "type": 0,
+      "value": "QR-Code Aktionen"
+    }
+  ],
+  "OzAuhp": [
+    {
+      "type": 0,
+      "value": "Spiel wirklich verlassen?"
+    }
+  ],
+  "P5jGEu": [
+    {
+      "type": 0,
+      "value": "Lebensmittelvorrat"
+    }
+  ],
+  "Pvf05a": [
+    {
+      "type": 0,
+      "value": "QR-Code nicht ausführen"
+    }
+  ],
+  "R14Oy/": [
+    {
+      "type": 0,
+      "value": "Spiel für alle fortsetzen"
+    }
+  ],
+  "R6ODBn": [
+    {
+      "type": 0,
+      "value": "QR-Code scannen"
+    }
+  ],
+  "UPFCjL": [
+    {
+      "type": 0,
+      "value": "Crew-Moral"
+    }
+  ],
+  "Vdokz/": [
+    {
+      "type": 0,
+      "value": "Es gibt noch keine Nachrichten"
+    }
+  ],
+  "WHOfrR": [
+    {
+      "type": 0,
+      "value": "Setze Charakter"
+    }
+  ],
+  "YD6gNg": [
+    {
+      "type": 0,
+      "value": "Charakter wählen"
+    }
+  ],
+  "Yu/ZRl": [
+    {
+      "type": 0,
+      "value": "Status"
+    }
+  ],
+  "ZelVIn": [
+    {
+      "type": 0,
+      "value": "Spiel erfolgreich verlassen!"
+    }
+  ],
+  "bjS+5W": [
+    {
+      "type": 0,
+      "value": "Neu laden"
+    }
+  ],
+  "d7QnMY": [
+    {
+      "type": 0,
+      "value": "Neue Inhalte sind verfügbar."
+    }
+  ],
+  "eEE+z4": [
+    {
+      "type": 0,
+      "value": "Diversity Puzzle Trails"
+    }
+  ],
+  "eYC0U9": [
+    {
+      "type": 0,
+      "value": "Nachrichten"
+    }
+  ],
+  "f0maUH": [
+    {
+      "type": 0,
+      "value": "Um an einem Spiel teilzunehmen ist ein Spiel-Code erforderlich. Bitte tippe diesen hier ein:"
+    }
+  ],
+  "gtLVaw": [
+    {
+      "type": 0,
+      "value": "Bewegungspunkte"
+    }
+  ],
+  "gyakmc": [
+    {
+      "type": 0,
+      "value": "Spiel für alle fortsetzen"
+    }
+  ],
+  "h1UmHT": [
+    {
+      "type": 0,
+      "value": "Spiel pausiert"
+    }
+  ],
+  "hSCLKb": [
+    {
+      "type": 0,
+      "value": "Diese Parameter betreffen nur dich selber. Tausche sie gegen Aktionskarten ein!"
+    }
+  ],
+  "lTt2EZ": [
+    {
+      "type": 0,
+      "value": "Verbleibende Energie"
+    }
+  ],
+  "n3K0U0": [
+    {
+      "type": 0,
+      "value": "An einem Spiel teilnehmen"
+    }
+  ],
+  "nwAgUn": [
+    {
+      "type": 0,
+      "value": "Schau doch später nochmal vorbei."
+    }
+  ],
+  "qPHCvM": [
+    {
+      "type": 0,
+      "value": "Spielstand"
+    }
+  ],
+  "qWhYfB": [
+    {
+      "type": 0,
+      "value": "Du bist jetzt Teil vom Spiel!"
+    }
+  ],
+  "t7WlPX": [
+    {
+      "type": 0,
+      "value": "Der Status eurer gemeinsamen Mission. Achtet darauf, dass kein Wert 0 erreicht!"
+    }
+  ],
+  "uwGpv0": [
+    {
+      "type": 0,
+      "value": "Scanner"
+    }
+  ],
+  "vcAwuf": [
+    {
+      "type": 0,
+      "value": "Spiel für alle pausieren"
+    }
+  ],
+  "xlGZnG": [
+    {
+      "type": 0,
+      "value": "Spiel-Code"
+    }
+  ],
+  "y0i31+": [
+    {
+      "type": 0,
+      "value": "Game Over"
+    }
+  ],
+  "ycjSMD": [
+    {
+      "type": 0,
+      "value": "Ungültiger QR-Code!"
+    }
+  ],
+  "zzK8T2": [
+    {
+      "type": 0,
+      "value": "Dieser QR-Code führt folgende Aktionen aus:"
+    }
+  ]
+}
