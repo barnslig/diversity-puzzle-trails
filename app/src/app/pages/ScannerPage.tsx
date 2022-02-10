@@ -62,6 +62,14 @@ const ScannerPage = (props: ScannerPageProps) => {
           </Typography>
           {torchAvailable && (
             <IconButton
+              aria-label={intl.formatMessage(
+                {
+                  defaultMessage:
+                    "Taschenlampe {state, select, true {ausschalten} other {einschalten}}",
+                  description: "scanner page toggle torch",
+                },
+                { state: torch }
+              )}
               edge="end"
               color="inherit"
               onClick={() => setTorch(!torch)}

@@ -155,6 +155,34 @@
       "value": "Spiel erfolgreich verlassen!"
     }
   ],
+  "aY1ZbK": [
+    {
+      "type": 0,
+      "value": "Taschenlampe "
+    },
+    {
+      "options": {
+        "other": {
+          "value": [
+            {
+              "type": 0,
+              "value": "einschalten"
+            }
+          ]
+        },
+        "true": {
+          "value": [
+            {
+              "type": 0,
+              "value": "ausschalten"
+            }
+          ]
+        }
+      },
+      "type": 5,
+      "value": "state"
+    }
+  ],
   "bjS+5W": [
     {
       "type": 0,

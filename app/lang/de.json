@@ -103,6 +103,10 @@
     "defaultMessage": "Spiel erfolgreich verlassen!",
     "description": "success snackbar on leave game"
   },
+  "aY1ZbK": {
+    "defaultMessage": "Taschenlampe {state, select, true {ausschalten} other {einschalten}}",
+    "description": "scanner page toggle torch"
+  },
   "bjS+5W": {
     "defaultMessage": "Neu laden",
     "description": "pwa reload snackbar action button label"
