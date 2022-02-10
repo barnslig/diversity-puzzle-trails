@@ -1,9 +1,13 @@
 from django.core.files import File
 from django.db import models
 from django.utils.translation import gettext_lazy as _, pgettext_lazy
+from io import BytesIO
+from urllib.parse import urljoin
+
 import qrcode
 import uuid
 
+from dpt_app.settings import DPT_QR_HOST
 from .enums import ParameterType, CharacterType, ActionType
 
 
@@ -42,12 +46,14 @@ class Code(models.Model):
         return ret
 
     def save(self, *args, **kwargs):
-        img = qrcode.make("https://abc-dpt.netlify.app/code/"+str(self.uuid))
-        file_name = "{0}.png".format(str(self.name))
-        file_path = "/tmp/{0}".format(file_name)
-        img.save(file_path)
+        img = qrcode.make(urljoin(DPT_QR_HOST, f"/code/{self.uuid}"))
+
+        file = BytesIO()
+        img.save(file)
+
         self.image.delete(save=False)
-        self.image = File(open(file_path, 'rb'), name=file_name)
+        self.image = File(file, f"{self.name}.png")
+
         super(Code, self).save(*args, **kwargs)
 
 

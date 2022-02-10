@@ -18,6 +18,7 @@ env = environ.Env(
     ALLOWED_HOSTS=(list, ["localhost"]),
     CORS_ALLOWED_ORIGINS=(list, ["http://localhost:8000"]),
     CSRF_TRUSTED_ORIGINS=(list, ["http://localhost:8000"]),
+    QR_HOST=(str, "http://localhost:8000"),
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -152,3 +153,8 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Diversity Puzzle Trails Settings
+
+DPT_QR_HOST = env('QR_HOST')
