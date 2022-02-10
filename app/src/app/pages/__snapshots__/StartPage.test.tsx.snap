@@ -61,6 +61,9 @@ exports[`renders correctly when no game id is supplied 1`] = `
             >
               <input
                 aria-invalid="false"
+                autocapitalize="off"
+                autocomplete="off"
+                autocorrect="off"
                 class="MuiOutlinedInput-input MuiInputBase-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
                 id="gameId"
                 name="gameId"

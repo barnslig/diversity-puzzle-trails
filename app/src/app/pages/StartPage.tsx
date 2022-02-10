@@ -109,6 +109,11 @@ const StartPage = ({ gameId }: StartPageProps) => {
                       required
                       error={meta.touched && Boolean(meta.error)}
                       helperText={meta.touched && meta.error}
+                      inputProps={{
+                        autoCapitalize: "off",
+                        autoComplete: "off",
+                        autoCorrect: "off",
+                      }}
                       {...field}
                     />
                   )}
