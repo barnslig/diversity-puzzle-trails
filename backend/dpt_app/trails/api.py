@@ -221,10 +221,12 @@ def serialize_player(player: Player):
 @api.put("games/{str:gameId}/players", response=PlayerSchema, url_name="player")
 @wrap_get_game
 def put_player(request: HttpRequest, gameId: str):
-    player = Player.objects.create(
-        name="Example Name",
+    player, _ = Player.objects.get_or_create(
         bearer=request.headers["Authorization"],
         game=request.game,
+        defaults={
+            "name": "Example Name"
+        }
     )
     return serialize_player(player)
 

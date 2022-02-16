@@ -57,11 +57,11 @@ class GameTestCase(TestCase):
             game=cls.game
         )
 
-        cls.character = Character.objects.create(
+        cls.character: Character = Character.objects.create(
             character_class=CharacterType.ENGINEER
         )
 
-        cls.player = Player.objects.create(
+        cls.player: Player = Player.objects.create(
             name="Test Player",
             bearer="Bearer test123",
             game=cls.game,
@@ -346,6 +346,28 @@ class PlayerApiTest(GameTestCase):
             }
         })
         self.assertEqual(self.game.player.last().bearer, bearer)
+
+    def test_put_again(self):
+        # it creates no new player when the bearer is already known
+        url = reverse("api-1.0.0:player", args=(self.game.slug,))
+
+        res = self.client.put(url, HTTP_AUTHORIZATION=self.player.bearer, data={
+            "data": {
+                "type": "player"
+            }
+        })
+
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.json(), {
+            "data": {
+                "type": "player",
+                "id": str(self.player.id),
+                "attributes": {
+                    "name": self.player.name,
+                    "character": self.player.character.character_class
+                }
+            }
+        })
 
 
 class ParameterApiTest(GameTestCase):
