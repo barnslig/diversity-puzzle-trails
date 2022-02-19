@@ -45,7 +45,7 @@ const useSubmitCode = (
         { variant: "success" }
       );
 
-      setLocation("/");
+      setLocation("/", { replace: true });
 
       return res;
     } catch (err) {}

@@ -64,12 +64,12 @@ const useLazyLocation: BaseLocationHook = () => {
   const { matcher } = useRouter();
   const progress = new ProgressBar();
 
-  const lazySetLocation = async (to: string) => {
+  const lazySetLocation: typeof setLocation = async (to: string, ...args) => {
     const route = routeFactories.find(({ path }) => matcher(path, to)[0]);
     progress.start();
     await route?.factory();
     progress.finish();
-    setLocation(to);
+    setLocation(to, ...args);
   };
 
   return [location, lazySetLocation];
