@@ -122,6 +122,10 @@ class Game(models.Model):
 
         self.parameter.all().update(value=0, fixup_value=0)
 
+        self.logs.all().delete()
+        self.message.all().delete()
+        self.player.all().delete()
+
     def __str__(self):
         return self.name
 

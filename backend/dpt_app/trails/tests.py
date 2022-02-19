@@ -8,7 +8,7 @@ from unittest.mock import patch
 import json
 
 from .enums import ActionType, CharacterType, ClockType, ClockUnit, ParameterScope, ParameterType
-from .models import Character, Game, Message, Parameter, Player
+from .models import Character, Game, Log, Message, Parameter, Player
 from .qr_models import Action, Code
 
 CLOCK_DURATION = 70
@@ -67,6 +67,27 @@ class GameTestCase(TestCase):
             game=cls.game,
             character=cls.character,
             action_points=15
+        )
+
+        cls.message: Message = Message.objects.create(
+            message="Test 123",
+            game=cls.game
+        )
+
+        cls.code: Code = Code.objects.create(
+            name="Test Send Message"
+        )
+
+        cls.action: Action = Action.objects.create(
+            code=cls.code,
+            action_type=ActionType.MESSAGE,
+            message="Send Alpaca Pics"
+        )
+
+        cls.log: Log = Log.objects.create(
+            game=cls.game,
+            code=cls.code,
+            player=cls.player
         )
 
     def cause_game_over(self):
@@ -158,6 +179,10 @@ class GameModelTest(GameTestCase):
         self.assertAlmostEqual(self.game.total_clock_duration, 0, 0)
 
     def test_reset(self):
+        self.assertNotEqual(self.game.logs.count(), 0)
+        self.assertNotEqual(self.game.message.count(), 0)
+        self.assertNotEqual(self.game.player.count(), 0)
+
         self.game.reset()
 
         # it resets the game clock duration to zero and stops the game
@@ -167,6 +192,11 @@ class GameModelTest(GameTestCase):
         for param in self.game.parameter.all():
             self.assertEqual(param.value, 0)
             self.assertEqual(param.fixup_value, 0)
+
+        # it deletes all logs, messages and players of the game
+        self.assertEqual(self.game.logs.count(), 0)
+        self.assertEqual(self.game.message.count(), 0)
+        self.assertEqual(self.game.player.count(), 0)
 
     def test_update_clock_last_change(self):
         # it updates only the clock_last_change when switching the clock_state from stopped to running
@@ -408,25 +438,6 @@ class ParameterApiTest(GameTestCase):
 
 
 class MessageApiTest(GameTestCase):
-    @classmethod
-    def setUpTestData(cls):
-        super().setUpTestData()
-
-        cls.message: Message = Message.objects.create(
-            message="Test 123",
-            game=cls.game
-        )
-
-        cls.code: Code = Code.objects.create(
-            name="Test Send Message"
-        )
-
-        cls.action: Action = Action.objects.create(
-            code=cls.code,
-            action_type=ActionType.MESSAGE,
-            message="Send Alpaca Pics"
-        )
-
     def test_get(self):
         url = reverse("api-1.0.0:message", args=(self.game.slug,))
 
