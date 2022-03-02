@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from sentry_sdk.integrations.django import DjangoIntegration
 import environ
+import sentry_sdk
 
 env = environ.Env(
     DEBUG=(bool, False),
@@ -153,6 +155,14 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Sentry settings
+# https://docs.sentry.io/platforms/python/guides/django/configuration/
+
+sentry_sdk.init(
+    integrations=[DjangoIntegration()],
+)
 
 
 # Diversity Puzzle Trails Settings

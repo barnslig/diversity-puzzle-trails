@@ -9,6 +9,7 @@ django-cors-headers = "*"
 qrcode = {extras = ["pil"], version = "*"}
 django-environ = "*"
 django-ninja = "*"
+sentry-sdk = "*"
 
 [dev-packages]
 
