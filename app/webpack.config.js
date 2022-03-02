@@ -51,7 +51,7 @@ module.exports = (env, argv) => {
         patterns: [{ from: "public" }],
       }),
       new HtmlWebpackPlugin({
-        title: "Diversity Puzzle Trails",
+        title: "Kaigo",
         meta: {
           "theme-color": "#1976d2",
         },

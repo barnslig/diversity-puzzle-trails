@@ -20,7 +20,7 @@ msgstr ""
 
 #: trails/admin.py:12
 msgid "Diversity Puzzle Trails Administration"
-msgstr "Diversity Puzzle Trails Administration"
+msgstr "Kaigo Administration"
 
 #: trails/admin.py:13
 msgid "DPT admin"
