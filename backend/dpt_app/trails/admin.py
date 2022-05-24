@@ -1,3 +1,5 @@
+import csv
+
 from django import forms
 from django.contrib import admin, messages
 from django.contrib.auth.models import User, Group
@@ -132,12 +134,34 @@ class GameAdmin(admin.ModelAdmin):
                 parameter.save()
 
 
+@admin.action(description=_("Export selected %(verbose_name_plural)s as CSV"))
+def export_codes_as_csv(modeladmin, request, queryset):
+    res = HttpResponse(content_type='text/csv')
+    res['Content-Disposition'] = f"attachment; filename={modeladmin.model._meta}.csv"
+
+    writer = csv.writer(res)
+    writer.writerow(["ID", "Name", "One-Shot", "QR-Code"])
+
+    for obj in queryset:
+        writer.writerow([
+            obj.uuid,
+            obj.name,
+            "Y" if obj.one_shot else "N",
+            request.build_absolute_uri(obj.image.url)
+        ])
+
+    return res
+
+
 class CodeAdmin(admin.ModelAdmin):
     inlines = [
         ActionInline
     ]
     readonly_fields = ('image',)
     change_form_template = "code_change_form.html"
+    actions = [export_codes_as_csv]
+    search_fields = ['uuid', 'name', 'image']
+    list_display = ('name', 'one_shot', 'image', 'uuid',)
 
 
 admin.site.register(Game, GameAdmin)
