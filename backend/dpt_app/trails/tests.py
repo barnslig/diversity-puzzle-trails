@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 from unittest.mock import patch
 import json
 
-from .enums import ActionType, CharacterType, ClockType, ClockUnit, ParameterScope, ParameterType
+from .enums import ActionType, ClockType, ClockUnit, ParameterScope, ParameterType
 from .models import Character, Game, Log, Message, Parameter, Player
 from .qr_models import Action, Code
 
@@ -58,7 +58,7 @@ class GameTestCase(TestCase):
         )
 
         cls.character: Character = Character.objects.create(
-            character_class=CharacterType.ENGINEER
+            character_class="Ingenieur*in"
         )
 
         cls.player: Player = Player.objects.create(

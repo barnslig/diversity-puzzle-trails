@@ -8,7 +8,7 @@ import qrcode
 import uuid
 
 from dpt_app.settings import DPT_QR_HOST
-from .enums import ParameterType, CharacterType, ActionType
+from .enums import ParameterType, ActionType
 
 
 class Code(models.Model):
@@ -84,10 +84,12 @@ class Action(models.Model):
         default=0,
         verbose_name=_("Value")
     )
-    character = models.CharField(
-        max_length=255,
-        choices=CharacterType.choices,
-        default=CharacterType.NONE,
+    character = models.ForeignKey(
+        'Character',
+        on_delete=models.PROTECT,
+        related_name="codes",
+        blank=True,
+        null=True,
         verbose_name=_("Character")
     )
     message = models.CharField(

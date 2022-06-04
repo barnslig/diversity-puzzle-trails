@@ -6,7 +6,7 @@ from django.dispatch import receiver
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _, pgettext_lazy
 
-from .enums import ClockType, ClockUnit, ParameterType, ParameterScope, CharacterType
+from .enums import ClockType, ClockUnit, ParameterType, ParameterScope
 from .qr_models import Code
 
 
@@ -326,14 +326,12 @@ class Character(models.Model):
 
     character_class = models.CharField(
         max_length=255,
-        choices=CharacterType.choices,
-        default=CharacterType.NONE,
         unique=True,
         verbose_name=_("Character Class")
     )
 
     def label(self):
-        return CharacterType(self.character_class).label
+        return self.character_class
 
     def __str__(self):
         return _("Character {0}").format(self.label())
