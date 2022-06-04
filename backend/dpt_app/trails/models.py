@@ -314,8 +314,8 @@ class Player(models.Model):
     )
 
     def __str__(self):
-        return _("Player {0} from game {1}").format(
-            self.name, self.game
+        return _("{0} from game {1}").format(
+            self.character or self.name, self.game
         )
 
 
