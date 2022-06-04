@@ -113,7 +113,7 @@ msgstr "Hygiene"
 
 #: trails/enums.py:26
 msgid "Moral"
-msgstr "Moral"
+msgstr "Gesundheit"
 
 #: trails/enums.py:31
 msgid "Global"

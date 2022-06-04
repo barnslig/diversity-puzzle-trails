@@ -64,7 +64,7 @@
     "description": "leave game confirm message"
   },
   "P5jGEu": {
-    "defaultMessage": "Lebensmittelvorrat",
+    "defaultMessage": "Nahrung",
     "description": "parameter label"
   },
   "Pvf05a": {
@@ -80,7 +80,7 @@
     "description": "scanner page title"
   },
   "UPFCjL": {
-    "defaultMessage": "Crew-Moral",
+    "defaultMessage": "Gesundheit",
     "description": "parameter label"
   },
   "Vdokz/": {
@@ -144,7 +144,7 @@
     "description": "personal parameter card description"
   },
   "lTt2EZ": {
-    "defaultMessage": "Verbleibende Energie",
+    "defaultMessage": "Energie",
     "description": "parameter label"
   },
   "n3K0U0": {
