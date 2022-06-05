@@ -246,7 +246,7 @@ def serialize_code(code: Code, game: Game):
             actions.append(
                 {
                     "type": "setCharacter",
-                    "character": action.character,
+                    "character": action.character.character_class,
                 }
             )
         elif action.action_type == ActionType.MESSAGE and game.hasMessages:
@@ -304,10 +304,7 @@ def post_code(request: HttpRequest, gameId: str, codeId: str):
                 pass
         elif action.action_type == ActionType.CHARACTER:
             try:
-                character = Character.objects.get(
-                    character_class=action.character
-                )
-                request.player.character = character
+                request.player.character = action.character
                 request.player.save()
             except:
                 pass
