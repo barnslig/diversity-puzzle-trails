@@ -9,7 +9,7 @@ from .models import Game, Log, Message, Parameter, Player, Character
 from .qr_models import Code
 from .schemas import ClockSchema, GameSchema, PlayerSchema
 
-api = NinjaAPI()
+api = NinjaAPI(title="Kaigo API")
 
 
 class CodeAlreadyUsed(Exception):

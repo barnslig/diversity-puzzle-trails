@@ -12,8 +12,11 @@ class Data(GenericModel, Generic[TypeT, AttributesT]):
     attributes: AttributesT
 
 
-class Document(GenericModel, Generic[TypeT, AttributesT]):
-    data: Data[TypeT, AttributesT]
+DataT = TypeVar("DataT", bound=Data)
+
+
+class Document(GenericModel, Generic[DataT]):
+    data: DataT
 
 
 class ClockAttributes(BaseModel):
@@ -21,7 +24,10 @@ class ClockAttributes(BaseModel):
     speed: Optional[float]
 
 
-ClockSchema = Document[Literal["clock"], ClockAttributes]
+ClockData = Data[Literal["clock"], ClockAttributes]
+ClockData.__name__ = "ClockData"
+
+ClockSchema = Document[ClockData]
 ClockSchema.__name__ = "Clock"
 
 
@@ -30,7 +36,10 @@ class GameAttributes(BaseModel):
     hasUserParameterScope: Optional[bool]
 
 
-GameSchema = Document[Literal["game"], GameAttributes]
+GameData = Data[Literal["game"], GameAttributes]
+GameData.__name__ = "GameData"
+
+GameSchema = Document[GameData]
 GameSchema.__name__ = "Game"
 
 
@@ -39,5 +48,8 @@ class PlayerAttributes(BaseModel):
     character: Optional[str]
 
 
-PlayerSchema = Document[Literal["player"], PlayerAttributes]
+PlayerData = Data[Literal["player"], PlayerAttributes]
+PlayerData.__name__ = "PlayerData"
+
+PlayerSchema = Document[PlayerData]
 PlayerSchema.__name__ = "Player"
