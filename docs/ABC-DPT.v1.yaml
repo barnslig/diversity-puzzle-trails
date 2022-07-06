@@ -35,53 +35,6 @@ paths:
                         speed: 1
       operationId: get-clock
       description: Get the current server game clock state.
-    post:
-      summary: Update game clock state
-      operationId: post-clock
-      responses:
-        "200":
-          description: OK
-          content:
-            application/vnd.api+json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    $ref: "#/components/schemas/Clock"
-              examples:
-                example:
-                  value:
-                    data:
-                      type: clock
-                      id: clock
-                      attributes:
-                        state: paused
-      description: Update the current server game clock state.
-      requestBody:
-        content:
-          application/vnd.api+json:
-            schema:
-              type: object
-              properties:
-                data:
-                  $ref: "#/components/schemas/Clock"
-            examples:
-              pause:
-                value:
-                  data:
-                    type: clock
-                    id: clock
-                    attributes:
-                      state: paused
-              change speed:
-                value:
-                  data:
-                    type: clock
-                    id: clock
-                    attributes:
-                      speed: "0.75"
-      tags:
-        - App
     parameters:
       - schema:
           type: string

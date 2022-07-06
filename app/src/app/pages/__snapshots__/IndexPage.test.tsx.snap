@@ -262,7 +262,7 @@ exports[`can show the game is paused message 1`] = `
     </div>
   </nav>
   <main
-    class="MuiBox-root css-elj48x"
+    class="MuiBox-root css-96m5c5"
   >
     <div
       class="MuiContainer-root MuiContainer-maxWidthSm css-cuefkz-MuiContainer-root"
@@ -272,25 +272,6 @@ exports[`can show the game is paused message 1`] = `
       >
         Spiel pausiert
       </h2>
-      <p
-        class="MuiTypography-root MuiTypography-body2 css-r40f8v-MuiTypography-root"
-      >
-        Das Spiel ist pausiert. Du kannst es aber für alle fortsetzen.
-      </p>
-      <div
-        class="MuiBox-root css-fv0itm"
-      >
-        <button
-          class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root  css-1rwt2y5-MuiButtonBase-root-MuiButton-root"
-          tabindex="0"
-          type="button"
-        >
-          Spiel für alle fortsetzen
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
-        </button>
-      </div>
     </div>
   </main>
 </div>

@@ -187,20 +187,6 @@ def get_clock(request: HttpRequest, gameId: str):
     return serialize_clock(request.game)
 
 
-@api.post("games/{str:gameId}/clock", response=ClockSchema, url_name="clock")
-@wrap_get_game
-@wrap_get_player
-def post_clock(request: HttpRequest, gameId: str, payload: ClockSchema):
-    if payload.data.attributes.state == "running":
-        request.game.clock_state = ClockType.RUNNING
-    elif payload.data.attributes.state == "paused":
-        request.game.clock_state = ClockType.STOPPED
-
-    request.game.save()
-
-    return serialize_clock(request.game)
-
-
 def serialize_player(player: Player):
     character = None
     if player.character:
