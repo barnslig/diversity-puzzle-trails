@@ -323,34 +323,6 @@ class ClockApiTest(GameTestCase):
             }
         })
 
-    def test_post(self):
-        self.assertEqual(self.game.clock_state, ClockType.STOPPED)
-
-        url = reverse("api-1.0.0:clock", args=(self.game.slug,))
-        res = self.client.post(url, HTTP_AUTHORIZATION=self.player.bearer, content_type="application/json", data={
-            "data": {
-                "type": "clock",
-                "attributes": {
-                    "state": "running"
-                }
-            }
-        })
-        self.assertEqual(res.status_code, 200)
-        self.assertEqual(res.json(), {
-            "data": {
-                "type": "clock",
-                "id": "1",
-                "attributes": {
-                    "state": "running",
-                    "speed": 1.0
-                }
-            }
-        })
-
-        self.game.refresh_from_db()
-
-        self.assertEqual(self.game.clock_state, ClockType.RUNNING)
-
 
 class PlayerApiTest(GameTestCase):
     def test_put(self):

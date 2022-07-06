@@ -1,22 +1,10 @@
 import { rest } from "msw";
 
 import { ClockApiResponse } from "../common/hooks/api/useClock";
-import { ClockState } from "../common/types/Clock";
-
-let clockState: ClockState = "running";
 
 export const handlers = [
   rest.get("/games/:gameId/clock", (req, res, ctx) => {
     const clockRes: ClockApiResponse = require("./data/clock.json");
-    clockRes.data.attributes.state = clockState;
-    return res(ctx.json(clockRes));
-  }),
-  rest.post("/games/:gameId/clock", (req, res, ctx) => {
-    clockState =
-      JSON.parse(req.body as string).data.attributes.state || "running";
-
-    const clockRes: ClockApiResponse = require("./data/clock.json");
-    clockRes.data.attributes.state = clockState;
     return res(ctx.json(clockRes));
   }),
 

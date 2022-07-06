@@ -20,9 +20,7 @@ import useCharacter from "../../common/hooks/useCharacter";
 import useClock from "../../common/hooks/api/useClock";
 import useLeaveGame from "../../common/hooks/useLeaveGame";
 import usePwaInstaller from "../../common/hooks/usePwaInstaller";
-import useUpdateClock from "../../common/hooks/api/useUpdateClock";
 
-import ButtonProgressIndicator from "../../common/components/ButtonProgressIndicator";
 import ChooseCharacterHeroMessage from "../../common/components/ChooseCharacterHeroMessage";
 import GameOverHeroMessage from "../../common/components/GameOverHeroMessage";
 import PausedHeroMessage from "../../common/components/PausedHeroMessage";
@@ -46,7 +44,6 @@ const IndexPage = (props: IndexPageProps) => {
 
   const appBarMenuAnchorEl = React.useRef<HTMLButtonElement>(null);
   const [appBarMenuIsOpen, setAppBarMenuIsOpen] = React.useState(false);
-  const [updateClockIsLoading, updateClock] = useUpdateClock();
 
   const leaveGame = useLeaveGame();
   const onLeaveGame = () => {
@@ -107,35 +104,6 @@ const IndexPage = (props: IndexPageProps) => {
             open={appBarMenuIsOpen}
             onClose={() => setAppBarMenuIsOpen(false)}
           >
-            {isPaused ? (
-              <MenuItem
-                disabled={updateClockIsLoading}
-                onClick={async () => {
-                  await updateClock("running");
-                  setAppBarMenuIsOpen(false);
-                }}
-              >
-                <FormattedMessage
-                  defaultMessage="Spiel für alle fortsetzen"
-                  description="appbar menu item continue game"
-                />
-                {updateClockIsLoading && <ButtonProgressIndicator />}
-              </MenuItem>
-            ) : (
-              <MenuItem
-                disabled={updateClockIsLoading}
-                onClick={async () => {
-                  await updateClock("paused");
-                  setAppBarMenuIsOpen(false);
-                }}
-              >
-                <FormattedMessage
-                  defaultMessage="Spiel für alle pausieren"
-                  description="appbar menu item pause game"
-                />
-                {updateClockIsLoading && <ButtonProgressIndicator />}
-              </MenuItem>
-            )}
             <MenuItem onClick={onLeaveGame}>
               <FormattedMessage
                 defaultMessage="Spiel verlassen"
