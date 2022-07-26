@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.http.response import HttpResponseRedirect
 from django.utils.translation import gettext as _
 
+from .enums import ClockType, ParameterType
 from .models import Game, Message, Parameter, Player, Character, Log
 from .qr_models import Code, Action
 
@@ -106,6 +107,152 @@ class GameAdmin(admin.ModelAdmin):
             obj.reset()
 
             self.message_user(request, _("Game is resetted"))
+            return HttpResponseRedirect(".")
+
+        if "_play" in request.POST:
+            obj.clock_state = ClockType.RUNNING
+            obj.save()
+
+            self.message_user(request, _("Game is continued"))
+
+            return HttpResponseRedirect(".")
+
+        if "_pause" in request.POST:
+            obj.clock_state = ClockType.STOPPED
+            obj.save()
+
+            self.message_user(request, _("Game is paused"))
+
+            return HttpResponseRedirect(".")
+
+        if "_chapter-1" in request.POST:
+            obj.clock_state = ClockType.RUNNING
+            obj.save()
+
+            for param in obj.parameter.all():
+                param.rate = -1e-100
+                param.save()
+
+            self.message_user(
+                request, "Kapitel 1: Alle Parameter sinken nicht")
+
+            return HttpResponseRedirect(".")
+
+        if "_chapter-2" in request.POST:
+            obj.clock_state = ClockType.RUNNING
+            obj.save()
+
+            for param in obj.parameter.all():
+                param.rate = -1e-100
+                param.save()
+
+            self.message_user(
+                request, "Kapitel 2: Alle Parameter sinken nicht")
+
+            return HttpResponseRedirect(".")
+
+        if "_chapter-3" in request.POST:
+            obj.clock_state = ClockType.RUNNING
+            obj.save()
+
+            for param in obj.parameter.all():
+                if param.name == ParameterType.MORAL:
+                    param.rate = -1
+                else:
+                    param.rate = -1e-100
+                param.save()
+
+            # obj.parameter.all().update(rate=-1e-100)
+            # obj.parameter.filter(name=ParameterType.MORAL).update(rate=-1)
+
+            self.message_user(request, "Kapitel 3: Gesundheit sinkt")
+
+            return HttpResponseRedirect(".")
+
+        if "_chapter-4-1" in request.POST:
+            obj.clock_state = ClockType.RUNNING
+            obj.save()
+
+            for param in obj.parameter.all():
+                if param.name == ParameterType.MORAL or param.name == ParameterType.ENERGY or param.name == ParameterType.FOOD:
+                    param.rate = -1
+                else:
+                    param.rate = -1e-100
+                param.save()
+
+            # obj.parameter.all().update(rate=-1e-100)
+
+            # obj.parameter.filter(name=ParameterType.MORAL).update(rate=-1)
+            # obj.parameter.filter(name=ParameterType.ENERGY).update(rate=-1)
+            # obj.parameter.filter(name=ParameterType.FOOD).update(rate=-1)
+
+            self.message_user(
+                request, "Kapitel 4-1: Gesundheit, Energie und Nahrung sinken")
+
+            return HttpResponseRedirect(".")
+
+        if "_chapter-4-2" in request.POST:
+            obj.clock_state = ClockType.RUNNING
+            obj.save()
+
+            for param in obj.parameter.all():
+                if param.name == ParameterType.MORAL or param.name == ParameterType.FOOD:
+                    param.rate = -1
+                elif param.name == ParameterType.ENERGY:
+                    param.rate = -2
+                else:
+                    param.rate = -1e-100
+                param.save()
+
+            # obj.parameter.all().update(rate=-1e-100)
+
+            # obj.parameter.filter(name=ParameterType.MORAL).update(rate=-1)
+            # obj.parameter.filter(name=ParameterType.ENERGY).update(rate=-2)
+            # obj.parameter.filter(name=ParameterType.FOOD).update(rate=-1)
+
+            self.message_user(request, "Kapitel 4-2: Energie sinkt stärker")
+
+            return HttpResponseRedirect(".")
+
+        if "_chapter-4-3" in request.POST:
+            obj.clock_state = ClockType.STOPPED
+            obj.save()
+
+            for param in obj.parameter.all():
+                param.rate = -1e-100
+                param.save()
+
+            # obj.parameter.all().update(rate=-1e-100)
+
+            self.message_user(request, "Kapitel 4-3: Alles pausiert")
+
+            return HttpResponseRedirect(".")
+
+        if "_chapter-5-1" in request.POST:
+            obj.clock_state = ClockType.RUNNING
+            obj.save()
+
+            obj.parameter.all().update(initial_value=60, value=0, fixup_value=0, rate=-1)
+            obj.parameter.filter(name=ParameterType.HYGIENE).update(
+                initial_value=30, value=0, fixup_value=0)
+
+            self.message_user(request, "Kapitel 5-1: Alle Werte schlecht")
+
+            return HttpResponseRedirect(".")
+
+        if "_chapter-5-2" in request.POST:
+            obj.clock_state = ClockType.RUNNING
+            obj.save()
+
+            for param in obj.parameter.all():
+                param.rate = -1e-100
+                param.save()
+
+            # obj.parameter.all().update(rate=-1e-100)
+
+            self.message_user(
+                request, "Kapitel 5-2: Alle Werte sinken nicht mehr")
+
             return HttpResponseRedirect(".")
 
         return super().response_change(request, obj)

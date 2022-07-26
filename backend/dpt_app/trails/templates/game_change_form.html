@@ -7,9 +7,26 @@
 
   {% if original %}
     <div class="submit-row">
+      {% if original.clock_state == "stopped" %}
+        <input type="submit" name="_play" value="{% translate 'Continue game' %}" />
+      {% elif original.clock_state == "running" %}
+        <input type="submit" name="_pause" value="{% translate 'Pause game' %}" />
+      {% endif %}
+
       <input type="submit" name="_add-points" value="{% translate 'Add +10 Points' %}" />
       <input type="submit" name="_add-minutes" value="{% translate 'Add +15 Minutes' %}" />
       <input type="submit" name="_reset-game" value="{% translate 'Reset Game' %}" />
+    </div>
+
+    <div class="submit-row">
+      <input type="submit" name="_chapter-1" value="Kapitel 1" />
+      <input type="submit" name="_chapter-2" value="Kapitel 2" />
+      <input type="submit" name="_chapter-3" value="Kapitel 3" />
+      <input type="submit" name="_chapter-4-1" value="Kapitel 4 - 1" />
+      <input type="submit" name="_chapter-4-2" value="Kapitel 4 - 2" />
+      <input type="submit" name="_chapter-4-3" value="Kapitel 4 - 3" />
+      <input type="submit" name="_chapter-5-1" value="Kapitel 5 - 1" />
+      <input type="submit" name="_chapter-5-2" value="Kapitel 5 - 2" />
     </div>
   {% endif %}
 {% endblock %}

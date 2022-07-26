@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-24 19:36+0000\n"
+"POT-Creation-Date: 2022-07-25 16:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,35 +18,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: trails/admin.py:13
+#: trails/admin.py:14
 msgid "Diversity Puzzle Trails Administration"
 msgstr "Kaigo Administration"
 
-#: trails/admin.py:14
+#: trails/admin.py:15
 msgid "DPT admin"
 msgstr "DPT Admin"
 
-#: trails/admin.py:90
+#: trails/admin.py:91
 #, python-brace-format
 msgid "Added {num_points} points to the lowest parameter {param.name}"
 msgstr ""
 "Es wurden {num_points} Punkte zum niedrigsten Parameter {param.name} "
 "hinzugefügt."
 
-#: trails/admin.py:93
+#: trails/admin.py:94
 msgid "Not in game over state!"
 msgstr "Nicht game over."
 
-#: trails/admin.py:102
+#: trails/admin.py:103
 #, python-brace-format
 msgid "Added {num_minutes} minutes to the game"
 msgstr "Das Spiel wurde um {num_minutes} verlängert."
 
-#: trails/admin.py:108
+#: trails/admin.py:109
 msgid "Game is resetted"
 msgstr "Spiel zurückgesetzt."
 
-#: trails/admin.py:137
+#: trails/admin.py:116
+msgid "Game is continued"
+msgstr "Spiel fortgesetzt."
+
+#: trails/admin.py:124
+msgid "Game is paused"
+msgstr "Spiel pausiert."
+
+#: trails/admin.py:154
 #, python-format
 msgid "Export selected %(verbose_name_plural)s as CSV"
 msgstr "Ausgewählte %(verbose_name_plural)s als CSV exportieren"
@@ -67,7 +75,7 @@ msgstr "Unbekannter Spiel-Code!"
 msgid "Missing or malformed bearer"
 msgstr "Fehler bei der Authentifizierung!"
 
-#: trails/api.py:112 trails/tests.py:479
+#: trails/api.py:112 trails/tests.py:451
 msgid "Game does not have messages enabled"
 msgstr "Nachrichten sind in diesem Spiel nicht aktiviert"
 
@@ -129,17 +137,17 @@ msgid "Parameter"
 msgstr "Parameter"
 
 #: trails/enums.py:38 trails/models.py:309 trails/models.py:324
-#: trails/qr_models.py:91
+#: trails/qr_models.py:93
 msgid "Character"
 msgstr "Charakter"
 
-#: trails/enums.py:39 trails/models.py:379 trails/models.py:390
-#: trails/qr_models.py:97
+#: trails/enums.py:39 trails/models.py:377 trails/models.py:388
+#: trails/qr_models.py:99
 msgid "Message"
 msgstr "Nachricht"
 
 #: trails/models.py:15 trails/models.py:218 trails/models.py:302
-#: trails/models.py:351 trails/models.py:396
+#: trails/models.py:349 trails/models.py:394
 msgid "Game"
 msgstr "Spiel"
 
@@ -218,10 +226,8 @@ msgid "Value"
 msgstr "Wert"
 
 #: trails/models.py:206
-#, fuzzy
-#| msgid "Minimum Value"
 msgid "Fixup Value"
-msgstr "Minimaler Wert"
+msgstr "Fixup-Wert"
 
 #: trails/models.py:212
 msgid "Rate"
@@ -240,7 +246,7 @@ msgstr "Spieldauer zu der der Parameter null ist"
 msgid "Parameter {0} from {1}"
 msgstr "Parameter {0} aus dem Spiel {1}"
 
-#: trails/models.py:286 trails/models.py:368
+#: trails/models.py:286 trails/models.py:366
 msgid "Player"
 msgstr "Spieler*in"
 
@@ -263,44 +269,44 @@ msgstr "Aktionspunkte"
 
 #: trails/models.py:317
 #, python-brace-format
-msgid "Player {0} from game {1}"
+msgid "{0} from game {1}"
 msgstr "Spieler*in {0} aus dem Spiel {1}"
 
 #: trails/models.py:325
 msgid "Characters"
 msgstr "Charaktere"
 
-#: trails/models.py:332
+#: trails/models.py:330
 msgid "Character Class"
 msgstr "Charakter-Klasse"
 
-#: trails/models.py:339
+#: trails/models.py:337
 #, python-brace-format
 msgid "Character {0}"
 msgstr "Charakter {0}"
 
-#: trails/models.py:344
+#: trails/models.py:342
 msgid "Log"
 msgstr "Log-Eintrag"
 
-#: trails/models.py:345
+#: trails/models.py:343
 msgid "Logs"
 msgstr "Log-Einträge"
 
-#: trails/models.py:356 trails/models.py:386
+#: trails/models.py:354 trails/models.py:384
 msgid "Created At"
 msgstr "Erstellt um"
 
-#: trails/models.py:362 trails/qr_models.py:16 trails/qr_models.py:69
+#: trails/models.py:360 trails/qr_models.py:16 trails/qr_models.py:69
 msgid "Code"
 msgstr "QR-Code"
 
-#: trails/models.py:372
+#: trails/models.py:370
 #, python-brace-format
 msgid "{0} - Game: {1}, Code: {2}"
 msgstr "{0} - Spiel: {1}, QR-Code: {2}"
 
-#: trails/models.py:380
+#: trails/models.py:378
 msgid "Messages"
 msgstr "Nachrichten"
 
@@ -337,19 +343,32 @@ msgstr "Spiel-Aktionen"
 msgid "Action Type"
 msgstr "Spiel-Aktion"
 
-#: trails/qr_models.py:104
+#: trails/qr_models.py:106
 #, python-brace-format
 msgid "Action: {0}"
 msgstr "Spiel-Aktion: {0}"
 
-#: trails/templates/game_change_form.html:10
+#: trails/templates/game_change_form.html:11
+msgid "Continue game"
+msgstr "Spiel fortsetzen"
+
+#: trails/templates/game_change_form.html:13
+msgid "Pause game"
+msgstr "Spiel pausieren"
+
+#: trails/templates/game_change_form.html:16
 msgid "Add +10 Points"
 msgstr "+10 Punkte hinzufügen"
 
-#: trails/templates/game_change_form.html:11
+#: trails/templates/game_change_form.html:17
 msgid "Add +15 Minutes"
 msgstr "+15 Minuten hinzufügen"
 
-#: trails/templates/game_change_form.html:12
+#: trails/templates/game_change_form.html:18
 msgid "Reset Game"
 msgstr "Spiel zurücksetzen"
+
+#: trails/templates/game_change_form.html:23
+#, python-format
+msgid "Chapter %(chapter)s"
+msgstr "Kapitel %(chapter)s"
