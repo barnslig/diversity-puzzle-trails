@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from django.core.serializers.json import DjangoJSONEncoder
 from django.test import TestCase
 from django.urls import reverse
@@ -61,6 +61,16 @@ class GameTestCase(TestCase):
             character_class="Ingenieur*in"
         )
 
+        # Simulates changes / action done by other players or the admin
+        cls.admin_player: Player = Player.objects.create(
+            name="Test Admin Player",
+            bearer="Bearer admin_test123",
+            game=cls.game,
+            character=cls.character,
+            action_points=15
+        )
+
+        # The player used in the tests
         cls.player: Player = Player.objects.create(
             name="Test Player",
             bearer="Bearer test123",
@@ -84,10 +94,12 @@ class GameTestCase(TestCase):
             message="Send Alpaca Pics"
         )
 
+        # The first code was scanned by the admin
+        # this way, the player hasn't interacted with the system prior the test
         cls.log: Log = Log.objects.create(
             game=cls.game,
             code=cls.code,
-            player=cls.player
+            player=cls.admin_player
         )
 
     def cause_game_over(self):
@@ -340,7 +352,7 @@ class PlayerApiTest(GameTestCase):
         self.assertEqual(res.json(), {
             "data": {
                 "type": "player",
-                "id": "2",
+                "id": "3",
                 "attributes": {
                     "name": "Example Name",
                     "character": None
@@ -503,7 +515,6 @@ class MessageApiTest(GameTestCase):
 
         # it sends a message using a code
         self.assertTrue(self.game.hasMessages)
-
         res = self.client.post(url, HTTP_AUTHORIZATION=self.player.bearer)
         self.assertEqual(res.status_code, 200)
         self.assertEqual(self.game.message.last().message, self.action.message)
@@ -521,3 +532,167 @@ class MessageApiTest(GameTestCase):
         self.assertEqual(res.status_code, 200)
         self.assertFalse(self.game.message.filter(
             message=self.action.message).exists())
+
+
+class CodeApiTest(GameTestCase):
+    def test_scan_message_code(self):
+        message_code = Code.objects.create(
+            name="Test message"
+        )
+
+        Action.objects.create(
+            code=message_code,
+            action_type=ActionType.MESSAGE,
+            message="QR-Code message asg34rv"
+        )
+
+        url = reverse("api-1.0.0:code", args=(self.game.slug, message_code.uuid))
+
+        res = self.client.post(url, HTTP_AUTHORIZATION=self.player.bearer)
+        self.assertEqual(res.status_code, 200)
+        data = res.json()["data"]
+        self.assertEqual(data["attributes"]["actions"][0]["message"], "QR-Code message asg34rv")
+        self.assertEqual(self.game.message.last().message, "QR-Code message asg34rv")
+
+    def test_scan_parameter_code(self):
+        parameter_code = Code.objects.create(
+            name="Test Parameter"
+        )
+
+        Action.objects.create(
+            code=parameter_code,
+            action_type=ActionType.PARAMETER,
+            parameter=ParameterType.ENERGY,
+            value=10
+        )
+
+        old_value = self.game.parameter.get(name=ParameterType.ENERGY).value
+
+        url = reverse("api-1.0.0:code", args=(self.game.slug, parameter_code.uuid))
+
+        res = self.client.post(url, HTTP_AUTHORIZATION=self.player.bearer)
+        self.assertEqual(res.status_code, 200)
+
+        new_value = self.game.parameter.get(name=ParameterType.ENERGY).value
+        self.assertEqual(new_value, old_value + 10)
+
+    def test_anti_cheat_when_multiple_scans_of_same_code(self):
+        parameter_code = Code.objects.create(
+            name="Test Parameter"
+        )
+
+        Action.objects.create(
+            code=parameter_code,
+            action_type=ActionType.PARAMETER,
+            parameter=ParameterType.ENERGY,
+            value=10
+        )
+
+        old_value = self.game.parameter.get(name=ParameterType.ENERGY).value
+
+        url = reverse("api-1.0.0:code", args=(self.game.slug, parameter_code.uuid))
+
+        res = self.client.post(url, HTTP_AUTHORIZATION=self.player.bearer)
+        self.assertEqual(res.status_code, 200)
+        new_value = self.game.parameter.get(name=ParameterType.ENERGY).value
+        self.assertEqual(new_value, old_value + 10)
+
+        res = self.client.post(url, HTTP_AUTHORIZATION=self.player.bearer)
+        self.assertEqual(res.status_code, 403)
+        new_value = self.game.parameter.get(name=ParameterType.ENERGY).value
+        self.assertEqual(new_value, old_value + 10)
+
+    def test_no_anti_cheat_when_multiple_scans_of_diffrent_code(self):
+        parameter_code_1 = Code.objects.create(
+            name="Test Parameter"
+        )
+
+        Action.objects.create(
+            code=parameter_code_1,
+            action_type=ActionType.PARAMETER,
+            parameter=ParameterType.ENERGY,
+            value=10
+        )
+
+        parameter_code_2 = Code.objects.create(
+            name="Test Parameter"
+        )
+
+        Action.objects.create(
+            code=parameter_code_2,
+            action_type=ActionType.PARAMETER,
+            parameter=ParameterType.ENERGY,
+            value=20
+        )
+
+        old_value = self.game.parameter.get(name=ParameterType.ENERGY).value
+
+        url = reverse("api-1.0.0:code", args=(self.game.slug, parameter_code_1.uuid))
+
+        res = self.client.post(url, HTTP_AUTHORIZATION=self.player.bearer)
+        self.assertEqual(res.status_code, 200)
+        new_value = self.game.parameter.get(name=ParameterType.ENERGY).value
+        self.assertEqual(new_value, old_value + 10)
+
+        url = reverse("api-1.0.0:code", args=(self.game.slug, parameter_code_2.uuid))
+
+        res = self.client.post(url, HTTP_AUTHORIZATION=self.player.bearer)
+        self.assertEqual(res.status_code, 200)
+        new_value = self.game.parameter.get(name=ParameterType.ENERGY).value
+        self.assertEqual(new_value, old_value + 30)
+
+    def test_no_anti_cheat_when_multiple_scans_of_same_code_diffrent_player(self):
+        parameter_code = Code.objects.create(
+            name="Test Parameter"
+        )
+
+        Action.objects.create(
+            code=parameter_code,
+            action_type=ActionType.PARAMETER,
+            parameter=ParameterType.ENERGY,
+            value=10
+        )
+
+        old_value = self.game.parameter.get(name=ParameterType.ENERGY).value
+
+        url = reverse("api-1.0.0:code", args=(self.game.slug, parameter_code.uuid))
+
+        res = self.client.post(url, HTTP_AUTHORIZATION=self.player.bearer)
+        self.assertEqual(res.status_code, 200)
+        new_value = self.game.parameter.get(name=ParameterType.ENERGY).value
+        self.assertEqual(new_value, old_value + 10)
+
+        res = self.client.post(url, HTTP_AUTHORIZATION=self.admin_player.bearer)
+        self.assertEqual(res.status_code, 200)
+        new_value = self.game.parameter.get(name=ParameterType.ENERGY).value
+        self.assertEqual(new_value, old_value + 20)
+
+    def test_anti_cheat_timeout(self):
+        parameter_code = Code.objects.create(
+            name="Test Parameter"
+        )
+
+        Action.objects.create(
+            code=parameter_code,
+            action_type=ActionType.PARAMETER,
+            parameter=ParameterType.ENERGY,
+            value=10
+        )
+
+        old_value = self.game.parameter.get(name=ParameterType.ENERGY).value
+
+        url = reverse("api-1.0.0:code", args=(self.game.slug, parameter_code.uuid))
+
+        res = self.client.post(url, HTTP_AUTHORIZATION=self.player.bearer)
+        self.assertEqual(res.status_code, 200)
+        new_value = self.game.parameter.get(name=ParameterType.ENERGY).value
+        self.assertEqual(new_value, old_value + 10)
+
+        new_log = self.game.logs.latest("created_at")
+        new_log.created_at = timezone.now() - timedelta(seconds=26)
+        new_log.save()
+
+        res = self.client.post(url, HTTP_AUTHORIZATION=self.player.bearer)
+        self.assertEqual(res.status_code, 200)
+        new_value = self.game.parameter.get(name=ParameterType.ENERGY).value
+        self.assertEqual(new_value, old_value + 20)
