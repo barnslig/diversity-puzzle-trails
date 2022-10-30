@@ -1,6 +1,9 @@
+from datetime import timedelta
+
 from django.db.models import F
 from django.http import HttpRequest
 from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
 from functools import wraps
 from ninja import NinjaAPI
 
@@ -270,12 +273,29 @@ def get_code(request: HttpRequest, gameId: str, codeId: str):
 @wrap_get_game
 @wrap_get_player
 def post_code(request: HttpRequest, gameId: str, codeId: str):
+    def _overused_code(code_id):
+        freshly_used = request.game.logs.filter(
+            code=code_id, player=request.player, created_at__gte=timezone.now()-timedelta(seconds=25)
+        ).exists()
+        return freshly_used
+
     try:
         code = Code.objects.get(uuid=codeId)
     except Code.DoesNotExist:
         raise CodeNotFound()
 
     if code.one_shot and request.game.logs.filter(id=code.id).exists():
+        raise CodeAlreadyUsed()
+
+    """
+    It is assumed that a cheater scans the same code over and over again
+    with the same device. In the first run, there was one player who
+    scanned the same code about 10 times with a time interval between 2s and 10s.
+
+    To prevent this, a QR post will be rejected if the code has already been
+    scanned by the same player in the last 25 seconds.
+    """
+    if _overused_code(code.id):
         raise CodeAlreadyUsed()
 
     for action in code.actions.all():
