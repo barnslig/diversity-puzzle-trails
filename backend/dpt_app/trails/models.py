@@ -86,6 +86,13 @@ class Game(models.Model):
         return min(self.max_clock_duration, clock_duration)
 
     @property
+    @admin.display(description=_("Time to Game Over"))
+    def time_to_game_over(self):
+        """Get the clock duration until the next parameter is zero"""
+        times = [param.time_to_zero for param in self.parameter.all()]
+        return min(times) or 0
+
+    @property
     @admin.display(description=_("Is Game Over?"))
     def is_game_over(self):
         """Get whether the game is in game over state"""
@@ -221,7 +228,7 @@ class Parameter(models.Model):
     @property
     def actual_value(self):
         """Get the actual parameter value, consisting of initial, actual and fixup value"""
-        return self.initial_value + self.value + self.fixup_value
+        return (self.initial_value or 0) + self.value + self.fixup_value
 
     @property
     def actual_rate(self):
@@ -259,6 +266,12 @@ class Parameter(models.Model):
     def game_clock_duration_when_value_zero(self):
         """Get the game.clock_duration at which this parameter is zero"""
         return -1 * self.actual_value / self.actual_rate
+
+    @property
+    @admin.display(description=_("Time to Zero"))
+    def time_to_zero(self):
+        """Get the seconds untils this parameter is zero"""
+        return round(self.game_clock_duration_when_value_zero - self.game.total_clock_duration)
 
     def label(self):
         return ParameterType(self.name).label

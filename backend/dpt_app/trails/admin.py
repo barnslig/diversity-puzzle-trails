@@ -30,8 +30,8 @@ class LogInline(admin.TabularInline):
 class ParameterInline(admin.TabularInline):
     model = Parameter
     extra = 0
-    exclude = ('fixup_value', 'min_value', 'max_value',)
-    readonly_fields = ('current_value',)
+    exclude = ('scope', 'fixup_value', 'min_value', 'max_value',)
+    readonly_fields = ('current_value', 'time_to_zero',)
 
 
 class MessageInline(admin.TabularInline):
@@ -76,6 +76,7 @@ class GameAdmin(admin.ModelAdmin):
             return (
                 'total_clock_duration',
                 'max_clock_duration',
+                'time_to_game_over',
                 'is_game_over',
             )
 
